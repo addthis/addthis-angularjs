@@ -1,0 +1,50 @@
+{
+  "name": "official-addthis-angular",
+  "version": "0.0.1",
+  "description": "Free and Pro AddThis tools to your AngularJS app. This AngularJS module includes a directive, service and provider. It is smart about route changes and the AngularJS digest cycles and how they affect AddThis tools. Requires a free AddThis account.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/addthis/addthis-angular.git"
+  },
+  "bugs": {
+    "email": "help@addthis.com"
+  },
+  "main": "dist/addthis-angular.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "AddThis",
+    "share buttons",
+    "sharing buttons",
+    "follow buttons",
+    "recent posts",
+    "recommended content",
+    "social"
+  ],
+  "author": {
+    "name": "AddThis",
+    "email": "help@addthis.com"
+  },
+  "contributors": [
+    {
+      "name": "Julka Grodel",
+      "email": "git@jgrodel.com"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "angular": "^1.5.8",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-foreach": "^0.1.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.1",
+    "uglify-save-license": "^0.4.1"
+  }
+}
