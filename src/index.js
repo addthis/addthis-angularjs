@@ -96,14 +96,55 @@ var addthisModule = function(window, angular) {
         // todo do we also want to add namespaces onto the html tag for XHTML?
     };
 
-    var addthisService = function ($window) {
-        var smartLayersRefresh = function(toolClass) {
-            // put smarts around this.
-            // run after addthis has loaded
-            // wait and see if more requests come in before running
-            if (typeof $window.addthis !== 'undefined') {
-                $window.addthis.layers.refresh();
+    var addthisService = function ($window, $q, $interval) {
+
+        var load = {
+            promise: false,
+            interval: 200
+        };
+        var onLoad = function() {
+            if(load.promise) {
+                return load.promise;
             }
+            var deferred = $q.defer();
+
+            if($window.addthis) {
+                deferred.resolve($window.addthis);
+            } else {
+                var addThisCheckPromise = $interval(
+                    function() {
+                        if($window.addthis) {
+                            $interval.cancel(addThisCheckPromise);
+                            load.done = true;
+                            deferred.resolve($window.addthis);
+                        }
+                    },
+                    load.interval,
+                    0,
+                    false
+                );
+            }
+
+            load.promise = deferred.promise;
+            return load.promise;
+        };
+
+        var smartLayersRefresh = function(toolClass) {
+            onLoad().then(function() {
+                // put smarts around this.
+                // wait and see if more requests come in before running
+                $window.addthis.layers({'share': {}});
+
+                if (typeof $window.addthis !== 'undefined' &&
+                    typeof $window.addthis.layers !== 'undefined' &&
+                    typeof $window.addthis.layers.refresh !== 'undefined'
+                ) {
+                    $window.addthis_config = angular.copy(addthis_config);
+                    $window.addthis_share = angular.copy(addthis_share);
+                    $window.addthis.layers.refresh(addthis_share.url, addthis_share.title);
+                }
+            });
+
         };
 
         var service = {
@@ -112,7 +153,8 @@ var addthisModule = function(window, angular) {
             addthis_config: setAddThisConfig,
             addthis_share: setAddThisShare,
             shareUrl: setShareUrl,
-            shareTitle: setShareTitle
+            shareTitle: setShareTitle,
+            onLoad: onLoad
         };
         return service;
     };
