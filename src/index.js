@@ -203,11 +203,25 @@ var addthisModule = function(window, angular) {
         var window = $windowProvider.$get();
 
         if (window.addthis_config) {
-            addthis_config = window.addthis_config;
+            addthis_config = angular.copy(window.addthis_config);
         }
 
         if (window.addthis_share) {
-            addthis_share = window.addthis_share;
+            addthis_share = angular.copy(window.addthis_share);
+
+            if (window.addthis) {
+                /* If client has already set up the global addthis variable
+                 * by now, then the url and title properties may have been set
+                 * by it and not on page. Let's not hold on to it.
+                 */
+                if (addthis_share.url) {
+                    delete addthis_share.url;
+                }
+
+                if (addthis_share.title) {
+                    delete addthis_share.title;
+                }
+            }
         }
 
         this.profileId = function (inputProfileId) {
@@ -257,8 +271,8 @@ var addthisModule = function(window, angular) {
 
     var addthisRun = function($addthis, $window) {
         $window.addthis_plugin_info = addthis_plugin_info;
-        $window.addthis_config = addthis_config;
-        $window.addthis_share = addthis_share;
+        $window.addthis_config = angular.copy(addthis_config);
+        $window.addthis_share = angular.copy(addthis_share);
 
         if (autoAddScript) {
             addScript($window.document);
