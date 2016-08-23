@@ -1,6 +1,6 @@
 var addthisModule = function(window, angular) {
     var autoAddScript = true;
-    var scriptPlacement = 'footer';
+    var scriptInFooter = true;
     var profileId;
     var addthis_config = {};
     var addthis_share = {};
@@ -87,7 +87,7 @@ var addthisModule = function(window, angular) {
         var script = document.createElement('script');
         script.src = url;
 
-        if(scriptPlacement === 'header' && document.head) {
+        if(!scriptInFooter && document.head) {
             document.head.appendChild(script);
         } else {
             document.body.appendChild(script);
@@ -201,9 +201,9 @@ var addthisModule = function(window, angular) {
 
         this.setScriptPlacement = function(placement) {
             if (placement === 'header') {
-                scriptPlacement = 'header';
+                scriptInFooter = false;
             } else {
-                scriptPlacement = 'footer';
+                scriptInFooter = true;
             }
             return this;
         };
