@@ -8,7 +8,7 @@ var addthisModule = function(window, angular) {
     var addthis_plugin_info = {
         info_status    : 'enabled',
         cms_name       : 'Angular',
-        plugin_name    : 'addthis-angular',
+        plugin_name    : 'official-addthis-angular',
         plugin_version : '0.0.1',
         plugin_mode    : 'AddThis'
     };
@@ -223,7 +223,7 @@ var addthisModule = function(window, angular) {
         }
     };
 
-    var addthisModule = angular.module("addthis", ['ng']);
+    var addthisModule = angular.module('official.addthis', ['ng']);
     addthisModule.provider('$addthis', addthisProvider);
     addthisModule.run(['$addthis', '$window', addthisRun]);
     addthisModule.directive('addthisTool', addthisDirective);

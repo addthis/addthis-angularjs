@@ -12,7 +12,7 @@ var fs = require('fs');
 var path = {
   distribution: {
     folder: 'dist',
-    filename: 'addthis-angular'
+    filename: 'official-addthis-angular'
   },
   copyright: 'src/copyright.js',
   source: 'src/**/*.js'
