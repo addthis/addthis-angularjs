@@ -13,6 +13,10 @@ var addthisModule = function(window, angular) {
         plugin_mode    : 'AddThis'
     };
 
+    /*
+     * All these params must also show up in the same order when adding the
+     * directive to the Angular app
+     */
     var addthisDirective = function(
         $addthis,
         $timeout,
@@ -280,8 +284,17 @@ var addthisModule = function(window, angular) {
     };
 
     var addthisModule = angular.module('official.addthis', ['ng']);
-    addthisModule.provider('$addthis', addthisProvider);
+    addthisModule.provider('$addthis', ['$windowProvider', addthisProvider]);
     addthisModule.run(['$addthis', '$window', addthisRun]);
-    addthisModule.directive('addthisTool', addthisDirective);
+    /*
+     * Except for the last param, all these items must also show up in the same
+     * order the params in addthisDirective
+     */
+    addthisModule.directive('addthisTool', [
+        '$addthis',
+        '$timeout',
+        '$window',
+        addthisDirective
+    ]);
     return addthisModule;
 }(window, angular);
