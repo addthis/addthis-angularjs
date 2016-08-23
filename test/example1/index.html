@@ -1,9 +1,14 @@
 <html>
   <head>
     <title>Example Site #1</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <script src="../../node_modules/angular/angular.js"></script>
     <script src="../../dist/official-addthis-angular.js"></script>
     <script src="example1.js"></script>
+
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css"></link>
 
     <style>
         body {
@@ -14,56 +19,18 @@
   <head>
 
   <body ng-app="appExample1">
+    <div ng-include src="'./NavBar.html'"></div>
 
-    <h1>Example Site #1</h1>
+    <h1>
+        Example Site #1
+        <small>No Routing</small>
+    </h1>
 
-    <div ng-controller="ToolSwitcherACtrl">
-        <h2>Example 1: Switching Inline Tools, Sharing Current URL</h2>
-        <p>Tool ID: {{currentTool}}</p>
-
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <div addthis-tool tool-class="currentTool"></div>
-        <p><button type="button" ng-click="changeTool()">Change Tool</button></p>
-    </div>
-
-    <div ng-controller="UrlSwitcherCtrl">
-        <h2>Example 2: Changing Share URL for Inline Tools</h2>
-        <p>URL: {{currentUrl}}</p>
-
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <div addthis-tool tool-class="'addthis_sharing_toolbox'" share-url="currentUrl"></div>
-        <p><button type="button" ng-click="changeUrl()">Change URL</button></p>
-    </div>
-
-    <div ng-controller="TitleSwitcherCtrl">
-        <h2>Example 3: Changing Share Title for Inline Tools</h2>
-        <p>Note: Some services (such as Facebook) do not allow you to define the share title for a URL. Facebook will always use the Open Graph tags it finds on the page when it crawls it. You can use the <a href="https://developers.facebook.com/tools/debug/">Facebook Sharing Debugger</a> to test your Open Graph tags.</p>
-        <p>Title: {{currentTitle}}</p>
-
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <div addthis-tool tool-class="'addthis_sharing_toolbox'" share-title="currentTitle"></div>
-        <p><button type="button" ng-click="changeTitle()">Change Title</button></p>
-    </div>
-
-    <div ng-controller="DynamicTitleCtrl">
-        <h2>Example 4: Switching Between Share and Follow Tools</h2>
-        <label>Name:
-          <input type="text" name="input" ng-model="name">
-        </label>
-        <p>Title: My name is {{name}} and I approved of this link</p>
-
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <div addthis-tool tool-class="'addthis_sharing_toolbox'" share-title="'My name is ' + name + ' and I approved of this link'"></div>
-    </div>
-
-    <div ng-controller="ToolSwitcherBCtrl">
-        <h2>Example 5: Switching Between Share and Follow Tools</h2>
-        <p>Tool ID: {{currentTool}}</p>
-
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <div addthis-tool tool-class="currentTool"></div>
-        <p><button type="button" ng-click="changeTool()">Change Tool</button></p>
-    </div>
-
+    <div ng-include src="'./ToolExample1.html'"></div>
+    <div ng-include src="'./ToolExample2.html'"></div>
+    <div ng-include src="'./ToolExample3.html'"></div>
+    <div ng-include src="'./ToolExample4.html'"></div>
+    <div ng-include src="'./ToolExample7.html'"></div>
+    <div ng-include src="'./ToolExample8.html'"></div>
   </body>
 </html>

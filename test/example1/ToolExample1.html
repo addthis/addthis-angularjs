@@ -1,0 +1,16 @@
+<div ng-controller="ToolSwitcherACtrl">
+    <h2>
+        Tool Example 1
+        <small>
+            Switching Inline Tools, Sharing Current URL
+        </small>
+    </h2>
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <div addthis-tool tool-class="currentTool"></div>
+
+    <button type="button" class="btn btn-default" ng-click="changeTool()">
+        Change Tool
+    </button>
+    <code>tool-class = {{currentTool}}</code>
+</div>

@@ -1,0 +1,21 @@
+<div ng-controller="UrlSwitcherCtrl">
+    <h2>
+        Tool Example 2
+        <small>
+            Changing Share URL for Inline Tools
+        </small>
+    </h2>
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <div
+        addthis-tool
+        tool-class="'addthis_sharing_toolbox'"
+        share-url="currentUrl"
+    >
+    </div>
+
+    <button type="button" class="btn btn-default" ng-click="changeUrl()">
+        Change URL
+    </button>
+    <code> share-url = {{currentUrl}}</code>
+</div>
