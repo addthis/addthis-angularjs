@@ -133,33 +133,20 @@ var addthisModule = function(window, angular) {
             return load.promise;
         };
 
-        var smartLayersRefresh = function(toolClass) {
-            onLoad().then(function() {
-                // put smarts around this.
-                // wait and see if more requests come in before running
-                $window.addthis.layers({'share': {}});
-
-                if (typeof $window.addthis !== 'undefined' &&
-                    typeof $window.addthis.layers !== 'undefined' &&
-                    typeof $window.addthis.layers.refresh !== 'undefined'
-                ) {
-                    $window.addthis_config = angular.copy(addthis_config);
-                    $window.addthis_share = angular.copy(addthis_share);
-                    $window.addthis.layers.refresh(addthis_share.url, addthis_share.title);
-                }
-            });
-
-        };
-
         var service = {
             addScript: addScript,
-            smartLayersRefresh: smartLayersRefresh,
+            smartLayersRefresh: function() {
+                $window.addthis_config = angular.copy(addthis_config);
+                $window.addthis_share = angular.copy(addthis_share);
+                queueSmartLayersRefresh($window, $interval);
+            },
             addthis_config: setAddThisConfig,
             addthis_share: setAddThisShare,
             shareUrl: setShareUrl,
             shareTitle: setShareTitle,
             onLoad: onLoad
         };
+
         return service;
     };
 
