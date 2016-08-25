@@ -36,6 +36,7 @@
   "license": "MIT",
   "devDependencies": {
     "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
     "bootstrap": "^3.3.7",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
