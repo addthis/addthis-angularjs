@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Example Site #2</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="../../node_modules/angular/angular.js"></script>
+    <script src="../../node_modules/angular-route/angular-route.js"></script>
+    <script src="../../dist/official-addthis-angular.js"></script>
+    <script src="example2.js"></script>
+
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css"></link>
+
+    <style>
+        body {
+            padding: 30px 30px 30px 60px;
+        }
+    </style>
+
+  <head>
+
+  <body ng-app="appExample2">
+    <div ng-include src="'./NavBar.html'"></div>
+
+    <h1>
+        Example Site #2
+        <small>Using <a href="https://docs.angularjs.org/api/ngRoute">ngRoute</a></small>
+    </h1>
+
+    <p>As you navigate from one example to another, the buttons below and the ones on the left hand edge of the screen will update to share the title and url of the current page... untill you click the button in example X & Y...</p>
+
+    <div ng-view></div>
+
+    <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div addthis-tool tool-class="'addthis_sharing_toolbox'"></div>
+    </div>
+
+  </body>
+</html>
