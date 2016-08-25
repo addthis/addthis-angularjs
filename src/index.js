@@ -49,7 +49,7 @@ var addthisModule = function(window, angular) {
                     toolDiv = newToolDiv;
 
                     $timeout(function() {
-                        $addthis.smartLayersRefresh($scope.toolClass);
+                        $addthis.smartLayersRefresh();
                     });
                 };
 
@@ -260,7 +260,7 @@ var addthisModule = function(window, angular) {
         return this;
     };
 
-    var addthisRun = function($addthis, $window) {
+    var addthisRun = function($window, $rootScope, $location, $interval) {
         $window.addthis_plugin_info = addthis_plugin_info;
         $window.addthis_config = angular.copy(addthis_config);
         $window.addthis_share = angular.copy(addthis_share);
@@ -268,6 +268,12 @@ var addthisModule = function(window, angular) {
         if (autoAddScript) {
             addScript($window.document);
         }
+
+        $rootScope.$on("$locationChangeSuccess", function(event, next, current) {
+            if (next!== current) {
+                queueSmartLayersRefresh($window, $interval);
+            }
+        });
     };
 
     var smartLayersRefreshRequest = {
@@ -313,7 +319,7 @@ var addthisModule = function(window, angular) {
 
     var addthisModule = angular.module('official.addthis', ['ng']);
     addthisModule.provider('$addthis', ['$windowProvider', addthisProvider]);
-    addthisModule.run(['$addthis', '$window', addthisRun]);
+    addthisModule.run(['$window', '$rootScope', '$location', '$interval', addthisRun]);
     /*
      * Except for the last param, all these items must also show up in the same
      * order the params in addthisDirective
