@@ -75,7 +75,7 @@ var addthisModule = function(window, angular) {
         }
 
         var url;
-        var baseUrl = 'http://s7.addthis.com/js/300/addthis_widget.js';
+        var baseUrl = 'https://s7.addthis.com/js/300/addthis_widget.js';
 
         //todo allow use of dev, test and local client
         //if(enviroment) {
