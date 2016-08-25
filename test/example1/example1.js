@@ -63,3 +63,35 @@ appExample1.controller('TitleSwitcherCtrl', ['$scope', function($scope) {
 appExample1.controller('DynamicTitleCtrl', ['$scope', function($scope) {
     $scope.name = 'Julka';
 }]);
+
+appExample1.controller('AddThisShareChangesCtrl', ['$scope', '$addthis', function($scope, $addthis) {
+    var defaultUrl = 'https://www.addthis.com';
+    var alternateUrl = 'https://www.google.com';
+    $scope.currentUrl = defaultUrl;
+
+    $scope.changeUrl = function() {
+        if ($scope.currentUrl === defaultUrl) {
+            $scope.currentUrl = alternateUrl;
+        } else {
+            $scope.currentUrl = defaultUrl;
+        }
+
+        $addthis.shareUrl($scope.currentUrl);
+        $addthis.smartLayersRefresh();
+    };
+
+    var defaultTitle = 'This link is awesome. Check it out!';
+    var alternateTitle = 'This is a good read: ';
+    $scope.currentTitle = defaultTitle;
+
+    $scope.changeTitle = function() {
+        if ($scope.currentTitle === defaultTitle) {
+            $scope.currentTitle = alternateTitle;
+        } else {
+            $scope.currentTitle = defaultTitle;
+        }
+
+        $addthis.shareTitle($scope.currentTitle);
+        $addthis.smartLayersRefresh();
+    };
+}]);
