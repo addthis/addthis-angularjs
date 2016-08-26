@@ -222,7 +222,7 @@ appExample3.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
 
     $scope.addAnother = function() {
         $scope.shownIpsums.push($scope.allIpsums[iterator]);
-        iterator++;
+        iterator = iterator + 1;
         if (iterator === $scope.allIpsums.length) {
             iterator = 0;
         }

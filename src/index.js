@@ -59,56 +59,6 @@ var addthisModule = (function(window, angular) {
         // todo do we also want to add namespaces onto the html tag for XHTML?
     };
 
-    var addthisService = function($window, $q, $interval) {
-
-        var load = {
-            promise: false,
-            interval: 200
-        };
-        var onLoad = function() {
-            if(load.promise) {
-                return load.promise;
-            }
-            var deferred = $q.defer();
-
-            if($window.addthis) {
-                deferred.resolve($window.addthis);
-            } else {
-                var addThisCheckPromise = $interval(
-                    function() {
-                        if($window.addthis) {
-                            $interval.cancel(addThisCheckPromise);
-                            load.done = true;
-                            deferred.resolve($window.addthis);
-                        }
-                    },
-                    load.interval,
-                    0,
-                    false
-                );
-            }
-
-            load.promise = deferred.promise;
-            return load.promise;
-        };
-
-        var service = {
-            addScript: addScript,
-            smartLayersRefresh: function() {
-                $window.addthis_config = angular.copy(addthis_config);
-                $window.addthis_share = angular.copy(addthis_share);
-                queueSmartLayersRefresh($window, $interval);
-            },
-            addthis_config: setAddThisConfig,
-            addthis_share: setAddThisShare,
-            shareUrl: setShareUrl,
-            shareTitle: setShareTitle,
-            onLoad: onLoad
-        };
-
-        return service;
-    };
-
     var setAddThisConfig = function(input) {
         if (typeof input === 'object') {
             addthis_config = angular.copy(input);
@@ -187,6 +137,55 @@ var addthisModule = (function(window, angular) {
             0,
             false
         );
+    };
+
+    var addthisService = function($window, $q, $interval) {
+        var load = {
+            promise: false,
+            interval: 200
+        };
+        var onLoad = function() {
+            if(load.promise) {
+                return load.promise;
+            }
+            var deferred = $q.defer();
+
+            if($window.addthis) {
+                deferred.resolve($window.addthis);
+            } else {
+                var addThisCheckPromise = $interval(
+                    function() {
+                        if($window.addthis) {
+                            $interval.cancel(addThisCheckPromise);
+                            load.done = true;
+                            deferred.resolve($window.addthis);
+                        }
+                    },
+                    load.interval,
+                    0,
+                    false
+                );
+            }
+
+            load.promise = deferred.promise;
+            return load.promise;
+        };
+
+        var service = {
+            addScript: addScript,
+            smartLayersRefresh: function() {
+                $window.addthis_config = angular.copy(addthis_config);
+                $window.addthis_share = angular.copy(addthis_share);
+                queueSmartLayersRefresh($window, $interval);
+            },
+            addthis_config: setAddThisConfig,
+            addthis_share: setAddThisShare,
+            shareUrl: setShareUrl,
+            shareTitle: setShareTitle,
+            onLoad: onLoad
+        };
+
+        return service;
     };
 
     var addthisProvider = function($windowProvider) {
@@ -322,7 +321,12 @@ var addthisModule = (function(window, angular) {
                 $scope.$watchGroup(
                     ['toolClass', 'shareUrl', 'shareTitle'],
                     function(newVal, oldVal) {
-                        recreateToolDiv();
+                        if (newVal[0] !== oldVal[0] ||
+                            newVal[1] !== oldVal[1] ||
+                            newVal[2] !== oldVal[2]
+                        ) {
+                            recreateToolDiv();
+                        }
                     }
                 );
             }
