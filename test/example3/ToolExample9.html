@@ -1,0 +1,30 @@
+<div ng-controller="AddAnotherIpsumCtrl">
+    <h2>
+        Tool Example 9
+        <small>
+            adding share buttons with new content
+        </small>
+    </h2>
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+
+    <div ng-repeat="(key, ipsum) in shownIpsums">
+        <h3>
+            {{ipsum.name}}
+            <small><a ng-href="ipsum.source">source</a></small>
+        </h3>
+        <p>{{ipsum.text}}</p>
+        <div
+            addthis-tool
+            tool-class="'addthis_sharing_toolbox'"
+            share-url="ipsum.source"
+            share-title="ipsum.name + ' is pretty cool'"
+        >
+    </div>
+
+    </div>
+
+    <button ng-show="shownIpsums.length < allIpsums.length" type="button" class="btn btn-default" ng-click="addAnother()">
+        Add Another Ipsum Example
+    </button>
+</div>

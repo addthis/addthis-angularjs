@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Example Site #3</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="../../node_modules/angular/angular.js"></script>
+    <script src="../../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../../dist/official-addthis-angular.js"></script>
+    <script src="example3.js"></script>
+
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css"></link>
+
+    <style>
+        body {
+            padding: 30px 30px 30px 60px;
+        }
+    </style>
+
+  <head>
+
+  <body ng-app="appExample3">
+    <div ng-include src="'./NavBar.html'"></div>
+
+    <h1>
+        Example Site #3
+        <small>Using <a href="https://github.com/angular-ui/ui-router">AngularUI Router</a></small>
+    </h1>
+
+    <div ui-view></div>
+
+    <div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h3>These share buttons below are at the end of every page on this site and will update the URL they share automatically (as will the floating sidebar)</h3>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div addthis-tool tool-class="'addthis_sharing_toolbox'"></div>
+    </div>
+
+  </body>
+</html>

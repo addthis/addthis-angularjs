@@ -1,0 +1,19 @@
+<div ng-controller="AddThisShareChangesCtrl">
+    <h2>
+        Tool Example 5
+        <small>
+            changing the default share URL for all tools
+        </small>
+    </h2>
+
+    <p>You can test on the tool below, the sidebar on the right (on desktop) or the bar on the bottom (on mobile).</p>
+
+    <p>Any inline tool specifying a share URL using the <code>share-url</code> attribute will not be effected by this.</p>
+
+    <div addthis-tool tool-class="'addthis_sharing_toolbox'"></div>
+
+    <button type="button" class="btn btn-default" ng-click="changeUrl()">
+        Change URL
+    </button>
+    <code>addthis_share.url === '{{currentUrl}}'</code>
+</div>
