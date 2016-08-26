@@ -101,7 +101,7 @@ appExample3.controller('UrlSwitcherCtrl', ['$scope', function($scope) {
 
 appExample3.controller('TitleSwitcherCtrl', ['$scope', function($scope) {
     var defaultTitle = 'This link is awesome. Check it out!';
-    var alternateTitle = 'This is a good read: ';
+    var alternateTitle = 'This is a good read:';
     $scope.currentTitle = defaultTitle;
 
     $scope.changeTitle = function() {
