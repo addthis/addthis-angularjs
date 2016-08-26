@@ -13,52 +13,9 @@ var addthisModule = function(window, angular) {
         plugin_mode    : 'AddThis'
     };
 
-    /*
-     * All these params must also show up in the same order when adding the
-     * directive to the Angular app
-     */
-    var addthisDirective = function(
-        $addthis,
-        $timeout,
-        $window
-    ) {
-        return {
-            scope: {
-                toolClass: '=toolClass',
-                shareUrl: '=shareUrl',
-                shareTitle: '=shareTitle'
-            },
-            link: function($scope, el, attrs) {
-                var toolDiv;
-                var urlAttr = 'data-url';
-                var titleAttr = 'data-title';
-
-                var recreateToolDiv = function() {
-                    var newToolDiv = document.createElement('div');
-                    newToolDiv.className = $scope.toolClass;
-
-                    if (angular.isDefined($scope.shareUrl)) {
-                        newToolDiv.setAttribute(urlAttr, $scope.shareUrl);
-                    }
-                    if (angular.isDefined($scope.shareTitle)) {
-                        newToolDiv.setAttribute(titleAttr, $scope.shareTitle);
-                    }
-
-                    el.empty();
-                    el.append(newToolDiv);
-                    toolDiv = newToolDiv;
-
-                    $timeout(function() {
-                        $addthis.smartLayersRefresh();
-                    });
-                };
-
-                $scope.$watchGroup(['toolClass', 'shareUrl', 'shareTitle'], function(newVal, oldVal) {
-                    recreateToolDiv();
-                });
-            }
-        };
-    };
+    if (angular.version && angular.version.full) {
+        addthis_plugin_info.cms_version = angular.version.full;
+    }
 
     var checkForScript = function(document) {
         var scriptOnPage = false;
@@ -76,6 +33,7 @@ var addthisModule = function(window, angular) {
 
         var url;
         var baseUrl = 'https://s7.addthis.com/js/300/addthis_widget.js';
+        //var baseUrl = 'http://www-local.addthis.com/js/300/addthis_widget.js';
 
         //todo allow use of dev, test and local client
         //if(enviroment) {
@@ -150,10 +108,6 @@ var addthisModule = function(window, angular) {
         return service;
     };
 
-    if (angular && angular.version && angular.version.full) {
-        addthis_plugin_info.cms_version = angular.version.full;
-    }
-
     var setAddThisConfig = function (input) {
         if (typeof input === 'object') {
             addthis_config = angular.copy(input);
@@ -188,6 +142,47 @@ var addthisModule = function(window, angular) {
 
     var setShareTitle = function (title) {
         addthis_share.title = title;
+    };
+
+    var smartLayersRefreshRequest = {
+        pending: false
+    };
+
+    var queueSmartLayersRefresh = function($window, $interval) {
+        smartLayersRefreshRequest.lastTs = (new Date()).getTime();
+
+        if (smartLayersRefreshRequest.pending ||
+            typeof $window.addthis === 'undefined' ||
+            typeof $window.addthis.layers === 'undefined' ||
+            typeof $window.addthis.layers.refresh === 'undefined'
+        ) {
+            return;
+        }
+
+        smartLayersRefreshRequest.pending = true;
+
+        var intervalPromise = $interval(
+            function() {
+                var now = (new Date()).getTime();
+
+                // if it's been at least 99ms since the last request
+                // and it's been more than 500ms since client did a layers
+                // refresh (client won't do it more often anyway)
+                if (now - smartLayersRefreshRequest.lastTs > 99 &&
+                    now - $window.addthis.layers.lastViewRegistered > 500
+                ) {
+                    //$window.addthis.layers({'share': {}});
+
+                    $interval.cancel(intervalPromise);
+                    smartLayersRefreshRequest.pending = false;
+                    //refresh layers
+                    $window.addthis.layers.refresh(addthis_share.url, addthis_share.title);
+                }
+            },
+            100,
+            0,
+            false
+        );
     };
 
     var addthisProvider = function($windowProvider) {
@@ -260,6 +255,10 @@ var addthisModule = function(window, angular) {
         return this;
     };
 
+    /*
+     * All these params must also show up in the same order when adding the
+     * run to the Angular app
+     */
     var addthisRun = function($window, $rootScope, $location, $interval) {
         $window.addthis_plugin_info = addthis_plugin_info;
         $window.addthis_config = angular.copy(addthis_config);
@@ -270,59 +269,76 @@ var addthisModule = function(window, angular) {
         }
 
         $rootScope.$on("$locationChangeSuccess", function(event, next, current) {
-            if (next!== current) {
+            if (next !== current) {
                 queueSmartLayersRefresh($window, $interval);
             }
         });
     };
 
-    var smartLayersRefreshRequest = {
-        pending: false
-    };
-
-    var queueSmartLayersRefresh = function($window, $interval) {
-        smartLayersRefreshRequest.lastTs = (new Date()).getTime();
-
-        if (smartLayersRefreshRequest.pending ||
-            typeof $window.addthis === 'undefined' ||
-            typeof $window.addthis.layers === 'undefined' ||
-            typeof $window.addthis.layers.refresh === 'undefined'
-        ) {
-            return;
-        }
-
-        smartLayersRefreshRequest.pending = true;
-
-        var intervalPromise = $interval(
-            function() {
-                var now = (new Date()).getTime();
-
-                // if it's been at least 99ms since the last request
-                // and it's been more than 500ms since client did a layers
-                // refresh (client won't do it more often anyway)
-                if (now - smartLayersRefreshRequest.lastTs > 99 &&
-                    now - $window.addthis.layers.lastViewRegistered > 500
-                ) {
-                    //$window.addthis.layers({'share': {}});
-
-                    $interval.cancel(intervalPromise);
-                    smartLayersRefreshRequest.pending = false;
-                    //refresh layers
-                    $window.addthis.layers.refresh(addthis_share.url, addthis_share.title);
-                }
+    /*
+     * All these params must also show up in the same order when adding the
+     * directive to the Angular app
+     */
+    var addthisDirective = function($addthis, $timeout, $window) {
+        return {
+            scope: {
+                toolClass: '=toolClass',
+                shareUrl: '=shareUrl',
+                shareTitle: '=shareTitle'
             },
-            100,
-            0,
-            false
-        );
+            link: function($scope, el, attrs) {
+                var toolDiv;
+                var urlAttr = 'data-url';
+                var titleAttr = 'data-title';
+
+                var recreateToolDiv = function() {
+                    var newToolDiv = document.createElement('div');
+                    newToolDiv.className = $scope.toolClass;
+
+                    if (angular.isDefined($scope.shareUrl)) {
+                        newToolDiv.setAttribute(urlAttr, $scope.shareUrl);
+                    }
+                    if (angular.isDefined($scope.shareTitle)) {
+                        newToolDiv.setAttribute(titleAttr, $scope.shareTitle);
+                    }
+
+                    el.empty();
+                    el.append(newToolDiv);
+                    toolDiv = newToolDiv;
+                    //$compile(toolDiv)($scope);
+
+                    $timeout(function() {
+                        $addthis.smartLayersRefresh();
+                    });
+                };
+
+                $scope.$watchGroup(['toolClass', 'shareUrl', 'shareTitle'], function(newVal, oldVal) {
+                    recreateToolDiv();
+                });
+            }
+        };
     };
 
     var addthisModule = angular.module('official.addthis', ['ng']);
-    addthisModule.provider('$addthis', ['$windowProvider', addthisProvider]);
-    addthisModule.run(['$window', '$rootScope', '$location', '$interval', addthisRun]);
     /*
-     * Except for the last param, all these items must also show up in the same
-     * order the params in addthisDirective
+     * Except for the last array item, all these items must in the array must
+     * show up in the same order the params in addthisProvider
+     */
+    addthisModule.provider('$addthis', ['$windowProvider', addthisProvider]);
+    /*
+     * Except for the last array item, all these items must also show up in the
+     * same order the params in addthisRun
+     */
+    addthisModule.run([
+        '$window',
+        '$rootScope',
+        '$location',
+        '$interval',
+        addthisRun
+    ]);
+    /*
+     * Except for the last array item, all these items must in the array must
+     * show up in the same order the params in addthisDirective
      */
     addthisModule.directive('addthisTool', [
         '$addthis',
