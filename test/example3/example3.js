@@ -43,6 +43,10 @@ appExample3.config(function($stateProvider, $urlRouterProvider) {
     .state('ToolExample9', {
       url: "/ToolExample9",
       templateUrl: "ToolExample9.html"
+    })
+    .state('ToolExample10', {
+      url: "/ToolExample10",
+      templateUrl: "ToolExample10.html"
     });
 });
 
@@ -213,5 +217,54 @@ appExample3.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
             iterator = 0;
         }
     };
+    $scope.addAnother();
+}]);
+
+appExample3.controller('AddAnotherImageCtrl', ['$scope', '$http', function($scope, $http) {
+    $scope.shownImages = [];
+    var imageQueue = [];
+
+    // get more image URLS from The Cat API
+    var getMoreImages = function() {
+        return $http({
+            method: 'GET',
+            url: 'http://thecatapi.com/api/images/get',
+            params: {
+                format: 'xml',
+                results_per_page: '20',
+                type: 'gif',
+                size: 'full'
+            }
+        }).then(function(response) {
+            // hacky stuff to grab URLS out of the XML output
+            var regex1 = /<url>\s*([^\s<]+)\s*<\/url>/gi;
+            var regex2 = /<url>\s*([^\s<]+)\s*<\/url>/i;
+            var matches = response.data.match(regex1);
+
+            matches.forEach(function(element, index, array) {
+                var url = element.match(regex2)[1];
+                imageQueue.push(url);
+            });
+        });
+
+    };
+
+    // move an image from the imageQueue to $scope.shownImages
+    var moveAnImageUrl = function() {
+        var url = imageQueue.pop();
+        $scope.shownImages.push(url);
+    };
+
+    // checks if there's images in imageQueue, repopulates if needed, and then
+    // calls moveAnImageUrl to move an image from the imageQueue to
+    // $scope.shownImages
+    $scope.addAnother = function() {
+        if (imageQueue.length === 0) {
+            getMoreImages().then(moveAnImageUrl);
+        } else {
+            moveAnImageUrl();
+        }
+    };
+
     $scope.addAnother();
 }]);

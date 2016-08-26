@@ -1,0 +1,18 @@
+<div ng-controller="AddAnotherImageCtrl">
+    <h2>
+        Tool Example 10
+        <small>
+            adding share buttons with new content
+        </small>
+    </h2>
+
+    <p>Images via <a href="http://thecatapi.com/">The Cat Api</a></p>
+
+    <div ng-repeat="(key, imageUrl) in shownImages track by key">
+        <img class="img-thumbnail catgif" ng-src="{{imageUrl}}" alt="a random cat gif" />
+    </div>
+
+    <button type="button" class="btn btn-default" ng-click="addAnother()">
+        Add Another Image
+    </button>
+</div>
