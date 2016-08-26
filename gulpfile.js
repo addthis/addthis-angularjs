@@ -71,14 +71,14 @@ gulp.task('build-distribution', ['clean-distribution'], function(){
   );
 });
 
-gulp.task('lint-js', function() {
+gulp.task('jslint', function() {
   return gulp.src([path.source, 'test/**/*.js'])
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('build', ['lint-js'], function(){
+gulp.task('build', ['jslint'], function(){
   return gulp.start(
     'build-distribution'
   );
