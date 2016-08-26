@@ -1,7 +1,7 @@
 var appExample1 = angular.module('appExample1', ['official.addthis']);
 
 appExample1.config(function($addthisProvider) {
-    $addthisProvider.profileId("ra-57b71bceb3ebb9df");
+    $addthisProvider.profileId('ra-57b71bceb3ebb9df');
 });
 
 appExample1.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
@@ -55,7 +55,7 @@ appExample1.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
     $scope.shownIpsums = [];
     var iterator = 0;
 
-    $scope.addAnother = function () {
+    $scope.addAnother = function() {
         $scope.shownIpsums.push($scope.allIpsums[iterator]);
         iterator++;
         if (iterator === $scope.allIpsums.length) {

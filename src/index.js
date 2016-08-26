@@ -1,4 +1,4 @@
-var addthisModule = function(window, angular) {
+var addthisModule = (function(window, angular) {
     var autoAddScript = true;
     var scriptInFooter = true;
     var profileId;
@@ -19,7 +19,8 @@ var addthisModule = function(window, angular) {
 
     var checkForScript = function(document) {
         var scriptOnPage = false;
-        var matches = document.querySelectorAll('script[src$="addthis_widget.js"]');
+        var selector = 'script[src$="addthis_widget.js"]';
+        var matches = document.querySelectorAll(selector);
         if(matches.length > 0) {
             scriptOnPage = true;
         }
@@ -58,7 +59,7 @@ var addthisModule = function(window, angular) {
         // todo do we also want to add namespaces onto the html tag for XHTML?
     };
 
-    var addthisService = function ($window, $q, $interval) {
+    var addthisService = function($window, $q, $interval) {
 
         var load = {
             promise: false,
@@ -108,7 +109,7 @@ var addthisModule = function(window, angular) {
         return service;
     };
 
-    var setAddThisConfig = function (input) {
+    var setAddThisConfig = function(input) {
         if (typeof input === 'object') {
             addthis_config = angular.copy(input);
 
@@ -128,7 +129,7 @@ var addthisModule = function(window, angular) {
         return angular.copy(addthis_config);
     };
 
-    var setAddThisShare = function (input) {
+    var setAddThisShare = function(input) {
         if (typeof input === 'object') {
             addthis_share = angular.copy(input);
         }
@@ -136,11 +137,11 @@ var addthisModule = function(window, angular) {
         return angular.copy(addthis_share);
     };
 
-    var setShareUrl = function (url) {
+    var setShareUrl = function(url) {
         addthis_share.url = url;
     };
 
-    var setShareTitle = function (title) {
+    var setShareTitle = function(title) {
         addthis_share.title = title;
     };
 
@@ -176,7 +177,10 @@ var addthisModule = function(window, angular) {
                     $interval.cancel(intervalPromise);
                     smartLayersRefreshRequest.pending = false;
                     //refresh layers
-                    $window.addthis.layers.refresh(addthis_share.url, addthis_share.title);
+                    $window.addthis.layers.refresh(
+                        addthis_share.url,
+                        addthis_share.title
+                    );
                 }
             },
             100,
@@ -210,28 +214,28 @@ var addthisModule = function(window, angular) {
             }
         }
 
-        this.profileId = function (inputProfileId) {
+        this.profileId = function(inputProfileId) {
             profileId = inputProfileId;
             addthis_config.pubid = inputProfileId;
             return this;
         };
 
-        this.addthis_config = function (addthis_config) {
+        this.addthis_config = function(addthis_config) {
             setAddThisConfig(addthis_config);
             return this;
         };
 
-        this.addthis_share = function (addthis_share) {
+        this.addthis_share = function(addthis_share) {
             setAddThisShare(addthis_config);
             return this;
         };
 
-        this.setShareUrl = function (url) {
+        this.setShareUrl = function(url) {
             setShareUrl(url);
             return this;
         };
 
-        this.setShareTitle = function (title) {
+        this.setShareTitle = function(title) {
             setShareTitle(title);
             return this;
         };
@@ -268,25 +272,28 @@ var addthisModule = function(window, angular) {
             addScript($window.document);
         }
 
-        $rootScope.$on("$locationChangeSuccess", function(event, next, current) {
-            if (next !== current) {
-                queueSmartLayersRefresh($window, $interval);
+        $rootScope.$on(
+            '$locationChangeSuccess',
+            function(event, next, current) {
+                if (next !== current) {
+                    queueSmartLayersRefresh($window, $interval);
+                }
             }
-        });
+        );
     };
 
     /*
      * All these params must also show up in the same order when adding the
      * directive to the Angular app
      */
-    var addthisDirective = function($addthis, $timeout, $window) {
+    var addthisDirective = function($addthis, $timeout) {
         return {
             scope: {
                 toolClass: '=toolClass',
                 shareUrl: '=shareUrl',
                 shareTitle: '=shareTitle'
             },
-            link: function($scope, el, attrs) {
+            link: function($scope, el) {
                 var toolDiv;
                 var urlAttr = 'data-url';
                 var titleAttr = 'data-title';
@@ -312,9 +319,12 @@ var addthisModule = function(window, angular) {
                     });
                 };
 
-                $scope.$watchGroup(['toolClass', 'shareUrl', 'shareTitle'], function(newVal, oldVal) {
-                    recreateToolDiv();
-                });
+                $scope.$watchGroup(
+                    ['toolClass', 'shareUrl', 'shareTitle'],
+                    function(newVal, oldVal) {
+                        recreateToolDiv();
+                    }
+                );
             }
         };
     };
@@ -347,4 +357,4 @@ var addthisModule = function(window, angular) {
         addthisDirective
     ]);
     return addthisModule;
-}(window, angular);
+}(window, angular));

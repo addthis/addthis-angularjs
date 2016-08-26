@@ -1,57 +1,60 @@
-var appExample3 = angular.module('appExample3', ['ui.router', 'official.addthis']);
+var appExample3 = angular.module(
+    'appExample3',
+    ['ui.router', 'official.addthis']
+);
 
 appExample3.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/list');
 
     $stateProvider
     .state('list', {
-      url: "/list",
-      templateUrl: "ExampleList.html"
+      url: '/list',
+      templateUrl: 'ExampleList.html'
     })
     .state('ToolExample1', {
-      url: "/ToolExample1",
-      templateUrl: "ToolExample1.html"
+      url: '/ToolExample1',
+      templateUrl: 'ToolExample1.html'
     })
     .state('ToolExample2', {
-      url: "/ToolExample2",
-      templateUrl: "ToolExample2.html"
+      url: '/ToolExample2',
+      templateUrl: 'ToolExample2.html'
     })
     .state('ToolExample3', {
-      url: "/ToolExample3",
-      templateUrl: "ToolExample3.html"
+      url: '/ToolExample3',
+      templateUrl: 'ToolExample3.html'
     })
     .state('ToolExample4', {
-      url: "/ToolExample4",
-      templateUrl: "ToolExample4.html"
+      url: '/ToolExample4',
+      templateUrl: 'ToolExample4.html'
     })
     .state('ToolExample5', {
-      url: "/ToolExample5",
-      templateUrl: "ToolExample5.html"
+      url: '/ToolExample5',
+      templateUrl: 'ToolExample5.html'
     })
     .state('ToolExample6', {
-      url: "/ToolExample6",
-      templateUrl: "ToolExample6.html"
+      url: '/ToolExample6',
+      templateUrl: 'ToolExample6.html'
     })
     .state('ToolExample7', {
-      url: "/ToolExample7",
-      templateUrl: "ToolExample7.html"
+      url: '/ToolExample7',
+      templateUrl: 'ToolExample7.html'
     })
     .state('ToolExample8', {
-      url: "/ToolExample8",
-      templateUrl: "ToolExample8.html"
+      url: '/ToolExample8',
+      templateUrl: 'ToolExample8.html'
     })
     .state('ToolExample9', {
-      url: "/ToolExample9",
-      templateUrl: "ToolExample9.html"
+      url: '/ToolExample9',
+      templateUrl: 'ToolExample9.html'
     })
     .state('ToolExample10', {
-      url: "/ToolExample10",
-      templateUrl: "ToolExample10.html"
+      url: '/ToolExample10',
+      templateUrl: 'ToolExample10.html'
     });
 });
 
-appExample3.config(function($addthisProvider, $windowProvider) {
-    $addthisProvider.profileId("ra-57b71bceb3ebb9df");
+appExample3.config(function($addthisProvider) {
+    $addthisProvider.profileId('ra-57b71bceb3ebb9df');
 });
 
 appExample3.controller('ToolSwitcherACtrl', ['$scope', function($scope) {
@@ -114,50 +117,57 @@ appExample3.controller('DynamicTitleCtrl', ['$scope', function($scope) {
     $scope.name = 'Julka';
 }]);
 
-appExample3.controller('AddThisShareChangesCtrl', ['$scope', '$addthis', function($scope, $addthis) {
-    var defaultUrl = 'https://www.addthis.com';
-    var alternateUrl = 'https://www.google.com';
-    $scope.currentUrl = defaultUrl;
-
-    $scope.changeUrl = function() {
-        if ($scope.currentUrl === defaultUrl) {
-            $scope.currentUrl = alternateUrl;
-        } else {
+appExample3.controller(
+    'AddThisShareChangesCtrl',
+    [
+        '$scope',
+        '$addthis',
+        function($scope, $addthis) {
+            var defaultUrl = 'https://www.addthis.com';
+            var alternateUrl = 'https://www.google.com';
             $scope.currentUrl = defaultUrl;
-        }
 
-        $addthis.shareUrl($scope.currentUrl);
-        $addthis.smartLayersRefresh();
-    };
+            $scope.changeUrl = function() {
+                if ($scope.currentUrl === defaultUrl) {
+                    $scope.currentUrl = alternateUrl;
+                } else {
+                    $scope.currentUrl = defaultUrl;
+                }
 
-    var defaultTitle = 'This link is awesome. Check it out!';
-    var alternateTitle = 'This is a good read: ';
-    $scope.currentTitle = defaultTitle;
+                $addthis.shareUrl($scope.currentUrl);
+                $addthis.smartLayersRefresh();
+            };
 
-    $scope.changeTitle = function() {
-        if ($scope.currentTitle === defaultTitle) {
-            $scope.currentTitle = alternateTitle;
-        } else {
+            var defaultTitle = 'This link is awesome. Check it out!';
+            var alternateTitle = 'This is a good read: ';
             $scope.currentTitle = defaultTitle;
-        }
 
-        $addthis.shareTitle($scope.currentTitle);
-        $addthis.smartLayersRefresh();
-    };
+            $scope.changeTitle = function() {
+                if ($scope.currentTitle === defaultTitle) {
+                    $scope.currentTitle = alternateTitle;
+                } else {
+                    $scope.currentTitle = defaultTitle;
+                }
 
-    $scope.$on("$locationChangeStart", function(event, next, current) {
-        if (next !== current) {
-            /**
-             * This will reset the values and what's on the page and continue
-             * updating to match the url as routes change. Otherwise, this value
-             * will stay as what you set earlier using $addthis.shareUrl or
-             * $addthis.shareTitle
-             */
-            $addthis.shareUrl(false);
-            $addthis.shareTitle(false);
+                $addthis.shareTitle($scope.currentTitle);
+                $addthis.smartLayersRefresh();
+            };
+
+            $scope.$on('$locationChangeStart', function(event, next, current) {
+                if (next !== current) {
+                    /**
+                     * This will reset the values and what's on the page and
+                     * continue updating to match the url as routes change.
+                     * Otherwise, this value will stay as what you set earlier
+                     * using $addthis.shareUrl or $addthis.shareTitle
+                     */
+                    $addthis.shareUrl(false);
+                    $addthis.shareTitle(false);
+                }
+            });
         }
-    });
-}]);
+    ]
+);
 
 appExample3.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
     $scope.allIpsums = [
@@ -210,7 +220,7 @@ appExample3.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
     $scope.shownIpsums = [];
     var iterator = 0;
 
-    $scope.addAnother = function () {
+    $scope.addAnother = function() {
         $scope.shownIpsums.push($scope.allIpsums[iterator]);
         iterator++;
         if (iterator === $scope.allIpsums.length) {
@@ -220,51 +230,58 @@ appExample3.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
     $scope.addAnother();
 }]);
 
-appExample3.controller('AddAnotherImageCtrl', ['$scope', '$http', function($scope, $http) {
-    $scope.shownImages = [];
-    var imageQueue = [];
+appExample3.controller(
+    'AddAnotherImageCtrl',
+    [
+        '$scope',
+        '$http',
+        function($scope, $http) {
+            $scope.shownImages = [];
+            var imageQueue = [];
 
-    // get more image URLS from The Cat API
-    var getMoreImages = function() {
-        return $http({
-            method: 'GET',
-            url: 'http://thecatapi.com/api/images/get',
-            params: {
-                format: 'xml',
-                results_per_page: '20',
-                type: 'gif',
-                size: 'full'
-            }
-        }).then(function(response) {
-            // hacky stuff to grab URLS out of the XML output
-            var regex1 = /<url>\s*([^\s<]+)\s*<\/url>/gi;
-            var regex2 = /<url>\s*([^\s<]+)\s*<\/url>/i;
-            var matches = response.data.match(regex1);
+            // get more image URLS from The Cat API
+            var getMoreImages = function() {
+                return $http({
+                    method: 'GET',
+                    url: 'http://thecatapi.com/api/images/get',
+                    params: {
+                        format: 'xml',
+                        results_per_page: '20',
+                        type: 'gif',
+                        size: 'full'
+                    }
+                }).then(function(response) {
+                    // hacky stuff to grab URLS out of the XML output
+                    var regex1 = /<url>\s*([^\s<]+)\s*<\/url>/gi;
+                    var regex2 = /<url>\s*([^\s<]+)\s*<\/url>/i;
+                    var matches = response.data.match(regex1);
 
-            matches.forEach(function(element, index, array) {
-                var url = element.match(regex2)[1];
-                imageQueue.push(url);
-            });
-        });
+                    matches.forEach(function(element) {
+                        var url = element.match(regex2)[1];
+                        imageQueue.push(url);
+                    });
+                });
 
-    };
+            };
 
-    // move an image from the imageQueue to $scope.shownImages
-    var moveAnImageUrl = function() {
-        var url = imageQueue.pop();
-        $scope.shownImages.push(url);
-    };
+            // move an image from the imageQueue to $scope.shownImages
+            var moveAnImageUrl = function() {
+                var url = imageQueue.pop();
+                $scope.shownImages.push(url);
+            };
 
-    // checks if there's images in imageQueue, repopulates if needed, and then
-    // calls moveAnImageUrl to move an image from the imageQueue to
-    // $scope.shownImages
-    $scope.addAnother = function() {
-        if (imageQueue.length === 0) {
-            getMoreImages().then(moveAnImageUrl);
-        } else {
-            moveAnImageUrl();
+            // checks if there's images in imageQueue, repopulates if needed, and then
+            // calls moveAnImageUrl to move an image from the imageQueue to
+            // $scope.shownImages
+            $scope.addAnother = function() {
+                if (imageQueue.length === 0) {
+                    getMoreImages().then(moveAnImageUrl);
+                } else {
+                    moveAnImageUrl();
+                }
+            };
+
+            $scope.addAnother();
         }
-    };
-
-    $scope.addAnother();
-}]);
+    ]
+);
