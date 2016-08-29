@@ -1,7 +1,7 @@
 var appExample1 = angular.module('appExample1', ['official.addthis']);
 
 appExample1.config(function($addthisProvider) {
-    $addthisProvider.profileId('ra-57b71bceb3ebb9df');
+    $addthisProvider.profile_id('ra-57b71bceb3ebb9df');
 });
 
 appExample1.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {

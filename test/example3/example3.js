@@ -54,7 +54,7 @@ appExample3.config(function($stateProvider, $urlRouterProvider) {
 });
 
 appExample3.config(function($addthisProvider) {
-    $addthisProvider.profileId('ra-57b71bceb3ebb9df');
+    $addthisProvider.profile_id('ra-57b71bceb3ebb9df');
 });
 
 appExample3.controller('ToolSwitcherACtrl', ['$scope', function($scope) {
@@ -134,7 +134,7 @@ appExample3.controller(
                     $scope.currentUrl = defaultUrl;
                 }
 
-                $addthis.shareUrl($scope.currentUrl);
+                $addthis.share_url($scope.currentUrl);
                 $addthis.smartLayersRefresh();
             };
 
@@ -149,7 +149,7 @@ appExample3.controller(
                     $scope.currentTitle = defaultTitle;
                 }
 
-                $addthis.shareTitle($scope.currentTitle);
+                $addthis.share_title($scope.currentTitle);
                 $addthis.smartLayersRefresh();
             };
 
@@ -159,10 +159,10 @@ appExample3.controller(
                      * This will reset the values and what's on the page and
                      * continue updating to match the url as routes change.
                      * Otherwise, this value will stay as what you set earlier
-                     * using $addthis.shareUrl or $addthis.shareTitle
+                     * using $addthis.share_url or $addthis.share_title
                      */
-                    $addthis.shareUrl(false);
-                    $addthis.shareTitle(false);
+                    $addthis.share_url(false);
+                    $addthis.share_title(false);
                 }
             });
         }
