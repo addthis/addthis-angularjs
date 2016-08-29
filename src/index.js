@@ -181,7 +181,6 @@ var addthisModule = (function(window, angular) {
             }
         }
 
-        queueSmartLayersRefresh();
         return angular.copy(addthis_config);
     };
 
@@ -201,7 +200,6 @@ var addthisModule = (function(window, angular) {
             addthis_share = angular.copy(input);
         }
 
-        queueSmartLayersRefresh();
         return angular.copy(addthis_share);
     };
 
@@ -220,7 +218,6 @@ var addthisModule = (function(window, angular) {
      **/
     var setShareUrl = function(url) {
         addthis_share.url = url;
-        queueSmartLayersRefresh();
     };
 
 
@@ -239,7 +236,6 @@ var addthisModule = (function(window, angular) {
      **/
     var setShareTitle = function(title) {
         addthis_share.title = title;
-        queueSmartLayersRefresh();
     };
 
     var load = {
@@ -381,7 +377,10 @@ var addthisModule = (function(window, angular) {
              *   page with an added pubid property if it wasn't set in the input
              *   and a profile ID was set elsewhere
              **/
-            config: setAddThisConfig,
+            config: function(input) {
+                setAddThisConfig();
+                queueSmartLayersRefresh($window, $interval);
+            },
             /**
              * @ngdoc method
              * @name official.addthis.$addthis#share
@@ -415,7 +414,10 @@ var addthisModule = (function(window, angular) {
              *   page with an added pubid property if it wasn't set in the input
              *   and a profile ID was set elsewhere
              **/
-            share: setAddThisShare,
+            share: function(input) {
+                setAddThisShare(input);
+                queueSmartLayersRefresh($window, $interval);
+            },
             /**
              * @ngdoc method
              * @name official.addthis.$addthis#share_url
@@ -439,7 +441,10 @@ var addthisModule = (function(window, angular) {
              * @param {string} url The URL to share when a user clicks on share
              *   buttons that don't otherwise speicfy a share URL
              **/
-            share_url: setShareUrl,
+            share_url: function(url) {
+                setShareUrl();
+                queueSmartLayersRefresh($window, $interval);
+            },
             /**
              * @ngdoc method
              * @name official.addthis.$addthis#share_title
@@ -469,7 +474,10 @@ var addthisModule = (function(window, angular) {
              * @param {string} url The URL to share when a user clicks on share
              *   buttons that don't otherwise speicfy a share URL
              **/
-            share_title: setShareTitle,
+            share_title: function(title) {
+                setShareTitle(title);
+                queueSmartLayersRefresh($window, $interval);
+            },
             /**
              * @ngdoc method
              * @name official.addthis.$addthis#loaded

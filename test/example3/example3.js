@@ -135,7 +135,7 @@ appExample3.controller(
                 }
 
                 $addthis.share_url($scope.currentUrl);
-                $addthis.smartLayersRefresh();
+                $addthis.layers_refresh();
             };
 
             var defaultTitle = 'This link is awesome. Check it out!';
@@ -150,7 +150,7 @@ appExample3.controller(
                 }
 
                 $addthis.share_title($scope.currentTitle);
-                $addthis.smartLayersRefresh();
+                $addthis.layers_refresh();
             };
 
             $scope.$on('$locationChangeStart', function(event, next, current) {
