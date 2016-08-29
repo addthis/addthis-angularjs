@@ -1,12 +1,3 @@
-/**
- * @name official.addthis
- * @ngdoc overview
- * @description
- * Free and Pro AddThis tools to your AngularJS app. This AngularJS module
- * includes a directive, service and provider. It is smart about route/location
- * changes and the AngularJS digest cycles and how they affect AddThis tools.
- * Requires a free AddThis account.
- **/
 var addthisModule = (function(window, angular) {
     var autoAddScript = true;
     var scriptInFooter = true;
@@ -907,12 +898,23 @@ var addthisModule = (function(window, angular) {
         return directive;
     };
 
+    /**
+     * @name official.addthis
+     * @ngdoc overview
+     * @description
+     * Free and Pro AddThis tools to your AngularJS app. This AngularJS module
+     * includes a directive, service and provider. It is smart about route/location
+     * changes and the AngularJS digest cycles and how they affect AddThis tools.
+     * Requires a free AddThis account.
+     **/
     var addthisModule = angular.module('official.addthis', ['ng']);
+
     /*
      * Except for the last array item, all these items must in the array must
      * show up in the same order the params in addthisProvider
      **/
     addthisModule.provider('$addthis', ['$windowProvider', addthisProvider]);
+
     /*
      * Except for the last array item, all these items must also show up in the
      * same order the params in addthisRun
@@ -924,6 +926,7 @@ var addthisModule = (function(window, angular) {
         '$interval',
         addthisRun
     ]);
+
     /*
      * Except for the last array item, all these items must in the array must
      * show up in the same order the params in addthisDirective
@@ -931,7 +934,6 @@ var addthisModule = (function(window, angular) {
     addthisModule.directive('addthisTool', [
         '$addthis',
         '$timeout',
-        '$window',
         addthisDirective
     ]);
     return addthisModule;
