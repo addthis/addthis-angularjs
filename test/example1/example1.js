@@ -1,4 +1,4 @@
-var appExample1 = angular.module('appExample1', ['official.addthis']);
+var appExample1 = angular.module('appExample1', ['addthis']);
 
 appExample1.config(function($addthisProvider) {
     $addthisProvider.profile_id('ra-57b71bceb3ebb9df');

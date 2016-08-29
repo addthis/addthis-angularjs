@@ -1,6 +1,6 @@
 var appExample3 = angular.module(
     'appExample3',
-    ['ui.router', 'official.addthis']
+    ['ui.router', 'addthis']
 );
 
 appExample3.config(function($stateProvider, $urlRouterProvider) {

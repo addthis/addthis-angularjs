@@ -274,7 +274,7 @@ var addthisModule = (function(window, angular) {
 
     /**
      * @ngdoc service
-     * @name official.addthis.$addthis
+     * @name addthis.$addthis
      *
      * @description
      * A service for handling AddThis actions once your app is running.
@@ -283,8 +283,8 @@ var addthisModule = (function(window, angular) {
         var service = {
             /**
              * @ngdoc method
-             * @name official.addthis.$addthis#add
-             * @methodOf official.addthis.$addthis
+             * @name addthis.$addthis#add
+             * @methodOf addthis.$addthis
              *
              * @description
              * Adds the `addthis_widget.js` script onto the page if not
@@ -306,8 +306,8 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name official.addthis.$addthis#layers_refresh
-             * @methodOf official.addthis.$addthis
+             * @name addthis.$addthis#layers_refresh
+             * @methodOf addthis.$addthis
              *
              * @description
              * Applys new values from `addthis_config` and `addthis_share`,
@@ -338,8 +338,8 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name official.addthis.$addthis#config
-             * @methodOf official.addthis.$addthis
+             * @name addthis.$addthis#config
+             * @methodOf addthis.$addthis
              *
              * @description
              * Sets the `addthis_config` variable on the page. If the pubid is set it
@@ -374,8 +374,8 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name official.addthis.$addthis#share
-             * @methodOf official.addthis.$addthis
+             * @name addthis.$addthis#share
+             * @methodOf addthis.$addthis
              *
              * @description
              * Sets the `addthis_share` variable on the page. See
@@ -411,8 +411,8 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name official.addthis.$addthis#share_url
-             * @methodOf official.addthis.$addthis
+             * @name addthis.$addthis#share_url
+             * @methodOf addthis.$addthis
              *
              * @description
              * This is a shortcut to setting the URL through
@@ -438,8 +438,8 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name official.addthis.$addthis#share_title
-             * @methodOf official.addthis.$addthis
+             * @name addthis.$addthis#share_title
+             * @methodOf addthis.$addthis
              *
              * @description
              * This is a shortcut to setting the title through
@@ -471,8 +471,8 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name official.addthis.$addthis#loaded
-             * @methodOf official.addthis.$addthis
+             * @name addthis.$addthis#loaded
+             * @methodOf addthis.$addthis
              *
              * @description
              * Returns a promise that resolves once AddThis' `addthis_widget.js`
@@ -500,7 +500,7 @@ var addthisModule = (function(window, angular) {
 
     /**
      * @ngdoc service
-     * @name official.addthis.$addthisProvider
+     * @name addthis.$addthisProvider
      * @description
      * A provider for handling AddThis actions before you app has started
      * running.
@@ -532,8 +532,8 @@ var addthisModule = (function(window, angular) {
 
         /**
          * @ngdoc method
-         * @name official.addthis.$addthisProvider#profile_id
-         * @methodOf official.addthis.$addthisProvider
+         * @name addthis.$addthisProvider#profile_id
+         * @methodOf addthis.$addthisProvider
          *
          * @description
          * Setter function for the site's AddThis profile ID.
@@ -562,8 +562,8 @@ var addthisModule = (function(window, angular) {
 
         /**
          * @ngdoc function
-         * @name official.addthis.$addthisProvider#config
-         * @methodOf official.addthis.$addthisProvider
+         * @name addthis.$addthisProvider#config
+         * @methodOf addthis.$addthisProvider
          *
          * @description
          * Sets the `addthis_config` variable on the page. If the pubid is set
@@ -602,8 +602,8 @@ var addthisModule = (function(window, angular) {
 
         /**
          * @ngdoc function
-         * @name official.addthis.$addthisProvider#share
-         * @methodOf official.addthis.$addthisProvider
+         * @name addthis.$addthisProvider#share
+         * @methodOf addthis.$addthisProvider
          *
          * @description
          * Sets the `addthis_share` variable on the page. See
@@ -638,8 +638,8 @@ var addthisModule = (function(window, angular) {
 
        /**
          * @ngdoc method
-         * @name official.addthis.$addthisProvider#share_url
-         * @methodOf official.addthis.$addthisProvider
+         * @name addthis.$addthisProvider#share_url
+         * @methodOf addthis.$addthisProvider
          *
          * @description
          * This is a shortcut to setting the URL through
@@ -666,8 +666,8 @@ var addthisModule = (function(window, angular) {
 
         /**
          * @ngdoc method
-         * @name official.addthis.$addthisProvider#share_title
-         * @methodOf official.addthis.$addthisProvider
+         * @name addthis.$addthisProvider#share_title
+         * @methodOf addthis.$addthisProvider
          *
          * @description
          * This is a shortcut to setting the title through
@@ -700,8 +700,8 @@ var addthisModule = (function(window, angular) {
 
         /**
          * @ngdoc method
-         * @name official.addthis.$addthisProvider#disable_auto_add
-         * @methodOf official.addthis.$addthisProvider
+         * @name addthis.$addthisProvider#disable_auto_add
+         * @methodOf addthis.$addthisProvider
          *
          * @description
          * If not added onto the page manually, this module automatically adds
@@ -726,8 +726,8 @@ var addthisModule = (function(window, angular) {
 
         /**
          * @ngdoc method
-         * @name official.addthis.$addthisProvider#enable_auto_add
-         * @methodOf official.addthis.$addthisProvider
+         * @name addthis.$addthisProvider#enable_auto_add
+         * @methodOf addthis.$addthisProvider
          *
          * @description
          * By default, this module automatically adds `addthis_widget.js` onto
@@ -753,8 +753,8 @@ var addthisModule = (function(window, angular) {
 
         /**
          * @ngdoc method
-         * @name official.addthis.$addthisProvider#script_in_head
-         * @methodOf official.addthis.$addthisProvider
+         * @name addthis.$addthisProvider#script_in_head
+         * @methodOf addthis.$addthisProvider
          *
          * @description
          * By default, this module automatically adds `addthis_widget.js` onto
@@ -815,7 +815,7 @@ var addthisModule = (function(window, angular) {
         /**
          *
          * @ngdoc directive
-         * @name official.addthis.addthisTool
+         * @name addthis.addthisTool
          *
          * @element ANY
          * @description
@@ -899,7 +899,7 @@ var addthisModule = (function(window, angular) {
     };
 
     /**
-     * @name official.addthis
+     * @name addthis
      * @ngdoc overview
      * @description
      * Free and Pro AddThis tools to your AngularJS app. This AngularJS module
@@ -907,7 +907,7 @@ var addthisModule = (function(window, angular) {
      * changes and the AngularJS digest cycles and how they affect AddThis tools.
      * Requires a free AddThis account.
      **/
-    var addthisModule = angular.module('official.addthis', ['ng']);
+    var addthisModule = angular.module('addthis', ['ng']);
 
     /*
      * Except for the last array item, all these items must in the array must

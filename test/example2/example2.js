@@ -1,6 +1,6 @@
 var appExample2 = angular.module(
     'appExample2',
-    ['ngRoute', 'official.addthis']
+    ['ngRoute', 'addthis']
 );
 
 appExample2.config(function($routeProvider) {
