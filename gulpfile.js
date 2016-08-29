@@ -8,6 +8,7 @@ var uglify = require('gulp-uglify');
 var saveLicense = require('uglify-save-license');
 var foreach = require('gulp-foreach');
 var fs = require('fs');
+var gulpDocs = require('gulp-ngdocs');
 
 var path = {
   distribution: {
@@ -15,12 +16,14 @@ var path = {
     filename: 'official-addthis-angular'
   },
   copyright: 'src/copyright.js',
-  source: 'src/**/*.js'
+  source: 'src/**/*.js',
+  documentation: 'docs'
 };
 
 gulp.task('make-folders', function () {
     try {
         fs.mkdirSync(path.distribution.folder);
+        fs.mkdirSync(path.documentation);
     }
     catch(err) {
         if (err.code !== 'EEXIST') {
@@ -78,7 +81,24 @@ gulp.task('jslint', function() {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('build', ['jslint'], function(){
+gulp.task('docs', [], function () {
+  var options = {
+    scripts: ['https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57c460aaf72cda39'],
+    html5Mode: false,
+    startPage: '/api/addthisTool',
+    title: "official-addthis-angular docs",
+    image: "addthis_icon.png",
+    imageLink: "https://www.addthis.com",
+    titleLink: "/docs/",
+    styles: ['doc.css']
+  }
+
+  return gulp.src(path.source)
+    .pipe(gulpDocs.process(options))
+    .pipe(gulp.dest('./'+path.documentation));
+});
+
+gulp.task('build', ['jslint', 'docs'], function(){
   return gulp.start(
     'build-distribution'
   );
