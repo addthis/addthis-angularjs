@@ -317,6 +317,7 @@ var addthisModule = (function(window, angular) {
                         $addthis.smartLayersRefresh();
                     });
                 };
+                recreateToolDiv();
 
                 $scope.$watchGroup(
                     ['toolClass', 'shareUrl', 'shareTitle'],
