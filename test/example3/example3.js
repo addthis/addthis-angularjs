@@ -243,7 +243,7 @@ appExample3.controller(
             var getMoreImages = function() {
                 return $http({
                     method: 'GET',
-                    url: 'http://thecatapi.com/api/images/get',
+                    url: 'https://thecatapi.com/api/images/get',
                     params: {
                         format: 'xml',
                         results_per_page: '20',
