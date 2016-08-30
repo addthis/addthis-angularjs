@@ -892,7 +892,6 @@ var addthisModule = (function(window, angular) {
                 shareTitle: '=shareTitle'
             },
             link: function($scope, el) {
-                var toolDiv;
                 // attr documentation available at http://www.addthis.com/academy/setting-the-url-title-to-share/
                 var urlAttr = 'data-url';
                 var titleAttr = 'data-title';
@@ -925,7 +924,6 @@ var addthisModule = (function(window, angular) {
 
                     // add new DIV
                     el.append(newToolDiv);
-                    toolDiv = newToolDiv;
 
                     // call layers_refresh after Angular has finised rendering the DOM
                     $timeout(function() {
