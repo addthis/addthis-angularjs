@@ -561,7 +561,7 @@ var addthisModule = (function(window, angular) {
         };
 
         /**
-         * @ngdoc function
+         * @ngdoc method
          * @name addthis.$addthisProvider#config
          * @methodOf addthis.$addthisProvider
          *
@@ -601,10 +601,6 @@ var addthisModule = (function(window, angular) {
         };
 
         /**
-         * @ngdoc function
-         * @name addthis.$addthisProvider#share
-         * @methodOf addthis.$addthisProvider
-         *
          * @description
          * Sets the `addthis_share` variable on the page. See
          * <a href="https://www.addthis.com/academy/the-addthis_share-variable/" target="_blank">
@@ -825,15 +821,16 @@ var addthisModule = (function(window, angular) {
          * This example shows how you would add `addthis_sharing_toolbox` on
          * your page and share url http://www.example.com with the text
          * "Check this out:"
- ```html
- <example
-    addthis-tool
-    tool-class="'addthis_sharing_toolbox'"
-    share-url="'http://www.example.com'"
-    share-title="'Check this out:'"
->
-</example>
- ```
+         *  ```html
+         *  <example
+         *     addthis-tool
+         *     tool-class="'addthis_sharing_toolbox'"
+         *     share-url="'http://www.example.com'"
+         *     share-title="'Check this out:'"
+         * >
+         * </example>
+         *  ```
+         *
          * @param {string} toolClass the tool class/id for the AddThis inline
          *   tool you want to add onto the page.
          * @param {string} shareUrl (optional) the url to share when your
