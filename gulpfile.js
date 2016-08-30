@@ -17,6 +17,7 @@ var path = {
   },
   copyright: 'src/copyright.js',
   source: 'src/**/*.js',
+  test: 'test/**/*.js',
   documentation: 'docs'
 };
 
@@ -85,7 +86,7 @@ gulp.task('docs', [], function () {
   var options = {
     scripts: ['https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57c460aaf72cda39'],
     html5Mode: false,
-    startPage: '/api/addthisTool',
+    startPage: '/api/addthis.addthisTool',
     title: "official-addthis-angular docs",
     image: "addthis_icon.png",
     imageLink: "https://www.addthis.com",
@@ -93,9 +94,27 @@ gulp.task('docs', [], function () {
     styles: ['doc.css']
   }
 
-  return gulp.src(path.source)
-    .pipe(gulpDocs.process(options))
-    .pipe(gulp.dest('./'+path.documentation));
+  return gulpDocs.sections({
+    api: {
+      glob:[path.source],
+      api: true,
+      title: 'official-addthis-angular'
+    },
+    example1: {
+      glob: ['test/example1/**/*.js'],
+      title: 'Example Site 1'
+    },
+    example2: {
+      glob: ['test/example2/**/*.js'],
+      title: 'Example Site 2'
+    },
+    example3: {
+      glob: ['test/example3/**/*.js'],
+      title: 'Example Site 3'
+    }
+  })
+  .pipe(gulpDocs.process(options))
+  .pipe(gulp.dest('./'+path.documentation));
 });
 
 gulp.task('build', ['jslint', 'docs'], function(){
@@ -106,4 +125,5 @@ gulp.task('build', ['jslint', 'docs'], function(){
 
 gulp.task('watch', ['build'], function() {
   gulp.watch(path.source, ['build']);
+  gulp.watch(path.test, ['docs']);
 });
