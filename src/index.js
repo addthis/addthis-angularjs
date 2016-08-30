@@ -1,10 +1,32 @@
 var addthisModule = (function(window, angular) {
+    // Variable for tracking whether `addthis_widget.js will be auto added onto
+    // the page if app author does not manually add it.
     var autoAddScript = true;
+
+    // Variable for tracking whether the `addthis_widget.js` is added towards
+    // the top of the DOM (appended onto the HEAD element) or to the
+    // bottom/footer (appended onto the BODY element). For footer, it will be
+    // `true`, for header it will be `false`.
     var scriptInFooter = true;
+
+    // Variable for tracking the profile ID for the site
     var profileId;
+
+    // Variable fro tracking the provided `addthis_config` settings before
+    // `addthis_widget.js` has a chance to change them. For documentation on
+    // `addthis_config` see
+    // https://www.addthis.com/academy/the-addthis_config-variable/
     var addthis_config = {};
+
+    // Variable for tracking the provided `addthis_share` settings before
+    // `addthis_widget.js` has a chance to change them. For documentation on
+    // `addthis_config` see
+    // https://www.addthis.com/academy/the-addthis_share-variable/
     var addthis_share = {};
 
+    // Variable for tracking module usage to help guide AddThis in deciding how
+    // many resources to devote to maintaining this integtration and what
+    // versions of Angular to focus on or test with.
     var addthis_plugin_info = {
         info_status    : 'enabled',
         cms_name       : 'Angular',
@@ -48,37 +70,36 @@ var addthisModule = (function(window, angular) {
      * content.
      **/
     var addScript = function(document) {
+        // if script is already on page, do nothing
         if (checkForScript(document)) {
             return;
         }
 
         var url;
         var baseUrl = 'https://s7.addthis.com/js/300/addthis_widget.js';
-        //var baseUrl = 'http://www-local.addthis.com/js/300/addthis_widget.js';
-
-        //todo allow use of dev, test and local client
-        //if(enviroment) {
-          // build url for local, dev or test
-        //}
 
         if(profileId) {
+            // preference the site's profile ID in the URL, if available
             url = baseUrl + '#pubid=' + profileId;
         } else {
             url = baseUrl;
         }
 
+        // create SCRIPT element
         var script = document.createElement('script');
         script.src = url;
 
+        // append SCRIPT element
         if(!scriptInFooter && document.head) {
             document.head.appendChild(script);
         } else {
             document.body.appendChild(script);
         }
-
-        // todo do we also want to add namespaces onto the html tag for XHTML?
     };
 
+    // Object for tracking whether a smartLayers refresh is pending and the
+    // last timestamp when one was requested (lastTs). Used in
+    // queueSmartLayersRefresh.
     var smartLayersRefreshRequest = {
         pending: false
     };
@@ -102,6 +123,11 @@ var addthisModule = (function(window, angular) {
     var queueSmartLayersRefresh = function($window, $interval) {
         smartLayersRefreshRequest.lastTs = (new Date()).getTime();
 
+        // if `addthis.layers.refresh` doesn't exist yet, do nothing
+        // FYI: `addhtis.layers.refresh` won't exist until SmartLayers has
+        // bootstrapped. It won't bootstrap automatically unless it's loaded
+        // with a valid profile ID that has a tool configured on
+        // https://www.addthis.com/dashboard
         if (smartLayersRefreshRequest.pending ||
             typeof $window.addthis === 'undefined' ||
             typeof $window.addthis.layers === 'undefined' ||
@@ -160,11 +186,15 @@ var addthisModule = (function(window, angular) {
             addthis_config = angular.copy(input);
 
             if (addthis_config.pubid) {
+                // grab the profile ID for reuse, if provided this way
                 profileId = addthis_config.pubid;
             } else if (profileId) {
+                // use the configured profile ID if not provided in the input
                 addthis_config.pubid = profileId;
             }
 
+            // `addthis_config.ignore_server_config` means profile ID settings
+            // will be ignored.
             if (addthis_config.ignore_server_config) {
                 addthis_plugin_info.plugin_mode = 'Local';
             } else {
@@ -211,7 +241,6 @@ var addthisModule = (function(window, angular) {
         addthis_share.url = url;
     };
 
-
     /*
      * @private
      * @description
@@ -229,6 +258,7 @@ var addthisModule = (function(window, angular) {
         addthis_share.title = title;
     };
 
+    // Variable for tracking script loading information.
     var load = {
         promise: false,
         interval: 200
@@ -422,6 +452,8 @@ var addthisModule = (function(window, angular) {
              * the `share-url` attribute. If not set otherwise, the browsers URL
              * will be used when sharing.
              *
+             * To reset to default, set to `false`.
+             *
              * @example
              * ```js
              * app.controller('AddThisInfoCtrl', ['$scope', '$addthis', function($scope, $addthis) {
@@ -448,6 +480,8 @@ var addthisModule = (function(window, angular) {
              * `addthisTool` directive, you may set the URL explicitly using
              * the `share-title` attribute. If not set otherwise, the
              * document's title will be used when sharing.
+             *
+             * To reset to default, set to `false`.
              *
              * Note: Some services (such as Facebook) do not allow you to define
              * the share title for a URL this way. Facebook will always use the
@@ -645,6 +679,8 @@ var addthisModule = (function(window, angular) {
          * the `share-url` attribute. If not set otherwise, the browsers URL
          * will be used when sharing.
          *
+         * To reset to default, set to `false`.
+         *
          * ```js
          * app.config(function($addthisProvider) {
          *     $addthisProvider.share_url('https://www.addthis.com');
@@ -672,6 +708,8 @@ var addthisModule = (function(window, angular) {
          * `addthisTool` directive, you may set the URL explicitly using
          * the `share-title` attribute. If not set otherwise, the
          * document's title will be used when sharing.
+         *
+         * To reset to default, set to `false`.
          *
          * Note: Some services (such as Facebook) do not allow you to define
          * the share title for a URL this way. Facebook will always use the
@@ -788,10 +826,12 @@ var addthisModule = (function(window, angular) {
         $window.addthis_config = angular.copy(addthis_config);
         $window.addthis_share = angular.copy(addthis_share);
 
+        // if auto add hasn't been disabled, auto add
         if (autoAddScript) {
             addScript($window.document);
         }
 
+        // watch for URL changes and do a SmartLayers refresh when they happen
         $rootScope.$on(
             '$locationChangeSuccess',
             function(event, next, current) {
@@ -853,31 +893,50 @@ var addthisModule = (function(window, angular) {
             },
             link: function($scope, el) {
                 var toolDiv;
+                // attr documentation available at http://www.addthis.com/academy/setting-the-url-title-to-share/
                 var urlAttr = 'data-url';
                 var titleAttr = 'data-title';
 
+                /**
+                 * @private
+                 * @description
+                 * Removes the content inside the directive, and appends a new
+                 * DIV element with the tool's class, and (if defined) share-url
+                 * and share-title. Why? `addthis_widget.js` won't touch/refresh
+                 * elements for inline it thinks it has already rendered.
+                 **/
                 var recreateToolDiv = function() {
+                    // build new div
                     var newToolDiv = document.createElement('div');
                     newToolDiv.className = $scope.toolClass;
 
+                    // only include share URL attr if provided
                     if (angular.isDefined($scope.shareUrl)) {
                         newToolDiv.setAttribute(urlAttr, $scope.shareUrl);
                     }
+
+                    // only include share title attr if provided
                     if (angular.isDefined($scope.shareTitle)) {
                         newToolDiv.setAttribute(titleAttr, $scope.shareTitle);
                     }
 
+                    // remove previous DIV, if present
                     el.empty();
+
+                    // add new DIV
                     el.append(newToolDiv);
                     toolDiv = newToolDiv;
-                    //$compile(toolDiv)($scope);
 
+                    // call layers_refresh after Angular has finised rendering the DOM
                     $timeout(function() {
                         $addthis.layers_refresh();
                     });
                 };
+                // bootstrap the directive
                 recreateToolDiv();
 
+                // watch for changes in attrs and rerender the tool DIV when
+                // they're meaningful
                 $scope.$watchGroup(
                     ['toolClass', 'shareUrl', 'shareTitle'],
                     function(newVal, oldVal) {
