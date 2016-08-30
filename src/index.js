@@ -18,10 +18,10 @@ var addthisModule = (function(window, angular) {
     }
 
     /*
+     * @private
      * @description
      * Checks if AddThis' `addthis_widget.js` script is on page
      *
-     * @private
      * @param {object} document The Document interface represents any web page
      * loaded in the browser and serves as an entry point into the web page's
      * content.
@@ -38,11 +38,11 @@ var addthisModule = (function(window, angular) {
     };
 
     /*
+     * @private
      * @description
      * Adds AddThis's `addthis_widget.js` script onto the page if it's not
      * already present
      *
-     * @private
      * @param {object} document The Document interface represents any web page
      * loaded in the browser and serves as an entry point into the web page's
      * content.
@@ -84,6 +84,7 @@ var addthisModule = (function(window, angular) {
     };
 
     /*
+     * @private
      * @description
      * Checks if `addthis_widget.js` is loaded yet and whether SmartLayers has
      * initialized. If not, there's no need to bother with
@@ -94,7 +95,6 @@ var addthisModule = (function(window, angular) {
      * executed. FYI: AddThis SmartLayers API will ignore calls to
      * `addthis.layers.refresh` if it's been called already within 500ms.
      *
-     * @private
      * @param {object} $window The window object represents a window containing a
      *   DOM document
      * @param {object} $interval Angular's wrapper for `window.setInterval`
@@ -140,6 +140,7 @@ var addthisModule = (function(window, angular) {
     };
 
     /*
+     * @private
      * @description
      * Sets the `addthis_config` variable on the page. If the pubid is set it
      * take it an use it elsewhere. Otherwise, it will add in the previously set
@@ -147,7 +148,6 @@ var addthisModule = (function(window, angular) {
      * <a href="https://www.addthis.com/academy/the-addthis_config-variable/" target="_blank">
      * the addthis_config variable documentation</a> for options.
      *
-     * @private
      * @param {object} input AddThis configuration object. See
      *   <a href="https://www.addthis.com/academy/the-addthis_config-variable/" target="_blank">
      *   the addthis_config variable documentation</a> for options.
@@ -176,11 +176,11 @@ var addthisModule = (function(window, angular) {
     };
 
     /*
+     * @private
      * @description
      * Sets the `addthis_share` variable on the page. See
      * https://www.addthis.com/academy/the-addthis_share-variable/ for options.
      *
-     * @private
      * @param {object} input AddThis sharing options. See
      *   https://www.addthis.com/academy/the-addthis_share-variable/ for
      *   options.
@@ -195,6 +195,7 @@ var addthisModule = (function(window, angular) {
     };
 
     /*
+     * @private
      * @description
      * Sets the URL shared by tools that don't explicitly set one through the
      * `data-url` attribute. This is a shortcut to adding the URL into
@@ -203,7 +204,6 @@ var addthisModule = (function(window, angular) {
      * more information on `addthis_share`. If not set here or in the `data-url`
      * attribute, the browsers URL will be used when sharing.
      *
-     * @private
      * @param {string} url The URL to share when a user clicks on a share
      *   buttons that don't otherwise speicfy a share URL
      **/
@@ -213,6 +213,7 @@ var addthisModule = (function(window, angular) {
 
 
     /*
+     * @private
      * @description
      * Sets the title shared by tools that don't explicitly set one through the
      * `data-title` attribute. This is a shortcut to adding the title into
@@ -221,7 +222,6 @@ var addthisModule = (function(window, angular) {
      * more information on `addthis_share`. If not set here or in the
      * `data-title` attribute, the document title will be used when sharing.
      *
-     * @private
      * @param {string} title The title to share when a user clicks on a share
      *   buttons that don't otherwise speicfy a share title
      **/
@@ -235,11 +235,11 @@ var addthisModule = (function(window, angular) {
     };
 
     /*
+     * @private
      * @description
      * Returns a promise that resolves once AddThis' `addthis_widget.js`
      * loaded and is ready to use.
      *
-     * @private
      * @param {object} $window The window object represents a window containing a
      *   DOM document;
      * @param {object} $q Angular's promise implementation
