@@ -248,7 +248,7 @@ appExample3.controller(
                         format: 'xml',
                         results_per_page: '20',
                         type: 'gif',
-                        size: 'full'
+                        size: 'med'
                     }
                 }).then(function(response) {
                     // hacky stuff to grab URLS out of the XML output
