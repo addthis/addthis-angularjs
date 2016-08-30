@@ -102,18 +102,6 @@ gulp.task('docs', [], function () {
       glob:[path.source],
       api: true,
       title: 'official-addthis-angular'
-    },
-    example1: {
-      glob: ['test/example1/**/*.js'],
-      title: 'Example Site 1'
-    },
-    example2: {
-      glob: ['test/example2/**/*.js'],
-      title: 'Example Site 2'
-    },
-    example3: {
-      glob: ['test/example3/**/*.js'],
-      title: 'Example Site 3'
     }
   })
   .pipe(gulpDocs.process(options))
