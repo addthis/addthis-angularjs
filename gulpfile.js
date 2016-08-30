@@ -91,7 +91,10 @@ gulp.task('docs', [], function () {
     image: "addthis_icon.png",
     imageLink: "https://www.addthis.com",
     titleLink: "/docs/",
-    styles: ['doc.css']
+    styles: ['doc.css'],
+    analytics: {
+      account: 'UA-1170033-28'
+    }
   }
 
   return gulpDocs.sections({
