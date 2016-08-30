@@ -183,8 +183,6 @@ var addthisModule = (function(window, angular) {
      **/
     var setAddThisConfig = function(input) {
         if (typeof input === 'object') {
-            addthis_config = angular.copy(input);
-
             if (addthis_config.pubid) {
                 // grab the profile ID for reuse, if provided this way
                 profileId = addthis_config.pubid;
@@ -200,6 +198,8 @@ var addthisModule = (function(window, angular) {
             } else {
                 addthis_plugin_info.plugin_mode = 'AddThis';
             }
+
+            addthis_config = angular.copy(input);
         }
 
         return angular.copy(addthis_config);
