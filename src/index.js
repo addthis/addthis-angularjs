@@ -813,9 +813,9 @@ var addthisModule = (function(window, angular) {
      **/
     var addthisDirective = function($addthis, $timeout) {
         /**
-         *
          * @ngdoc directive
          * @name addthis.addthisTool
+         * @restrict AECM
          *
          * @element ANY
          * @description
@@ -846,9 +846,9 @@ var addthisModule = (function(window, angular) {
          *   Open Graph tags it finds on the page when it crawls it. You can use
          *   the <a href="https://developers.facebook.com/tools/debug/">
          *   Facebook Sharing Debugger</a> to test your Open Graph tags.
-         *
          **/
         var directive = {
+            restrict: 'AECM',
             scope: {
                 toolClass: '=toolClass',
                 shareUrl: '=shareUrl',
