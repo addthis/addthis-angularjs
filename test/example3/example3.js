@@ -4,8 +4,10 @@ var appExample3 = angular.module(
 );
 
 appExample3.config(function($stateProvider, $urlRouterProvider) {
+    // default state
     $urlRouterProvider.otherwise('/list');
 
+    // defining states
     $stateProvider
     .state('list', {
       url: '/list',
@@ -54,66 +56,84 @@ appExample3.config(function($stateProvider, $urlRouterProvider) {
 });
 
 appExample3.config(function($addthisProvider) {
+    // setting a profile ID for this site
     $addthisProvider.profile_id('ra-57b71bceb3ebb9df');
 });
 
 appExample3.controller('ToolSwitcherACtrl', ['$scope', function($scope) {
-    var defaultTool = 'addthis_sharing_toolbox';
+    // setting up 2 tool names to use in example
+    var initialTool = 'addthis_sharing_toolbox';
     var alternateTool = 'addthis_native_toolbox';
-    $scope.currentTool = defaultTool;
+    // setting up initial tool
+    $scope.currentTool = initialTool;
 
+    // function to use in the template on clicks so the user can change the tool
+    // on page on demand
     $scope.changeTool = function() {
-        if ($scope.currentTool === defaultTool) {
+        if ($scope.currentTool === initialTool) {
             $scope.currentTool = alternateTool;
         } else {
-            $scope.currentTool = defaultTool;
+            $scope.currentTool = initialTool;
         }
     };
 }]);
 
 appExample3.controller('ToolSwitcherBCtrl', ['$scope', function($scope) {
-    var defaultTool = 'addthis_inline_follow_toolbox';
+    // setting up 2 tool names to use in example
+    var initialTool = 'addthis_inline_follow_toolbox';
     var alternateTool = 'addthis_sharing_toolbox';
-    $scope.currentTool = defaultTool;
+    // setting up initial tool
+    $scope.currentTool = initialTool;
 
+    // function to use in the template on clicks so the user can change the tool
+    // on page on demand
     $scope.changeTool = function() {
-        if ($scope.currentTool === defaultTool) {
+        if ($scope.currentTool === initialTool) {
             $scope.currentTool = alternateTool;
         } else {
-            $scope.currentTool = defaultTool;
+            $scope.currentTool = initialTool;
         }
     };
 }]);
 
 appExample3.controller('UrlSwitcherCtrl', ['$scope', function($scope) {
-    var defaultUrl = 'https://www.addthis.com';
+    // setting up 2 urls to use in example
+    var initialUrl = 'https://www.addthis.com';
     var alternateUrl = 'https://www.google.com';
-    $scope.currentUrl = defaultUrl;
+    // setting up initial URL
+    $scope.currentUrl = initialUrl;
 
+    // function to use in the template on clicks so the user can change the
+    // share url for the tool
     $scope.changeUrl = function() {
-        if ($scope.currentUrl === defaultUrl) {
+        if ($scope.currentUrl === initialUrl) {
             $scope.currentUrl = alternateUrl;
         } else {
-            $scope.currentUrl = defaultUrl;
+            $scope.currentUrl = initialUrl;
         }
     };
 }]);
 
 appExample3.controller('TitleSwitcherCtrl', ['$scope', function($scope) {
-    var defaultTitle = 'This link is awesome. Check it out!';
+    // setting up 2 titles to use in example
+    var initialTitle = 'This link is awesome. Check it out!';
     var alternateTitle = 'This is a good read:';
-    $scope.currentTitle = defaultTitle;
+    // setting up initial title
+    $scope.currentTitle = initialTitle;
 
+    // function to use in the template on clicks so the user can change the
+    // share title for the tool
     $scope.changeTitle = function() {
-        if ($scope.currentTitle === defaultTitle) {
+        if ($scope.currentTitle === initialTitle) {
             $scope.currentTitle = alternateTitle;
         } else {
-            $scope.currentTitle = defaultTitle;
+            $scope.currentTitle = initialTitle;
         }
     };
 }]);
 
 appExample3.controller('DynamicTitleCtrl', ['$scope', function($scope) {
+    // setting up initial name in input field
     $scope.name = 'Julka';
 }]);
 
@@ -123,44 +143,55 @@ appExample3.controller(
         '$scope',
         '$addthis',
         function($scope, $addthis) {
-            var defaultUrl = 'https://www.addthis.com';
+            // setting up 2 urls to use in example
+            var initialUrl = 'https://www.addthis.com';
             var alternateUrl = 'https://www.google.com';
-            $scope.currentUrl = defaultUrl;
+            // setting up initial URL
+            $scope.currentUrl = initialUrl;
+            $addthis.share_url($scope.currentUrl);
 
+            // function to use in the template on clicks so the user can change the
+            // share url for the tool
             $scope.changeUrl = function() {
-                if ($scope.currentUrl === defaultUrl) {
+                if ($scope.currentUrl === initialUrl) {
                     $scope.currentUrl = alternateUrl;
                 } else {
-                    $scope.currentUrl = defaultUrl;
+                    $scope.currentUrl = initialUrl;
                 }
 
                 $addthis.share_url($scope.currentUrl);
-                $addthis.layers_refresh();
             };
 
-            var defaultTitle = 'This link is awesome. Check it out!';
-            var alternateTitle = 'This is a good read: ';
-            $scope.currentTitle = defaultTitle;
+            // setting up 2 titles to use in example
+            var initialTitle = 'This link is awesome. Check it out!';
+            var alternateTitle = 'This is a good read:';
+            // setting up initial title
+            $scope.currentTitle = initialTitle;
+            $addthis.share_title($scope.currentTitle);
 
+            // function to use in the template on clicks so the user can change the
+            // share title for the tool
             $scope.changeTitle = function() {
-                if ($scope.currentTitle === defaultTitle) {
+                if ($scope.currentTitle === initialTitle) {
                     $scope.currentTitle = alternateTitle;
                 } else {
-                    $scope.currentTitle = defaultTitle;
+                    $scope.currentTitle = initialTitle;
                 }
 
                 $addthis.share_title($scope.currentTitle);
-                $addthis.layers_refresh();
             };
 
+            // watching for location/route/state change
             $scope.$on('$locationChangeStart', function(event, next, current) {
                 if (next !== current) {
-                    /**
-                     * This will reset the values and what's on the page and
-                     * continue updating to match the url as routes change.
-                     * Otherwise, this value will stay as what you set earlier
-                     * using $addthis.share_url or $addthis.share_title
-                     */
+                     // This will reset the values for share URL and title. This
+                     // way, `addthis_widget.js` will use the URL and title
+                     // that are on the next locaation rather than keep the ones
+                     // set here, and will continue updating to match the url as
+                     // location/state/route continues to change. Otherwise,
+                     // this value will stay as what it was set in this
+                     // controller until somethines else changes it or the user
+                     // reloads the page in the browser
                     $addthis.share_url(false);
                     $addthis.share_title(false);
                 }
@@ -170,6 +201,7 @@ appExample3.controller(
 );
 
 appExample3.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
+    // some ipsums we can show
     $scope.allIpsums = [
         {
             'name': 'Bacon Ipsum',
@@ -217,9 +249,11 @@ appExample3.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
             'text': 'Drink from the firehose value prop and viral engagement can we align on lunch orders, so pro-sumer software shotgun approach, and three-martini lunch. Show pony nail jelly to the hothouse wall horsehead offer. Quick win. Baseline the procedure and samepage your department shoot me an email. That jerk from finance really threw me under the bus quick-win where do we stand on the latest client ask. Granularity that jerk from finance really threw me under the bus knowledge process outsourcing pushback, and cross sabers obviously. Quick win punter nor put your feelers out, but good optics. New economy prairie dogging, or due diligence, for take five, punch the tree, and come back in here with a clear head. Organic growth we need more paper innovation is hot right now yet good optics yet what do you feel you would bring to the table if you were hired for this position driving the initiative forward and prairie dogging. Thinking outside the box not enough bandwidth we just need to put these last issues to bed productize market-facing. Pro-sumer software. Low-hanging fruit. Q1 time to open the kimono loop back, but player-coach, so hit the ground running. Diversify kpis meeting assassin. One-sheet hard stop. '
         }
     ];
+    // ipsums to show (we ng-repeat through these)
     $scope.shownIpsums = [];
     var iterator = 0;
 
+    // function for adding another ipsum entry onto the page
     $scope.addAnother = function() {
         $scope.shownIpsums.push($scope.allIpsums[iterator]);
         iterator = iterator + 1;
@@ -227,9 +261,11 @@ appExample3.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
             iterator = 0;
         }
     };
+    // bootstrap by adding one ipsume onto the page
     $scope.addAnother();
 }]);
 
+// CAT GIFS!!!!
 appExample3.controller(
     'AddAnotherImageCtrl',
     [
@@ -239,7 +275,7 @@ appExample3.controller(
             $scope.shownImages = [];
             var imageQueue = [];
 
-            // get more image URLS from The Cat API
+            // This function gets more image URLS from The Cat API
             var getMoreImages = function() {
                 return $http({
                     method: 'GET',
@@ -251,17 +287,17 @@ appExample3.controller(
                         size: 'med'
                     }
                 }).then(function(response) {
-                    // hacky stuff to grab URLS out of the XML output
+                    // hacky regex stuff to grab URLS out of the XML output
                     var regex1 = /<url>\s*([^\s<]+)\s*<\/url>/gi;
                     var regex2 = /<url>\s*([^\s<]+)\s*<\/url>/i;
                     var matches = response.data.match(regex1);
 
                     matches.forEach(function(element) {
                         var url = element.match(regex2)[1];
+                        // queues up the image
                         imageQueue.push(url);
                     });
                 });
-
             };
 
             // move an image from the imageQueue to $scope.shownImages
@@ -270,9 +306,9 @@ appExample3.controller(
                 $scope.shownImages.push(url);
             };
 
-            // checks if there's images in imageQueue, repopulates if needed, and then
-            // calls moveAnImageUrl to move an image from the imageQueue to
-            // $scope.shownImages
+            // checks if there's images in imageQueue, repopulates the queue if
+            // needed, then calls moveAnImageUrl to move an image from the
+            // imageQueue to $scope.shownImages
             $scope.addAnother = function() {
                 if (imageQueue.length === 0) {
                     getMoreImages().then(moveAnImageUrl);
@@ -281,6 +317,7 @@ appExample3.controller(
                 }
             };
 
+            // bootstrap the page with one image
             $scope.addAnother();
         }
     ]

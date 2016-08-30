@@ -1,10 +1,12 @@
 var appExample1 = angular.module('appExample1', ['addthis']);
 
 appExample1.config(function($addthisProvider) {
+    // setting a profile ID for this site
     $addthisProvider.profile_id('ra-57b71bceb3ebb9df');
 });
 
 appExample1.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
+    // some ipsums we can show
     $scope.allIpsums = [
         {
             'name': 'Bacon Ipsum',
@@ -52,9 +54,11 @@ appExample1.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
             'text': 'Drink from the firehose value prop and viral engagement can we align on lunch orders, so pro-sumer software shotgun approach, and three-martini lunch. Show pony nail jelly to the hothouse wall horsehead offer. Quick win. Baseline the procedure and samepage your department shoot me an email. That jerk from finance really threw me under the bus quick-win where do we stand on the latest client ask. Granularity that jerk from finance really threw me under the bus knowledge process outsourcing pushback, and cross sabers obviously. Quick win punter nor put your feelers out, but good optics. New economy prairie dogging, or due diligence, for take five, punch the tree, and come back in here with a clear head. Organic growth we need more paper innovation is hot right now yet good optics yet what do you feel you would bring to the table if you were hired for this position driving the initiative forward and prairie dogging. Thinking outside the box not enough bandwidth we just need to put these last issues to bed productize market-facing. Pro-sumer software. Low-hanging fruit. Q1 time to open the kimono loop back, but player-coach, so hit the ground running. Diversify kpis meeting assassin. One-sheet hard stop. '
         }
     ];
+    // ipsums to show (we ng-repeat through these)
     $scope.shownIpsums = [];
     var iterator = 0;
 
+    // function for adding another ipsum entry onto the page
     $scope.addAnother = function() {
         $scope.shownIpsums.push($scope.allIpsums[iterator]);
         iterator = iterator + 1;
@@ -62,5 +66,6 @@ appExample1.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
             iterator = 0;
         }
     };
+    // bootstrap by adding one ipsume onto the page
     $scope.addAnother();
 }]);
