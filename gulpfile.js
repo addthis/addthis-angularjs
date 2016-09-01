@@ -124,7 +124,44 @@ gulp.task('docs', function () {
   .pipe(gulp.dest('./'+path.documentation));
 });
 
-gulp.task('build', ['jslint', 'docs'], function(){
+gulp.task('test-src', ['jslint-src'], function(done) {
+  new Server({
+    configFile: __dirname + '/test/addthis.karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
+gulp.task('test-example1', ['jslint-examples'], function(done) {
+  new Server({
+    configFile: __dirname + '/test/example1.karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
+gulp.task('test-example2', ['jslint-examples'], function(done) {
+  new Server({
+    configFile: __dirname + '/test/example2.karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
+gulp.task('test-example3', ['jslint-examples'], function(done) {
+  new Server({
+    configFile: __dirname + '/test/example3.karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
+gulp.task('test', function(){
+  return gulp.start(
+    'test-src',
+    'test-example1',
+    'test-example2',
+    'test-example3'
+  );
+});
+
+gulp.task('build', ['test', 'docs'], function(){
   return gulp.start(
     'build-distribution'
   );
@@ -132,4 +169,7 @@ gulp.task('build', ['jslint', 'docs'], function(){
 
 gulp.task('watch', ['build'], function() {
   gulp.watch(path.source, ['build']);
+  gulp.watch('examples/example1/**/*.js', ['test-example1']);
+  gulp.watch('examples/example2/**/*.js', ['test-example2']);
+  gulp.watch('examples/example3/**/*.js', ['test-example3']);
 });
