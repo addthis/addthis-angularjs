@@ -98,7 +98,7 @@ gulp.task('jslint', function(){
   );
 });
 
-gulp.task('docs', [], function () {
+gulp.task('docs', function () {
   var options = {
     scripts: ['https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57c460aaf72cda39'],
     html5Mode: false,
@@ -132,5 +132,4 @@ gulp.task('build', ['jslint', 'docs'], function(){
 
 gulp.task('watch', ['build'], function() {
   gulp.watch(path.source, ['build']);
-  gulp.watch(path.test, ['docs']);
 });
