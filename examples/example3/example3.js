@@ -202,7 +202,7 @@ appExample3.controller(
 
 appExample3.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
     // some ipsums we can show
-    $scope.allIpsums = [
+    $scope.queuedIpsums = [
         {
             'name': 'Bacon Ipsum',
             'source': 'http://baconipsum.com/',
@@ -251,14 +251,11 @@ appExample3.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {
     ];
     // ipsums to show (we ng-repeat through these)
     $scope.shownIpsums = [];
-    var iterator = 0;
 
     // function for adding another ipsum entry onto the page
     $scope.addAnother = function() {
-        $scope.shownIpsums.push($scope.allIpsums[iterator]);
-        iterator = iterator + 1;
-        if (iterator === $scope.allIpsums.length) {
-            iterator = 0;
+        if ($scope.queuedIpsums.length > 0) {
+            $scope.shownIpsums.push($scope.queuedIpsums.pop());
         }
     };
     // bootstrap by adding one ipsume onto the page

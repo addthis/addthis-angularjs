@@ -85,7 +85,11 @@ gulp.task('jslint-src', function() {
 });
 
 gulp.task('jslint-examples', function() {
-  return gulp.src([path.examples, 'test/examples/**/*.js'])
+  return gulp.src([
+      path.examples,
+      'test/examples/example*/**/*.js',
+      'test/examples/*.js'
+    ])
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter('fail'));
