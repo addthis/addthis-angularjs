@@ -12,6 +12,7 @@ Make sure you have the following installed:
 
 Use npm to install the following:
  - gulp `npm install -g gulp`
+ - karma `npm install -g karma`
 
 ## Installation
 Get the source code by cloning to git repository via:

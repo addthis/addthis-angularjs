@@ -9,6 +9,7 @@ var saveLicense = require('uglify-save-license');
 var foreach = require('gulp-foreach');
 var fs = require('fs');
 var gulpDocs = require('gulp-ngdocs');
+var Server = require('karma').Server;
 
 var path = {
   distribution: {
