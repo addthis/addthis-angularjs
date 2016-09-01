@@ -19,7 +19,8 @@ var path = {
   copyright: 'src/copyright.js',
   source: 'src/**/*.js',
   test: 'test/**/*.js',
-  documentation: 'docs'
+  documentation: 'docs',
+  examples: 'examples/**/*.js'
 };
 
 gulp.task('make-folders', function () {
@@ -77,7 +78,14 @@ gulp.task('build-distribution', ['clean-distribution'], function(){
 });
 
 gulp.task('jslint', function() {
-  return gulp.src([path.source, 'test/**/*.js'])
+  return gulp.src([path.source, 'test/addthis/**/*.js'])
+    .pipe(jshint())
+    .pipe(jshint.reporter(stylish))
+    .pipe(jshint.reporter('fail'));
+});
+
+gulp.task('jslint-examples', function() {
+  return gulp.src([path.examples, 'test/examples/**/*.js'])
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter('fail'));
