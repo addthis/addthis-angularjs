@@ -77,7 +77,7 @@ gulp.task('build-distribution', ['clean-distribution'], function(){
   );
 });
 
-gulp.task('jslint', function() {
+gulp.task('jslint-src', function() {
   return gulp.src([path.source, 'test/addthis/**/*.js'])
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
@@ -89,6 +89,13 @@ gulp.task('jslint-examples', function() {
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter('fail'));
+});
+
+gulp.task('jslint', function(){
+  return gulp.start(
+    'jslint-examples',
+    'jslint-src'
+  );
 });
 
 gulp.task('docs', [], function () {
