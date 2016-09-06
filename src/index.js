@@ -123,6 +123,9 @@ var addthisModule = (function(window, angular) {
     var queueSmartLayersRefresh = function($window, $interval) {
         smartLayersRefreshRequest.lastTs = (new Date()).getTime();
 
+        $window.addthis_config = angular.copy(addthis_config);
+        $window.addthis_share = angular.copy(addthis_share);
+
         // if `addthis.layers.refresh` doesn't exist yet, do nothing
         // FYI: `addhtis.layers.refresh` won't exist until SmartLayers has
         // bootstrapped. It won't bootstrap automatically unless it's loaded
@@ -362,8 +365,6 @@ var addthisModule = (function(window, angular) {
              * ```
              **/
             layers_refresh: function() {
-                $window.addthis_config = angular.copy(addthis_config);
-                $window.addthis_share = angular.copy(addthis_share);
                 queueSmartLayersRefresh($window, $interval);
             },
             /**
