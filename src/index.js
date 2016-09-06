@@ -466,7 +466,7 @@ var addthisModule = (function(window, angular) {
              *   buttons that don't otherwise speicfy a share URL
              **/
             share_url: function(url) {
-                setShareUrl();
+                setShareUrl(url);
                 queueSmartLayersRefresh($window, $interval);
             },
             /**
