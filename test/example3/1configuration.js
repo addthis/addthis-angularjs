@@ -1,18 +1,17 @@
 'use strict';
 
 describe('appExample3 configuration', function() {
-    var $controller;
     var $addthis;
 
     beforeEach(function() {
         module('appExample3');
     });
 
-    describe('$addthis service', function () {
-        beforeEach(inject(function($injector) {
-            $addthis = $injector.get('$addthis');
-        }));
+    beforeEach(inject(function($injector) {
+        $addthis = $injector.get('$addthis');
+    }));
 
+    describe('$addthis service', function () {
         it('should define $addthis service', function () {
             expect($addthis).toBeDefined();
         });

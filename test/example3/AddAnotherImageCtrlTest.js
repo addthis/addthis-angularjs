@@ -1,11 +1,8 @@
 describe('appExample3 AddAnotherImageCtrl', function() {
    'use strict';
 
-    var $controller;
-    var $addthis;
     var $httpBackend;
-    var $scope = {};
-    var controller;
+    var $scope;
     var theCatApiUrl = 'https://thecatapi.com/api/images/get?format=xml&results_per_page=20&size=med&type=gif';
     var theCatApiResponse = '<response>\n<data>\n<images>\n<image>\n<url>\nhttps://thecatapi.com/api/images/get.php?id=1aq&size=med\n</url>\n<id>1aq</id>\n<source_url>http://thecatapi.com/?id=1aq</source_url>\n</image>\n<image>\n<url>\nhttps://thecatapi.com/api/images/get.php?id=MTUwNTk4NQ&size=med\n</url>\n<id>MTUwNTk4NQ</id>\n<source_url>http://thecatapi.com/?id=MTUwNTk4NQ</source_url>\n</image>\n<image>\n<url>\nhttps://thecatapi.com/api/images/get.php?id=7v&size=med\n</url>\n<id>7v</id>\n<source_url>http://thecatapi.com/?id=7v</source_url>\n</image>\n</data>\n</response>';
     var theCatApiRequestHandler;
@@ -16,7 +13,7 @@ describe('appExample3 AddAnotherImageCtrl', function() {
     });
 
     beforeEach(inject(function($injector) {
-        $controller = $injector.get('$controller');
+        var $controller = $injector.get('$controller');
         $httpBackend = $injector.get('$httpBackend');
 
         theCatApiRequestHandler = $httpBackend.when('GET', theCatApiUrl)
@@ -24,7 +21,7 @@ describe('appExample3 AddAnotherImageCtrl', function() {
 
         $httpBackend.when('GET', 'ExampleList.html').respond({});
 
-        controller = $controller('AddAnotherImageCtrl', { $scope: $scope });
+        var controller = $controller('AddAnotherImageCtrl', { $scope: $scope });
 
         $httpBackend.expectGET(theCatApiUrl);
         $httpBackend.expectGET('ExampleList.html').respond(200);

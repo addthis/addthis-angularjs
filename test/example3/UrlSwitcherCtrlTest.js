@@ -1,15 +1,9 @@
 'use strict';
 
 describe('appExample3 UrlSwitcherCtrl', function() {
-    var $controller;
-    var $scope = {};
-    var controller;
+    var $scope;
     var initialUrl = 'https://www.addthis.com';
     var alternateUrl = 'https://www.google.com';
-
-    beforeEach(function() {
-        module('appExample3');
-    });
 
     beforeEach(function() {
         module('appExample3');
@@ -17,8 +11,8 @@ describe('appExample3 UrlSwitcherCtrl', function() {
     });
 
     beforeEach(inject(function($injector) {
-        $controller = $injector.get('$controller');
-        controller = $controller('UrlSwitcherCtrl', { $scope: $scope });
+        var $controller = $injector.get('$controller');
+        var controller = $controller('UrlSwitcherCtrl', { $scope: $scope });
     }));
 
     it('should initialize with share-url with its initial value', function() {

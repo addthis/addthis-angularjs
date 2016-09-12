@@ -1,11 +1,8 @@
 'use strict';
 
 describe('appExample2 routes', function() {
-    var $controller;
     var $addthis;
     var $route;
-    var $location;
-    var $rootScope;
 
     beforeEach(function() {
         module('appExample2');
@@ -15,8 +12,6 @@ describe('appExample2 routes', function() {
     beforeEach(inject(function($injector) {
         $addthis = $injector.get('$addthis');
         $route = $injector.get('$route');
-        $location = $injector.get('$location');
-        $rootScope = $injector.get('$rootScope');
     }));
 
     describe('$addthis service', function () {
@@ -28,18 +23,6 @@ describe('appExample2 routes', function() {
     describe('$route service', function () {
         it('should run successfully', function () {
             expect($route).toBeDefined();
-        });
-    });
-
-    describe('$location service', function () {
-        it('should run successfully', function () {
-            expect($location).toBeDefined();
-        });
-    });
-
-    describe('$rootScope service', function () {
-        it('should run successfully', function () {
-            expect($rootScope).toBeDefined();
         });
     });
 

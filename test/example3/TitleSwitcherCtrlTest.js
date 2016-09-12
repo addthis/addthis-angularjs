@@ -1,9 +1,7 @@
 'use strict';
 
 describe('appExample3 TitleSwitcherCtrl', function() {
-    var $controller;
-    var $scope = {};
-    var controller;
+    var $scope;
     var initialTitle = 'This link is awesome. Check it out!';
     var alternateTitle = 'This is a good read:';
 
@@ -13,8 +11,8 @@ describe('appExample3 TitleSwitcherCtrl', function() {
     });
 
     beforeEach(inject(function($injector) {
-        $controller = $injector.get('$controller');
-        controller = $controller('TitleSwitcherCtrl', { $scope: $scope });
+        var $controller = $injector.get('$controller');
+        var controller = $controller('TitleSwitcherCtrl', { $scope: $scope });
     }));
 
     it('should initialize with share title with its initial value', function() {

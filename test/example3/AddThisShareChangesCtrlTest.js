@@ -1,10 +1,8 @@
 'use strict';
 
 describe('appExample3 AddThisShareChangesCtrl', function() {
-    var $addthis;
     var $state;
     var $scope;
-    var controller;
     var initialUrl = 'https://www.addthis.com';
     var alternateUrl = 'https://www.google.com';
     var initialTitle = 'This link is awesome. Check it out!';
@@ -17,11 +15,10 @@ describe('appExample3 AddThisShareChangesCtrl', function() {
     beforeEach(inject(function($injector) {
         var $controller = $injector.get('$controller');
         $state = $injector.get('$state');
-        $addthis = $injector.get('$addthis');
 
         var $rootScope = $injector.get('$rootScope');
         $scope = $rootScope.$new();
-        controller = $controller('AddThisShareChangesCtrl', { $scope: $scope });
+        var controller = $controller('AddThisShareChangesCtrl', { $scope: $scope });
     }));
 
     afterEach(function() {

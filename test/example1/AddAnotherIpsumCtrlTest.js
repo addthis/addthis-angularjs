@@ -1,9 +1,7 @@
 describe('AddAnotherIpsumCtrl', function() {
    'use strict';
 
-    var $controller;
-    var $scope = {};
-    var controller;
+    var $scope;
 
     beforeEach(function() {
         module('appExample1');
@@ -11,8 +9,8 @@ describe('AddAnotherIpsumCtrl', function() {
     });
 
     beforeEach(inject(function($injector) {
-        $controller = $injector.get('$controller');
-        controller = $controller('AddAnotherIpsumCtrl', { $scope: $scope });
+        var $controller = $injector.get('$controller');
+        var controller = $controller('AddAnotherIpsumCtrl', { $scope: $scope });
     }));
 
     it('should have an ipsum queue', function() {

@@ -2,12 +2,8 @@
 
 describe('appExample2 NavCtrl', function() {
     var $scope;
-    var $controller;
-    var controller;
     var $addthis;
-    var $route;
     var $location;
-    var $rootScope;
     var route1 = 'Route1';
     var route2 = 'Route2';
 
@@ -18,11 +14,9 @@ describe('appExample2 NavCtrl', function() {
 
     beforeEach(inject(function($injector) {
         $addthis = $injector.get('$addthis');
-        $route = $injector.get('$route');
         $location = $injector.get('$location');
-        $rootScope = $injector.get('$rootScope');
-        $controller = $injector.get('$controller');
-        controller = $controller( 'NavCtrl', { $scope: $scope } );
+        var $controller = $injector.get('$controller');
+        var controller = $controller( 'NavCtrl', { $scope: $scope } );
     }));
 
     describe('$scope.path function', function () {

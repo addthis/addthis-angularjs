@@ -1,7 +1,6 @@
 'use strict';
 
 describe('appExample2 configuration', function() {
-    var $controller;
     var $addthis;
 
     beforeEach(function() {

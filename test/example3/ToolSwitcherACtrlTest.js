@@ -1,9 +1,7 @@
 'use strict';
 
 describe('appExample3 ToolSwitcherACtrl', function() {
-    var $controller;
-    var $scope = {};
-    var controller;
+    var $scope;
     var initialTool = 'addthis_sharing_toolbox';
     var alternateTool = 'addthis_native_toolbox';
 
@@ -13,8 +11,8 @@ describe('appExample3 ToolSwitcherACtrl', function() {
     });
 
     beforeEach(inject(function($injector) {
-        $controller = $injector.get('$controller');
-        controller = $controller('ToolSwitcherACtrl', { $scope: $scope });
+        var $controller = $injector.get('$controller');
+        var controller = $controller('ToolSwitcherACtrl', { $scope: $scope });
     }));
 
     it('should initialize with tool name with its initial value', function() {
