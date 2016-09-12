@@ -1,0 +1,22 @@
+<div ng-controller="AddAnotherImageCtrl">
+    <h2>
+        Tool Example 11
+        <small>
+            adding image share buttons as images change
+        </small>
+    </h2>
+
+    <p>Images via <a href="http://thecatapi.com/">The Cat Api</a></p>
+
+    <div class="alert alert-info" role="alert">
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        Share buttons will only appear on images that are at least 200px by 200px. The images used below are random. Some may not be big enough to have share buttons.
+    </div>
+
+    <img class="img-thumbnail catgif" ng-src="{{currentImageUrl}}" alt="a random cat gif" />
+
+    <br />
+    <button type="button" class="btn btn-default" ng-click="addAnother()">
+        Change Image
+    </button>
+</div>
