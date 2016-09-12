@@ -270,7 +270,7 @@ appExample3.controller(
         '$http',
         function($scope, $http) {
             $scope.shownImages = [];
-            var imageQueue = [];
+            $scope.imageQueue = [];
 
             // This function gets more image URLS from The Cat API
             var getMoreImages = function() {
@@ -292,14 +292,18 @@ appExample3.controller(
                     matches.forEach(function(element) {
                         var url = element.match(regex2)[1];
                         // queues up the image
-                        imageQueue.push(url);
+                        $scope.imageQueue.push(url);
                     });
+                    console.log('julkatest1', $scope.imageQueue);
+                    return response;
+                }, function(fail) {
+                    console.log('julkatest2', fail);
                 });
             };
 
             // move an image from the imageQueue to $scope.shownImages
             var moveAnImageUrl = function() {
-                var url = imageQueue.pop();
+                var url = $scope.imageQueue.pop();
                 $scope.shownImages.push(url);
             };
 
@@ -307,7 +311,7 @@ appExample3.controller(
             // needed, then calls moveAnImageUrl to move an image from the
             // imageQueue to $scope.shownImages
             $scope.addAnother = function() {
-                if (imageQueue.length === 0) {
+                if ($scope.imageQueue.length === 0) {
                     getMoreImages().then(moveAnImageUrl);
                 } else {
                     moveAnImageUrl();
