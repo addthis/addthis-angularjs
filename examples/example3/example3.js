@@ -52,6 +52,10 @@ appExample3.config(function($stateProvider, $urlRouterProvider) {
     .state('ToolExample10', {
       url: '/ToolExample10',
       templateUrl: 'ToolExample10.html'
+    })
+    .state('ToolExample11', {
+      url: '/ToolExample11',
+      templateUrl: 'ToolExample11.html'
     });
 });
 
@@ -303,8 +307,8 @@ appExample3.controller(
 
             // move an image from the imageQueue to $scope.shownImages
             var moveAnImageUrl = function() {
-                var url = $scope.imageQueue.pop();
-                $scope.shownImages.push(url);
+                $scope.currentImageUrl = $scope.imageQueue.pop();
+                $scope.shownImages.push($scope.currentImageUrl);
             };
 
             // checks if there's images in imageQueue, repopulates the queue if
