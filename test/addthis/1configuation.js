@@ -35,14 +35,13 @@ describe('addthis module', function() {
     });
 
     describe('$addthis service', function () {
-        beforeEach(inject(function (_$addthis_) {
-            $addthis = _$addthis_;
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
         }));
 
         it('should define $addthis service', function () {
             expect($addthis).toBeDefined();
         });
-
     });
 
     it('should define $addthis service and all its functions', function () {
@@ -50,11 +49,9 @@ describe('addthis module', function() {
     });
 
     describe('with no configuration', function() {
-        beforeEach(function() {
-            inject(function(_$addthis_) {
-                $addthis = _$addthis_;
-            });
-        });
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
+        }));
 
         it('should define addthis_share as an empty object', function () {
             expect(window.addthis_share).toEqual({});
@@ -78,11 +75,11 @@ describe('addthis module', function() {
                 var result = $addthisProvider.share_title(title);
                 validateAddThisProvider(result);
             });
-
-            inject(function(_$addthis_) {
-                $addthis = _$addthis_;
-            });
         });
+
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
+        }));
 
         it('should set addthis_share.title ', function () {
             expect(window.addthis_share.title).toBe(title);
@@ -98,11 +95,11 @@ describe('addthis module', function() {
                 var result = $addthisProvider.share_url(url);
                 validateAddThisProvider(result);
             });
-
-            inject(function(_$addthis_) {
-                $addthis = _$addthis_;
-            });
         });
+
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
+        }));
 
         it('should set addthis_share.url ', function () {
             expect(window.addthis_share.url).toBe(url);
@@ -118,11 +115,11 @@ describe('addthis module', function() {
                 var result = $addthisProvider.profile_id(profileId);
                 validateAddThisProvider(result);
             });
-
-            inject(function(_$addthis_) {
-                $addthis = _$addthis_;
-            });
         });
+
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
+        }));
 
         it('should set addthis_share.url ', function () {
             expect(window.addthis_config.pubid).toBe(profileId);
@@ -142,10 +139,15 @@ describe('addthis module', function() {
                 var result = $addthisProvider.share(addthis_share);
                 validateAddThisProvider(result);
             });
+        });
 
-            inject(function(_$addthis_) {
-                $addthis = _$addthis_;
-            });
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
+        }));
+
+        it('should set addthis_share ', function () {
+            //expect(window.addthis_share).not.toBe(addthis_share);
+            //expect(window.addthis_share).toEqual(addthis_share);
         });
     });
 });
