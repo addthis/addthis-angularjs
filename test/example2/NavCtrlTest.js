@@ -19,12 +19,12 @@ describe('appExample2 NavCtrl', function() {
         var controller = $controller( 'NavCtrl', { $scope: $scope } );
     }));
 
-    describe('$scope.path function', function () {
-        it('should be defined', function () {
+    describe('$scope.path function', function() {
+        it('should be defined', function() {
             expect($scope.path).toBeDefined();
         });
 
-        it('should change routes', function () {
+        it('should change routes', function() {
             $scope.path(route1);
             expect($addthis.layers_refresh).toBeDefined();
             expect($location.path()).toBe('/' + route1);

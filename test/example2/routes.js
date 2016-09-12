@@ -14,25 +14,25 @@ describe('appExample2 routes', function() {
         $route = $injector.get('$route');
     }));
 
-    describe('$addthis service', function () {
-        it('should run successfully', function () {
+    describe('$addthis service', function() {
+        it('should run successfully', function() {
             expect($addthis).toBeDefined();
         });
     });
 
-    describe('$route service', function () {
-        it('should run successfully', function () {
+    describe('$route service', function() {
+        it('should run successfully', function() {
             expect($route).toBeDefined();
         });
     });
 
-    describe('routes', function () {
-        it('should be defined', function () {
+    describe('routes', function() {
+        it('should be defined', function() {
             expect($route.routes['/Route1']).toBeDefined();
             expect($route.routes['/Route2']).toBeDefined();
         });
 
-        it('should have templateUrl defined', function () {
+        it('should have templateUrl defined', function() {
             expect($route.routes['/Route1'].templateUrl).toBeDefined();
             expect($route.routes['/Route2'].templateUrl).toBeDefined();
         });

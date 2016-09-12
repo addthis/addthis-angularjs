@@ -1,5 +1,5 @@
 /* globals describe, inject, beforeEach, expect, it */
-var validateAddThisService = function ($addthis) {
+var validateAddThisService = function($addthis) {
     expect($addthis).toBeDefined();
     expect($addthis.add).toBeDefined();
     expect($addthis.layers_refresh).toBeDefined();
@@ -10,7 +10,7 @@ var validateAddThisService = function ($addthis) {
     expect($addthis.loaded).toBeDefined();
 };
 
-var validateAddThisProvider = function ($addthisProvider) {
+var validateAddThisProvider = function($addthisProvider) {
     expect($addthisProvider).toBeDefined();
     expect($addthisProvider.profile_id).toBeDefined();
     expect($addthisProvider.config).toBeDefined();
@@ -34,18 +34,18 @@ describe('addthis module', function() {
         module('addthis');
     });
 
-    describe('$addthis service', function () {
+    describe('$addthis service', function() {
         beforeEach(inject(function($injector) {
             $addthis = $injector.get('$addthis');
         }));
 
-        it('should define $addthis service', function () {
+        it('should define $addthis service', function() {
             expect($addthis).toBeDefined();
         });
-    });
 
-    it('should define $addthis service and all its functions', function () {
-        validateAddThisService($addthis);
+        it('should define $addthis service and all its functions', function() {
+            validateAddThisService($addthis);
+        });
     });
 
     describe('with no configuration', function() {
@@ -53,15 +53,15 @@ describe('addthis module', function() {
             $addthis = $injector.get('$addthis');
         }));
 
-        it('should define addthis_share as an empty object', function () {
+        it('should define addthis_share as an empty object', function() {
             expect(window.addthis_share).toEqual({});
         });
 
-        it('should define addthis_config as an empty object', function () {
+        it('should define addthis_config as an empty object', function() {
             expect(window.addthis_config).toEqual({});
         });
 
-        it('should define addthis_plugin_info', function () {
+        it('should define addthis_plugin_info', function() {
             expect(window.addthis_plugin_info).toBeDefined();
         });
     });
@@ -81,7 +81,7 @@ describe('addthis module', function() {
             $addthis = $injector.get('$addthis');
         }));
 
-        it('should set addthis_share.title ', function () {
+        it('should set addthis_share.title ', function() {
             expect(window.addthis_share.title).toBe(title);
         });
     });
@@ -101,7 +101,7 @@ describe('addthis module', function() {
             $addthis = $injector.get('$addthis');
         }));
 
-        it('should set addthis_share.url ', function () {
+        it('should set addthis_share.url ', function() {
             expect(window.addthis_share.url).toBe(url);
         });
     });
@@ -121,7 +121,7 @@ describe('addthis module', function() {
             $addthis = $injector.get('$addthis');
         }));
 
-        it('should set addthis_share.url ', function () {
+        it('should set addthis_share.url ', function() {
             expect(window.addthis_config.pubid).toBe(profileId);
         });
     });
@@ -145,7 +145,7 @@ describe('addthis module', function() {
             $addthis = $injector.get('$addthis');
         }));
 
-        it('should set addthis_share ', function () {
+        it('should set addthis_share ', function() {
             //expect(window.addthis_share).not.toBe(addthis_share);
             //expect(window.addthis_share).toEqual(addthis_share);
         });
