@@ -298,10 +298,7 @@ appExample3.controller(
                         // queues up the image
                         $scope.imageQueue.push(url);
                     });
-                    console.log('julkatest1', $scope.imageQueue);
                     return response;
-                }, function(fail) {
-                    console.log('julkatest2', fail);
                 });
             };
 
