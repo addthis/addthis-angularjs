@@ -14,18 +14,14 @@ describe('appExample3 AddThisShareChangesCtrl', function() {
         module('appExample3');
     });
 
-    beforeEach(inject(function(_$controller_, _$rootScope_, _$addthis_, _$state_) {
-        $addthis = _$addthis_;
-        $state = _$state_;
-        $scope = _$rootScope_.$new();
+    beforeEach(inject(function($injector) {
+        var $controller = $injector.get('$controller');
+        $state = $injector.get('$state');
+        $addthis = $injector.get('$addthis');
 
-        var $controller = _$controller_;
-        controller = $controller(
-            'AddThisShareChangesCtrl',
-            {
-                $scope: $scope
-            }
-        );
+        var $rootScope = $injector.get('$rootScope');
+        $scope = $rootScope.$new();
+        controller = $controller('AddThisShareChangesCtrl', { $scope: $scope });
     }));
 
     afterEach(function() {

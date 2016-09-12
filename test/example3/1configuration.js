@@ -9,8 +9,8 @@ describe('appExample3 configuration', function() {
     });
 
     describe('$addthis service', function () {
-        beforeEach(inject(function (_$addthis_) {
-            $addthis = _$addthis_;
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
         }));
 
         it('should define $addthis service', function () {

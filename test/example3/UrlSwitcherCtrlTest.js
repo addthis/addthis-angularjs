@@ -11,9 +11,13 @@ describe('appExample3 UrlSwitcherCtrl', function() {
         module('appExample3');
     });
 
-    beforeEach(inject(function(_$controller_){
-        $controller = _$controller_;
+    beforeEach(function() {
+        module('appExample3');
         $scope = {};
+    });
+
+    beforeEach(inject(function($injector) {
+        $controller = $injector.get('$controller');
         controller = $controller('UrlSwitcherCtrl', { $scope: $scope });
     }));
 

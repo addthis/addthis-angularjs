@@ -3,6 +3,7 @@
 describe('appExample2 NavCtrl', function() {
     var $scope;
     var $controller;
+    var controller;
     var $addthis;
     var $route;
     var $location;
@@ -12,32 +13,22 @@ describe('appExample2 NavCtrl', function() {
 
     beforeEach(function() {
         module('appExample2');
+        $scope = {};
     });
 
-    beforeEach(inject(function (_$addthis_, _$route_, _$location_, _$rootScope_) {
-        $addthis = _$addthis_;
-
-        $route = _$route_;
-        $location = _$location_;
-        $rootScope = _$rootScope_;
-    }));
-
-    beforeEach(inject(function(_$controller_){
-        $scope = {};
-        $controller = _$controller_(
-            'NavCtrl',
-            {
-                $scope: $scope//,
-                //$addthis: $addthis
-            }
-        );
+    beforeEach(inject(function($injector) {
+        $addthis = $injector.get('$addthis');
+        $route = $injector.get('$route');
+        $location = $injector.get('$location');
+        $rootScope = $injector.get('$rootScope');
+        $controller = $injector.get('$controller');
+        controller = $controller( 'NavCtrl', { $scope: $scope } );
     }));
 
     describe('$scope.path function', function () {
         it('should be defined', function () {
             expect($scope.path).toBeDefined();
         });
-
 
         it('should change routes', function () {
             $scope.path(route1);

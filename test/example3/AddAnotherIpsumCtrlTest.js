@@ -7,11 +7,12 @@ describe('appExample3 AddAnotherIpsumCtrl', function() {
 
     beforeEach(function() {
         module('appExample3');
+        $scope = {};
     });
 
-    beforeEach(inject(function(_$controller_){
-        $controller = _$controller_;
-        $scope = {};
+
+    beforeEach(inject(function($injector) {
+        $controller = $injector.get('$controller');
         controller = $controller('AddAnotherIpsumCtrl', { $scope: $scope });
     }));
 

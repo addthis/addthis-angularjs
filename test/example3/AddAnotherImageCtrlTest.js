@@ -12,12 +12,12 @@ describe('appExample3 AddAnotherImageCtrl', function() {
 
     beforeEach(function() {
         module('appExample3');
+        $scope = {};
     });
 
-    beforeEach(inject(function(_$controller_, _$httpBackend_, _$rootScope_){
-        $controller = _$controller_;
-        $scope = {};
-        $httpBackend = _$httpBackend_;
+    beforeEach(inject(function($injector) {
+        $controller = $injector.get('$controller');
+        $httpBackend = $injector.get('$httpBackend');
 
         theCatApiRequestHandler = $httpBackend.when('GET', theCatApiUrl)
         .respond(200, theCatApiResponse);

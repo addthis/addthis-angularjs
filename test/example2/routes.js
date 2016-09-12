@@ -11,11 +11,12 @@ describe('appExample2 routes', function() {
         module('appExample2');
     });
 
-    beforeEach(inject(function (_$addthis_, _$route_, _$location_, _$rootScope_) {
-        $addthis = _$addthis_;
-        $route = _$route_;
-        $location = _$location_;
-        $rootScope = _$rootScope_;
+
+    beforeEach(inject(function($injector) {
+        $addthis = $injector.get('$addthis');
+        $route = $injector.get('$route');
+        $location = $injector.get('$location');
+        $rootScope = $injector.get('$rootScope');
     }));
 
     describe('$addthis service', function () {

@@ -8,8 +8,8 @@ describe('appExample2 configuration', function() {
         module('appExample2');
     });
 
-    beforeEach(inject(function (_$addthis_) {
-        $addthis = _$addthis_;
+    beforeEach(inject(function($injector) {
+        $addthis = $injector.get('$addthis');
     }));
 
     describe('$addthis service', function () {
