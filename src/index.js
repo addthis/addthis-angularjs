@@ -51,7 +51,7 @@ var addthisModule = (function(window, angular) {
      **/
     var checkForScript = function(document) {
         var scriptOnPage = false;
-        var selector = 'script[src$="addthis_widget.js"]';
+        var selector = 'script[src*="addthis_widget.js"]';
         var matches = document.querySelectorAll(selector);
         if(matches.length > 0) {
             scriptOnPage = true;
@@ -90,7 +90,8 @@ var addthisModule = (function(window, angular) {
         script.src = url;
 
         // append SCRIPT element
-        if(!scriptInFooter && document.head) {
+
+        if(scriptInFooter !== true && typeof document.head === 'object') {
             document.head.appendChild(script);
         } else {
             document.body.appendChild(script);
