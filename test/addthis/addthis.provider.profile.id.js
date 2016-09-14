@@ -47,7 +47,7 @@ describe('$addthisProvider configure profile id', function() {
             module(function($addthisProvider) {
                 validateAddThisProvider($addthisProvider);
                 var result = $addthisProvider.config(addthis_config);
-                validateAddThisProvider(result);
+                expect(result).toEqual(addthis_config);
             });
         });
 

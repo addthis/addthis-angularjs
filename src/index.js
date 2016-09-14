@@ -630,11 +630,11 @@ var addthisModule = (function(window, angular) {
          * @param {object} input AddThis configuration object. See
          *   <a href="https://www.addthis.com/academy/the-addthis_config-variable/" target="_blank">
          *   the addthis_config variable documentation</a> for options.
-         * @returns {addthisProvider object} Returns the $addthisProvider object
+         * @returns {object} Returns addthis configuration object
          **/
         this.config = function(input) {
             setAddThisConfig(input);
-            return this;
+            return angular.copy(addthis_config);
         };
 
         /**
