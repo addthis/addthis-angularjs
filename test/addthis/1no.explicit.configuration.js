@@ -1,4 +1,4 @@
-/* globals describe, inject, beforeEach, expect, it */
+/* globals describe, inject, beforeEach, afterEach, expect, it, spyOn */
 
 beforeEach(function() {
     delete window.addthis_share;
