@@ -10,7 +10,7 @@ var addthisModule = (function(window, angular) {
     var scriptInFooter = true;
 
     // Variable for tracking the profile ID for the site
-    var profileId;
+    var profileId = false;
 
     // Variable fro tracking the provided `addthis_config` settings before
     // `addthis_widget.js` has a chance to change them. For documentation on
@@ -586,13 +586,14 @@ var addthisModule = (function(window, angular) {
          *
          * @param {string} input The AddThis profile ID to use on this
          *   site.
-         * @returns {addthisProvider object} Returns the $addthisProvider object
-         * loaded
+         * @returns {boolean|string} Returns the profile id or false if not set
          **/
         this.profile_id = function(input) {
-            profileId = input;
-            addthis_config.pubid = input;
-            return this;
+            if (typeof input !== 'undefined') {
+                profileId = input;
+                addthis_config.pubid = input;
+            }
+            return profileId;
         };
 
         /**
