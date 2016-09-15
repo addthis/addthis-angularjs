@@ -402,7 +402,7 @@ var addthisModule = (function(window, angular) {
              *   and a profile ID was set elsewhere
              **/
             config: function(input) {
-                var configCopy = setAddThisConfig();
+                var configCopy = setAddThisConfig(input);
                 queueSmartLayersRefresh($window, $interval);
                 return configCopy;
             },
