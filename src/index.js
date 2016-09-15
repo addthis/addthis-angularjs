@@ -187,9 +187,9 @@ var addthisModule = (function(window, angular) {
      **/
     var setAddThisConfig = function(input) {
         if (typeof input === 'object') {
-            if (addthis_config.pubid) {
+            if (input.pubid) {
                 // grab the profile ID for reuse, if provided this way
-                profileId = addthis_config.pubid;
+                profileId = input.pubid;
             }
 
             // `addthis_config.ignore_server_config` means profile ID settings
