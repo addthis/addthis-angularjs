@@ -466,10 +466,15 @@ var addthisModule = (function(window, angular) {
              *
              * @param {string} url The URL to share when a user clicks on share
              *   buttons that don't otherwise speicfy a share URL
+             * @returns {mixed} a copy of the `addthis_share` url variable on
+             * the page, usually a string
              **/
             share_url: function(url) {
-                setShareUrl(url);
-                queueSmartLayersRefresh($window, $interval);
+                if (typeof url !== 'undefined') {
+                    setShareUrl(url);
+                    queueSmartLayersRefresh($window, $interval);
+                }
+                return addthis_share.url;
             },
             /**
              * @ngdoc method
