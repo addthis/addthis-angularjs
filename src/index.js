@@ -194,7 +194,7 @@ var addthisModule = (function(window, angular) {
 
             // `addthis_config.ignore_server_config` means profile ID settings
             // will be ignored.
-            if (addthis_config.ignore_server_config) {
+            if (input.ignore_server_config) {
                 addthis_plugin_info.plugin_mode = 'Local';
             } else {
                 addthis_plugin_info.plugin_mode = 'AddThis';
