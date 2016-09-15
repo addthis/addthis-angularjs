@@ -23,9 +23,17 @@ describe('addthis_share', function() {
 
         beforeEach(function() {
             module(function($addthisProvider) {
+                var newProfileId = $addthisProvider.profile_id(false);
+                expect(newProfileId).toBe(false);
+                var configCopy = $addthisProvider.config({});
+                expect(configCopy).toEqual({});
+                var shareCopy = $addthisProvider.share({});
+                expect(shareCopy).toEqual({});
+
                 validateAddThisProvider($addthisProvider);
-                var result = $addthisProvider.share_title(title);
-                validateAddThisProvider(result);
+                var titleResult = $addthisProvider.share_title(title);
+
+                expect(titleResult).toBe(title);
             });
         });
 
@@ -44,8 +52,8 @@ describe('addthis_share', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
                 validateAddThisProvider($addthisProvider);
-                var result = $addthisProvider.share_url(url);
-                validateAddThisProvider(result);
+                var urlResult = $addthisProvider.share_url(url);
+                expect(urlResult).toBe(url);
             });
         });
 
