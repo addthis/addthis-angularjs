@@ -435,12 +435,12 @@ var addthisModule = (function(window, angular) {
              *   <a href="https://www.addthis.com/academy/the-addthis_share-variable/" target="_blank">
              *   the addthis_share variable documentation</a> for options.
              * @returns {object} a copy of the `addthis_share` variable on the
-             *   page with an added pubid property if it wasn't set in the input
-             *   and a profile ID was set elsewhere
+             *   page
              **/
             share: function(input) {
-                setAddThisShare(input);
+                var shareCopy = setAddThisShare(input);
                 queueSmartLayersRefresh($window, $interval);
+                return shareCopy;
             },
             /**
              * @ngdoc method
@@ -660,14 +660,14 @@ var addthisModule = (function(window, angular) {
          * });
          * ```
          *
-         * @param {object} input AddThis configuration object. See
+         * @param {object} input AddThis share object. See
          *   <a href="https://www.addthis.com/academy/the-addthis_share-variable/" target="_blank">
          *   the addthis_share variable documentation</a> for options.
-         * @returns {addthisProvider object} Returns the $addthisProvider object
+         * @returns {object} Returns addthis share configuration object
          **/
-        this.share = function(addthis_share) {
-            setAddThisShare(addthis_config);
-            return this;
+        this.share = function(input) {
+            var shareCopy = setAddThisShare(input);
+            return shareCopy;
         };
 
        /**
