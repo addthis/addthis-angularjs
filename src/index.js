@@ -717,11 +717,14 @@ var addthisModule = (function(window, angular) {
          *
          * @param {string} url The URL to share when a user clicks on share
          *   buttons that don't otherwise speicfy a share URL
-         * @returns {addthisProvider object} Returns the $addthisProvider object
+         * @returns {mixed} a copy of the `addthis_share` url variable on
+         * the page, usually a string
          **/
         this.share_url = function(url) {
-            setShareUrl(url);
-            return this;
+            if (typeof url !== 'undefined') {
+                setShareUrl(url);
+            }
+            return addthis_share.url;
         };
 
         /**
