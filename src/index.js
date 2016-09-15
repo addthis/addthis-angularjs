@@ -401,8 +401,9 @@ var addthisModule = (function(window, angular) {
              *   and a profile ID was set elsewhere
              **/
             config: function(input) {
-                setAddThisConfig();
+                var configCopy = setAddThisConfig();
                 queueSmartLayersRefresh($window, $interval);
+                return configCopy;
             },
             /**
              * @ngdoc method
@@ -630,11 +631,11 @@ var addthisModule = (function(window, angular) {
          * @param {object} input AddThis configuration object. See
          *   <a href="https://www.addthis.com/academy/the-addthis_config-variable/" target="_blank">
          *   the addthis_config variable documentation</a> for options.
-         * @returns {object} Returns addthis configuration object
+         * @returns {object} Returns addthis general configuration object
          **/
         this.config = function(input) {
-            setAddThisConfig(input);
-            return angular.copy(addthis_config);
+            var configCopy = setAddThisConfig(input);
+            return configCopy;
         };
 
         /**
