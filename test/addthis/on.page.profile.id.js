@@ -50,12 +50,12 @@ describe('profile id', function() {
             expect(window.addthis_config.pubid).toBe(profileId);
         });
 
-        it('should be added into an empty addthis_config', function() {
+        it('should be added into an empty addthis_config via $addthis service', function() {
             var config = $addthis.config({});
             expect(config.pubid).toBe(profileId);
         });
 
-        it('should be added into a non-empty addthis_config that does not have pubid set', function() {
+        it('should be added into a non-empty addthis_config that does not have pubid set via $addthis service', function() {
             var config = $addthis.config({'foo': 'bar'});
             expect(config.pubid).toBe(profileId);
             expect(config.foo).toBe('bar');

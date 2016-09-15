@@ -31,8 +31,11 @@ describe('addthis_share', function() {
                 expect(shareCopy).toEqual({});
 
                 validateAddThisProvider($addthisProvider);
-                var titleResult = $addthisProvider.share_title(title);
 
+                var titleResult = $addthisProvider.share_title(title);
+                expect(titleResult).toBe(title);
+
+                titleResult = $addthisProvider.share_title();
                 expect(titleResult).toBe(title);
             });
         });
@@ -53,6 +56,9 @@ describe('addthis_share', function() {
             module(function($addthisProvider) {
                 validateAddThisProvider($addthisProvider);
                 var urlResult = $addthisProvider.share_url(url);
+                expect(urlResult).toBe(url);
+
+                urlResult = $addthisProvider.share_url();
                 expect(urlResult).toBe(url);
             });
         });
