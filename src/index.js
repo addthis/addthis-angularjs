@@ -190,9 +190,6 @@ var addthisModule = (function(window, angular) {
             if (addthis_config.pubid) {
                 // grab the profile ID for reuse, if provided this way
                 profileId = addthis_config.pubid;
-            } else if (profileId) {
-                // use the configured profile ID if not provided in the input
-                addthis_config.pubid = profileId;
             }
 
             // `addthis_config.ignore_server_config` means profile ID settings
@@ -204,6 +201,10 @@ var addthisModule = (function(window, angular) {
             }
 
             addthis_config = angular.copy(input);
+
+            if (profileId) {
+                addthis_config.pubid = profileId;
+            }
         }
 
         return angular.copy(addthis_config);
