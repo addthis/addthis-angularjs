@@ -540,6 +540,19 @@ var addthisModule = (function(window, angular) {
              **/
             loaded: function() {
                 return scriptLoaded($window, $q, $interval);
+            },
+            /**
+             * @ngdoc method
+             * @name addthis.$addthis#profile_id
+             * @methodOf addthis.$addthis
+             *
+             * @description
+             * Returns the profile id used on this site
+             *
+             * @returns {string|boolen} false if no profile id set
+             **/
+            profile_id: function() {
+                return profileId;
             }
         };
 
