@@ -856,9 +856,35 @@ var addthisModule = (function(window, angular) {
      * run to the Angular app
      **/
     var addthisRun = function($window, $rootScope, $location, $interval) {
+        if (Object.keys(addthis_config).length === 0 &&
+            typeof $window.addthis_config === 'object' &&
+            Object.keys($window.addthis_config).length !== 0
+        ) {
+            // if the user didn't set any general configuration options through
+            // the module and window.addthis_config looks right on page and has
+            // something in it use it
+            addthis_config = angular.copy($window.addthis_config);
+            if (addthis_config.pubid) {
+                profileId = addthis_config.pubid;
+            }
+        } else {
+            // else use what we've build through the
+            $window.addthis_config = angular.copy(addthis_config);
+        }
+
+        if (Object.keys(addthis_share).length === 0 &&
+            typeof $window.addthis_share === 'object' &&
+            Object.keys($window.addthis_share).length !== 0
+        ) {
+            // if the user didn't set any share configuration options through
+            // the module and window.addthis_config looks right on page and has
+            // something in it use it
+            addthis_share = angular.copy($window.addthis_share);
+        } else {
+            $window.addthis_share = angular.copy(addthis_share);
+        }
+
         $window.addthis_plugin_info = addthis_plugin_info;
-        $window.addthis_config = angular.copy(addthis_config);
-        $window.addthis_share = angular.copy(addthis_share);
 
         // if auto add hasn't been disabled, auto add
         if (autoAddScript) {
