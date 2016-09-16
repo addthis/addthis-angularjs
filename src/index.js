@@ -35,9 +35,7 @@ var addthisModule = (function(window, angular) {
         plugin_mode    : 'AddThis'
     };
 
-    if (angular.version && angular.version.full) {
-        addthis_plugin_info.cms_version = angular.version.full;
-    }
+    addthis_plugin_info.cms_version = angular.version.full;
 
     /*
      * @private
