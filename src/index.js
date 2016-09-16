@@ -566,8 +566,7 @@ var addthisModule = (function(window, angular) {
      **/
     var addthisProvider = function($windowProvider) {
         var window = $windowProvider.$get();
-
-        if (window.addthis_config) {
+        if (typeof window.addthis_config === 'object') {
             addthis_config = angular.copy(window.addthis_config);
         }
 
