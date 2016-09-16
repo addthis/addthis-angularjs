@@ -1,8 +1,8 @@
 /* globals describe, inject, beforeEach, afterEach, expect, it, spyOn */
 
-describe('script placement configurations', function() {
-   'use strict';
+'use strict';
 
+describe('script placement configurations', function() {
     var $addthis;
     var addthisWidgetUrl = 'https://s7.addthis.com/js/300/addthis_widget.js';
 
@@ -32,27 +32,20 @@ describe('script placement configurations', function() {
         expect(headerMatches.length).toBe(0);
     };
 
-    var validateAddThisProvider = function($addthisProvider) {
-        expect($addthisProvider).toBeDefined();
-        expect($addthisProvider.profile_id).toBeDefined();
-        expect($addthisProvider.config).toBeDefined();
-        expect($addthisProvider.share).toBeDefined();
-        expect($addthisProvider.share_url).toBeDefined();
-        expect($addthisProvider.share_title).toBeDefined();
-        expect($addthisProvider.disable_auto_add).toBeDefined();
-        expect($addthisProvider.enable_auto_add).toBeDefined();
-        expect($addthisProvider.script_in_head).toBeDefined();
-        expect($addthisProvider.$get).toBeDefined();
-    };
-
     beforeEach(function() {
         module(function($addthisProvider) {
-            validateAddThisProvider($addthisProvider);
+            // cleanup after last tests
+            var newProfileId, configCopy, shareCopy;
+            newProfileId = $addthisProvider.profile_id(false);
+            expect(newProfileId).toBe(false);
+            configCopy = $addthisProvider.config({});
+            expect(configCopy).toEqual({});
+            shareCopy = $addthisProvider.share({});
+            expect(shareCopy).toEqual({});
+
             removeAddThisScriptFromPage();
-            var result = $addthisProvider.script_in_head();
-            validateAddThisProvider(result);
-            //window.addthis_config.pubid = 'foo';
-            var newProfileId = $addthisProvider.profile_id('foo');
+            $addthisProvider.script_in_head();
+            newProfileId = $addthisProvider.profile_id('foo');
             expect(newProfileId).toBe('foo');
         });
     });
@@ -81,25 +74,5 @@ describe('script placement configurations', function() {
         $addthis.add();
         var headerMatches = findAddThisScriptOnPage(true);
         expect(headerMatches.length).toBe(1);
-    });
-
-});
-
-describe('cleanup:', function() {
-    var $addthis;
-    beforeEach(function() {
-        module(function($addthisProvider) {
-            var newProfileId = $addthisProvider.profile_id(false);
-            var newConfigs = $addthisProvider.config({});
-            expect(newProfileId).toBe(false);
-        });
-    });
-
-    beforeEach(inject(function($injector) {
-        $addthis = $injector.get('$addthis');
-    }));
-
-    it('reset profile id in $addthisProvider', function() {
-        expect(1).toBe(1);
     });
 });

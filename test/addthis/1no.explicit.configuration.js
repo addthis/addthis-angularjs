@@ -1,5 +1,7 @@
 /* globals describe, inject, beforeEach, afterEach, expect, it, spyOn */
 
+'use strict';
+
 beforeEach(function() {
     delete window.addthis_share;
     delete window.addthis_config;
@@ -10,22 +12,22 @@ beforeEach(function() {
 });
 
 describe('with no explicit configuration', function() {
-   'use strict';
-
     var $addthis;
     var $document;
     var $window;
     var addthisWidgetUrl = 'https://s7.addthis.com/js/300/addthis_widget.js';
 
     var findAddThisScriptOnPage = function(header) {
-        var parentSelector;
+        //var foo;
+        var addthisWidgetSelector;
         if (header === true) {
-            parentSelector = 'head';
+            //foo = document.head;
+            addthisWidgetSelector = 'script[src*="addthis_widget.js"]';
         } else {
-            parentSelector = 'body';
+            //foo = document;
+            addthisWidgetSelector = 'body script[src*="addthis_widget.js"]';
         }
 
-        var addthisWidgetSelector = parentSelector+' '+'script[src$="addthis_widget.js"]';
         var matches = document.querySelectorAll(addthisWidgetSelector);
         return matches;
     };

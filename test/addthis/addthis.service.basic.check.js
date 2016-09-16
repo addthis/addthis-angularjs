@@ -2,20 +2,21 @@
 
 'use strict';
 
-var $addthis;
+describe('addthis service', function() {
 
-var validateAddThisService = function($addthis) {
-    expect($addthis).toBeDefined();
-    expect($addthis.add).toBeDefined();
-    expect($addthis.layers_refresh).toBeDefined();
-    expect($addthis.config).toBeDefined();
-    expect($addthis.share).toBeDefined();
-    expect($addthis.share_url).toBeDefined();
-    expect($addthis.share_title).toBeDefined();
-    expect($addthis.loaded).toBeDefined();
-};
+    var $addthis;
 
-describe('addthis module', function() {
+    var validateAddThisService = function($addthis) {
+        expect($addthis).toBeDefined();
+        expect($addthis.add).toBeDefined();
+        expect($addthis.layers_refresh).toBeDefined();
+        expect($addthis.config).toBeDefined();
+        expect($addthis.share).toBeDefined();
+        expect($addthis.share_url).toBeDefined();
+        expect($addthis.share_title).toBeDefined();
+        expect($addthis.loaded).toBeDefined();
+    };
+
     beforeEach(inject(function($injector) {
         $addthis = $injector.get('$addthis');
     }));

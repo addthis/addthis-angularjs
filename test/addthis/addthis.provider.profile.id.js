@@ -2,30 +2,24 @@
 
 'use strict';
 
-var validateAddThisProvider = function($addthisProvider) {
-    expect($addthisProvider).toBeDefined();
-    expect($addthisProvider.profile_id).toBeDefined();
-    expect($addthisProvider.config).toBeDefined();
-    expect($addthisProvider.share).toBeDefined();
-    expect($addthisProvider.share_url).toBeDefined();
-    expect($addthisProvider.share_title).toBeDefined();
-    expect($addthisProvider.disable_auto_add).toBeDefined();
-    expect($addthisProvider.enable_auto_add).toBeDefined();
-    expect($addthisProvider.script_in_head).toBeDefined();
-    expect($addthisProvider.$get).toBeDefined();
-};
-
 describe('$addthisProvider configure profile id', function() {
     var $addthis;
     var profileId = 'ra-57b71bceb3ebb9df';
 
     describe('using $addthisProvider.profile_id', function() {
-
         beforeEach(function() {
             module(function($addthisProvider) {
-                validateAddThisProvider($addthisProvider);
-                var result = $addthisProvider.profile_id(profileId);
-                expect(result).toBe(profileId);
+                // cleanup after last tests
+                var newProfileId, configCopy, shareCopy;
+                newProfileId = $addthisProvider.profile_id(false);
+                expect(newProfileId).toBe(false);
+                configCopy = $addthisProvider.config({});
+                expect(configCopy).toEqual({});
+                shareCopy = $addthisProvider.share({});
+                expect(shareCopy).toEqual({});
+
+                newProfileId = $addthisProvider.profile_id(profileId);
+                expect(newProfileId).toBe(profileId);
             });
         });
 
@@ -45,7 +39,6 @@ describe('$addthisProvider configure profile id', function() {
 
         beforeEach(function() {
             module(function($addthisProvider) {
-                validateAddThisProvider($addthisProvider);
                 var result = $addthisProvider.config(addthis_config);
                 expect(result).toEqual(addthis_config);
             });

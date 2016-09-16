@@ -1,40 +1,27 @@
 /* globals describe, inject, beforeEach, afterEach, expect, it, spyOn */
 
-var validateAddThisProvider = function($addthisProvider) {
-    expect($addthisProvider).toBeDefined();
-    expect($addthisProvider.profile_id).toBeDefined();
-    expect($addthisProvider.config).toBeDefined();
-    expect($addthisProvider.share).toBeDefined();
-    expect($addthisProvider.share_url).toBeDefined();
-    expect($addthisProvider.share_title).toBeDefined();
-    expect($addthisProvider.disable_auto_add).toBeDefined();
-    expect($addthisProvider.enable_auto_add).toBeDefined();
-    expect($addthisProvider.script_in_head).toBeDefined();
-    expect($addthisProvider.$get).toBeDefined();
-};
+'use strict';
 
 describe('addthis_share', function() {
-   'use strict';
-
     var $addthis;
+    var title = 'hello world';
+    var url = 'https://www.addthis.com';
 
     describe('configuring title $addthisProvider.share_title', function() {
-        var title = 'hello world';
-
         beforeEach(function() {
             module(function($addthisProvider) {
-                var newProfileId = $addthisProvider.profile_id(false);
+                // cleanup after last tests
+                var newProfileId, configCopy, shareCopy;
+                newProfileId = $addthisProvider.profile_id(false);
                 expect(newProfileId).toBe(false);
-                var configCopy = $addthisProvider.config({});
+                configCopy = $addthisProvider.config({});
                 expect(configCopy).toEqual({});
-                var shareCopy = $addthisProvider.share({});
+                shareCopy = $addthisProvider.share({});
                 expect(shareCopy).toEqual({});
 
-                validateAddThisProvider($addthisProvider);
-
-                var titleResult = $addthisProvider.share_title(title);
+                var titleResult;
+                titleResult = $addthisProvider.share_title(title);
                 expect(titleResult).toBe(title);
-
                 titleResult = $addthisProvider.share_title();
                 expect(titleResult).toBe(title);
             });
@@ -50,14 +37,20 @@ describe('addthis_share', function() {
     });
 
     describe('configuring url with $addthisProvider.share_url', function() {
-        var url = 'https://www.addthis.com';
-
         beforeEach(function() {
             module(function($addthisProvider) {
-                validateAddThisProvider($addthisProvider);
-                var urlResult = $addthisProvider.share_url(url);
-                expect(urlResult).toBe(url);
+                // cleanup after last tests
+                var newProfileId, configCopy, shareCopy;
+                newProfileId = $addthisProvider.profile_id(false);
+                expect(newProfileId).toBe(false);
+                configCopy = $addthisProvider.config({});
+                expect(configCopy).toEqual({});
+                shareCopy = $addthisProvider.share({});
+                expect(shareCopy).toEqual({});
 
+                var urlResult;
+                urlResult = $addthisProvider.share_url(url);
+                expect(urlResult).toBe(url);
                 urlResult = $addthisProvider.share_url();
                 expect(urlResult).toBe(url);
             });
@@ -69,6 +62,37 @@ describe('addthis_share', function() {
 
         it('should set addthis_share.url ', function() {
             expect(window.addthis_share.url).toBe(url);
+        });
+    });
+
+    describe('configuring title & url with $addthisProvider.share', function() {
+        var shareConfig = {
+            'url': url,
+            'title': title
+        };
+
+        beforeEach(function() {
+            module(function($addthisProvider) {
+                // cleanup after last tests
+                var newProfileId, configCopy, shareCopy;
+                newProfileId = $addthisProvider.profile_id(false);
+                expect(newProfileId).toBe(false);
+                configCopy = $addthisProvider.config({});
+                expect(configCopy).toEqual({});
+                shareCopy = $addthisProvider.share({});
+                expect(shareCopy).toEqual({});
+
+                shareCopy = $addthisProvider.share(shareConfig);
+                expect(shareCopy).toEqual(shareConfig);
+            });
+        });
+
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
+        }));
+
+        it('should set addthis_share.config with url & title', function() {
+            expect(window.addthis_share).toEqual(shareConfig);
         });
     });
 });
