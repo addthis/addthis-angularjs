@@ -852,7 +852,7 @@ var addthisModule = (function(window, angular) {
      * All these params must also show up in the same order when adding the
      * run to the Angular app
      **/
-    var addthisRun = function($window, $rootScope, $location, $interval) {
+    var addthisRun = function($window, $rootScope, $addthis) {
         if (Object.keys(addthis_config).length === 0 &&
             typeof $window.addthis_config === 'object' &&
             Object.keys($window.addthis_config).length !== 0
@@ -893,7 +893,7 @@ var addthisModule = (function(window, angular) {
             '$locationChangeSuccess',
             function(event, next, current) {
                 if (next !== current) {
-                    queueSmartLayersRefresh($window, $interval);
+                    $addthis.layers_refresh();
                 }
             }
         );
@@ -1033,8 +1033,7 @@ var addthisModule = (function(window, angular) {
     addthisModule.run([
         '$window',
         '$rootScope',
-        '$location',
-        '$interval',
+        '$addthis',
         addthisRun
     ]);
 
