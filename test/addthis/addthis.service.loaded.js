@@ -2,44 +2,73 @@
 
 'use strict';
 
-describe('$addthis.loaded()', function() {
+describe('$addthis.loaded', function() {
     var $addthis;
-    var $rootScope;
-    var $q;
     var $interval;
-    var $window;
+    var $rootScope;
     var originalTimeout;
-    var callbackSuccessful;
 
     beforeEach(function() {
         module(function($addthisProvider) {
-            // cleanup after last tests
-            var newProfileId, configCopy, shareCopy;
-            newProfileId = $addthisProvider.profile_id(false);
+            var newProfileId = $addthisProvider.profile_id(false);
             expect(newProfileId).toBe(false);
-            configCopy = $addthisProvider.config({});
+            var configCopy = $addthisProvider.config({});
             expect(configCopy).toEqual({});
-            shareCopy = $addthisProvider.share({});
+            var shareCopy = $addthisProvider.share({});
             expect(shareCopy).toEqual({});
         });
     });
 
     beforeEach(inject(function($injector) {
         $addthis = $injector.get('$addthis');
-        $rootScope = $injector.get('$rootScope');
-        $q = $injector.get('$q');
         $interval = $injector.get('$interval');
-        $window = $injector.get('$window');
-        var spyonme = {
-            'callback': function() {
-                callbackSuccessful = true;
-            }
-        };
-        spyOn(spyonme, 'callback');
+        $rootScope = $injector.get('$rootScope');
     }));
 
     it('should return a promise', function() {
-        var loadedPromise = $addthis.loaded();
-        expect(typeof loadedPromise).toBe('object');
+        var promise1 = $addthis.loaded();
+        expect(typeof promise1).toBe('object');
+        expect(promise1.then).toBeDefined();
+    });
+
+    it('should resolve promise using $interval after window.addthis is defined', function(done) {
+        var promise1 = $addthis.loaded();
+        promise1.then(function(addthis) {
+            expect(addthis).toBe(window.addthis);
+            done();
+        });
+
+        window.addthis = { layers: { refresh: function() {} } };
+        $interval.flush(200);
+    });
+
+    it('should return same promise if called twice before being resolved', function() {
+        var promise1 = $addthis.loaded();
+        var promise2 = $addthis.loaded();
+        expect(promise1).toBe(promise2);
+    });
+
+    it('should return same promise if called once before being resolved and once after', function(done) {
+        var promise1 = $addthis.loaded();
+        promise1.then(function(addthis) {
+            var promise2 = $addthis.loaded();
+            expect(promise1).toBe(promise2);
+            done();
+        });
+
+        window.addthis = { layers: { refresh: function() {} } };
+        $interval.flush(200);
+    });
+
+    it('should resolve promise without using $interval if called after window.addthis is defined', function(done) {
+        window.addthis = { layers: { refresh: function() {} } };
+
+        var promise1 = $addthis.loaded();
+        promise1.then(function(addthis) {
+            expect(addthis).toBe(window.addthis);
+            done();
+        });
+
+        $rootScope.$digest();
     });
 });
