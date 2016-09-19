@@ -313,6 +313,9 @@ var addthisModule = (function(window, angular) {
      * A service for handling AddThis actions once your app is running.
      **/
     var addthisService = function($window, $q, $interval) {
+        // resetting when bootstrapping the serivce... for unit tests
+        load.promise = false;
+
         var service = {
             /**
              * @ngdoc method
