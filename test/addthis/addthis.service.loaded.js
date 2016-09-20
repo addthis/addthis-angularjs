@@ -38,7 +38,7 @@ describe('$addthis.loaded', function() {
             done();
         });
 
-        window.addthis = { layers: { refresh: function() {} } };
+        window.addthis = { layers: { refresh: function(url, title) {}, lastViewRegistered: 0 } };
         $interval.flush(200);
     });
 
@@ -56,12 +56,12 @@ describe('$addthis.loaded', function() {
             done();
         });
 
-        window.addthis = { layers: { refresh: function() {} } };
+        window.addthis = { layers: { refresh: function(url, title) {}, lastViewRegistered: 0 } };
         $interval.flush(200);
     });
 
     it('should resolve promise without using $interval if called after window.addthis is defined', function(done) {
-        window.addthis = { layers: { refresh: function() {} } };
+        window.addthis = { layers: { refresh: function(url, title) {}, lastViewRegistered: 0 } };
 
         var promise1 = $addthis.loaded();
         promise1.then(function(addthis) {
