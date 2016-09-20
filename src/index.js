@@ -309,6 +309,8 @@ var addthisModule = (function(window, angular) {
     var addthisService = function($window, $q, $interval) {
         // resetting when bootstrapping the serivce... for unit tests
         load.promise = false;
+        smartLayersRefreshRequest.pending = false;
+        smartLayersRefreshRequest.lastTs = 0;
 
         var service = {
             /**
