@@ -36,13 +36,24 @@ module.exports = function(config) {
 
     coverageReporter: {
       type : 'html',
-      dir : 'coverage/addthis/'
+      dir : 'reports/coverage/addthis/'
+    },
+
+    htmlReporter: {
+      outputFile: 'reports/addthis.karma-htmlfile-reporter.html',
+
+      // Optional
+      pageTitle: 'Unit Tests',
+      subPageTitle: 'addthis-angular module',
+      groupSuites: true,
+      useCompactStyle: true,
+      useLegacyStyle: true
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['progress', 'html', 'coverage'],
 
 
     // web server port
