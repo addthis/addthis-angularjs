@@ -49,6 +49,8 @@ describe('addthis_config', function() {
 
                 newProfileId = $addthisProvider.profile_id(profileId);
                 expect(newProfileId).toBe(profileId);
+                newProfileId = $addthisProvider.profile_id();
+                expect(newProfileId).toBe(profileId);
                 configCopy = $addthisProvider.config({});
                 expect(configCopy).toEqual({'pubid': profileId});
 

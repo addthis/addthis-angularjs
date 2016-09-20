@@ -31,26 +31,6 @@ describe('$addthis provider auto add', function() {
         expect(headerMatches.length).toBe(0);
     };
 
-    describe('$addthisProvider disable_auto_add()', function() {
-        beforeEach(function() {
-            module(function($addthisProvider) {
-                removeAddThisScriptFromPage();
-                var matches = findAddThisScriptOnPage();
-                expect(matches.length).toBe(0);
-                $addthisProvider.disable_auto_add();
-            });
-        });
-
-        beforeEach(inject(function($injector) {
-            $addthis = $injector.get('$addthis');
-        }));
-
-        it('should not auto add addthis_widget.js', function() {
-            var matches = findAddThisScriptOnPage();
-            expect(matches.length).toBe(0);
-        });
-    });
-
     describe('$addthisProvider enable_auto_add()', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
@@ -71,14 +51,13 @@ describe('$addthis provider auto add', function() {
         });
     });
 
-    describe('$addthisProvider disable_auto_add() then endable_auto_add()', function() {
+    describe('$addthisProvider disable_auto_add()', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
                 removeAddThisScriptFromPage();
                 var matches = findAddThisScriptOnPage();
                 expect(matches.length).toBe(0);
                 $addthisProvider.disable_auto_add();
-                $addthisProvider.enable_auto_add();
             });
         });
 
@@ -86,9 +65,10 @@ describe('$addthis provider auto add', function() {
             $addthis = $injector.get('$addthis');
         }));
 
-        it('should auto addaddthis_widget.js', function() {
+        it('should not auto add addthis_widget.js', function() {
             var matches = findAddThisScriptOnPage();
-            expect(matches.length).toBe(1);
+            expect(matches.length).toBe(0);
         });
     });
+
 });

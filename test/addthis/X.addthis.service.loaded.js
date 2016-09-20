@@ -38,6 +38,8 @@ describe('$addthis.loaded', function() {
             done();
         });
 
+        $interval.flush(200);
+
         window.addthis = { layers: { refresh: function(url, title) {}, lastViewRegistered: 0 } };
         $interval.flush(200);
     });

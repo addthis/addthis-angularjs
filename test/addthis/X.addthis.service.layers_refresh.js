@@ -9,9 +9,6 @@ describe('$addthis.layers_refresh', function() {
 
     beforeEach(function() {
         module(function($addthisProvider) {
-            // removes intermittent test failures
-            $addthisProvider.disable_auto_add();
-
             var newProfileId = $addthisProvider.profile_id(false);
             expect(newProfileId).toBe(false);
             var configCopy = $addthisProvider.config({});
@@ -99,9 +96,12 @@ describe('$addthis.layers_refresh', function() {
                 expect(window.addthis.layers.refresh).not.toHaveBeenCalled();
             } else {
                 clearInterval(intervalId);
-                expect(window.addthis.layers.refresh).toHaveBeenCalled();
-                expect($interval.cancel).toHaveBeenCalled();
-                done();
+                setTimeout(function() {
+                    expect(window.addthis.layers.refresh).toHaveBeenCalled();
+                    expect($interval.cancel).toHaveBeenCalled();
+                    done();
+                }, msInterval);
+
             }
         }, msInterval);
     });

@@ -29,4 +29,33 @@ describe('$addthis provider', function() {
             validateAddThisProvider($addthisProvider);
         });
     });
+
+    it('should delete internal addthis_share.url if set at start and window.addthis exists already', function() {
+        window.addthis_share = { 'url': 'foo' };
+        window.addthis = true;
+
+        module(function($addthisProvider) {
+            var configCopy = $addthisProvider.config();
+            expect(configCopy.url).toBeUndefined();
+        });
+
+        inject(function($injector) {
+            var $addthis = $injector.get('$addthis');
+        });
+    });
+
+    it('should delete internal addthis_share.title if set at start and window.addthis exists already', function() {
+        window.addthis_share = { 'title': 'bar' };
+        window.addthis = true;
+
+        module(function($addthisProvider) {
+            var configCopy = $addthisProvider.config();
+            expect(configCopy.url).toBeUndefined();
+            console.log();
+        });
+
+        inject(function($injector) {
+            var $addthis = $injector.get('$addthis');
+        });
+    });
 });
