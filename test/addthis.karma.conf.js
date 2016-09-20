@@ -36,11 +36,11 @@ module.exports = function(config) {
 
     coverageReporter: {
       type : 'html',
-      dir : 'reports/coverage/addthis/'
+      dir : 'reports/addthis/coverage/'
     },
 
     htmlReporter: {
-      outputFile: 'reports/addthis.karma-htmlfile-reporter.html',
+      outputFile: 'reports/addthis/unit.html',
 
       // Optional
       pageTitle: 'Unit Tests',
