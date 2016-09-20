@@ -139,32 +139,26 @@ var addthisModule = (function(window, angular) {
         }
 
         smartLayersRefreshRequest.pending = true;
+        var intervalPromise;
 
-        var intervalPromise = $interval(
-            function() {
-                var now = (new Date()).getTime();
+        var checkAndRun = function() {
+            var now = (new Date()).getTime();
+            // if it's been at least 99ms since the last request
+            // and it's been more than 500ms since client did a layers
+            // refresh (client won't do it more often anyway)
+            if (now - smartLayersRefreshRequest.lastTs >= 100 &&
+                now - $window.addthis.layers.lastViewRegistered > 500
+            ) {
+                $interval.cancel(intervalPromise);
+                smartLayersRefreshRequest.pending = false;
+                $window.addthis.layers.refresh(
+                    addthis_share.url,
+                    addthis_share.title
+                );
+            }
+        };
 
-                // if it's been at least 99ms since the last request
-                // and it's been more than 500ms since client did a layers
-                // refresh (client won't do it more often anyway)
-                if (now - smartLayersRefreshRequest.lastTs >= 100 &&
-                    now - $window.addthis.layers.lastViewRegistered > 500
-                ) {
-                    //$window.addthis.layers({'share': {}});
-
-                    $interval.cancel(intervalPromise);
-                    smartLayersRefreshRequest.pending = false;
-                    //refresh layers
-                    $window.addthis.layers.refresh(
-                        addthis_share.url,
-                        addthis_share.title
-                    );
-                }
-            },
-            100,
-            0,
-            false
-        );
+        intervalPromise = $interval(checkAndRun, 100, 0, false);
     };
 
     /*
