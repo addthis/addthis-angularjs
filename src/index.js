@@ -37,6 +37,9 @@ var addthisModule = (function(window, angular) {
 
     addthis_plugin_info.cms_version = angular.version.full;
 
+    var defaultUrl = 'https://s7.addthis.com/js/300/addthis_widget.js';
+    var baseUrl = defaultUrl;
+
     /*
      * @private
      * @description
@@ -74,7 +77,6 @@ var addthisModule = (function(window, angular) {
         }
 
         var url;
-        var baseUrl = 'https://s7.addthis.com/js/300/addthis_widget.js';
 
         if(profileId) {
             // preference the site's profile ID in the URL, if available
@@ -840,6 +842,39 @@ var addthisModule = (function(window, angular) {
         this.script_in_head = function() {
             scriptInFooter = false;
             return this;
+        };
+
+        /**
+         * @ngdoc method
+         * @name addthis.$addthisProvider#environment
+         * @methodOf addthis.$addthisProvider
+         *
+         * @description
+         * Changes the environment out of which the addthis_widget.js script is
+         * included. Defaults to AddThis's production environment. Environments
+         * test, dev and local are only available inside AddThis firewalls for
+         * use by AddThis developers. The unittest environment is used during
+         * unit testing. Any other value will set things up for production.
+         *
+         * ```js
+         * app.config(function($addthisProvider, $envProvider) {
+         *     $addthisProvider.environment('unittest');
+         * });
+         * ```
+         *
+         * @param {string} env The environment to use. Defaults to production.
+         * @returns {string} Returns the url for addthis_widget.js
+         **/
+        this.environment = function(env) {
+            if (env === 'dev' || env === 'test' || env === 'local') {
+                baseUrl = 'http://cache-'+env+'.addthis.com/js/300/addthis_widget.js';
+            } else if (env === 'unittest') {
+                baseUrl = 'addthis_widget.js';
+            } else {
+                baseUrl = defaultUrl;
+            }
+
+            return baseUrl;
         };
 
         this.$get = addthisService;
