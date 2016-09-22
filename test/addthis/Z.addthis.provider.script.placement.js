@@ -4,7 +4,7 @@
 
 describe('script placement configurations', function() {
     var $addthis;
-    var addthisWidgetUrl = 'https://s7.addthis.com/js/300/addthis_widget.js';
+    var addthisWidgetUrl = 'addthis_widget.js';
 
     var findAddThisScriptOnPage = function(header) {
         //var foo;
@@ -66,7 +66,9 @@ describe('script placement configurations', function() {
             url = addthisWidgetUrl;
         }
 
-        expect(headerMatches[0].src).toBe(url);
+        var compareUrl = headerMatches[0].src.substring(headerMatches[0].src.length - url.length, headerMatches[0].src.length);
+
+        expect(compareUrl).toBe(url);
     });
 
     it('should only add addthis_widget onto the page once', function() {

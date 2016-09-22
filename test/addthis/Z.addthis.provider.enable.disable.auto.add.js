@@ -37,6 +37,7 @@ describe('$addthis provider auto add', function() {
                 removeAddThisScriptFromPage();
                 var matches = findAddThisScriptOnPage();
                 expect(matches.length).toBe(0);
+                $addthisProvider.environment('unittest');
                 $addthisProvider.enable_auto_add();
             });
         });
