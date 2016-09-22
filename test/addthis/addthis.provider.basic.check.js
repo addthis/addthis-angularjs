@@ -51,7 +51,6 @@ describe('$addthis provider', function() {
         module(function($addthisProvider) {
             var configCopy = $addthisProvider.config();
             expect(configCopy.url).toBeUndefined();
-            console.log();
         });
 
         inject(function($injector) {
