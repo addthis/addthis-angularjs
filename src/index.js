@@ -301,6 +301,60 @@ var addthisModule = (function(window, angular) {
         return load.promise;
     };
 
+    /*
+     * @private
+     * @description
+     * Takes a twitter handle/username and uses it for twitter via. See
+     * https://www.addthis.com/academy/changes-to-how-twitter-works-with-addthis/
+     * for more information
+     *
+     * @param {string|false} the twitter handle in a string or false to remove
+     * twitter handle from config
+     **/
+    var twitterVia = function(handle) {
+        if (typeof handle === 'string' && handle.length > 0) {
+            if (typeof addthis_share.passthrough === 'undefined') {
+                addthis_share.passthrough = {};
+            }
+            if (typeof addthis_share.passthrough.twitter === 'undefined') {
+                addthis_share.passthrough.twitter = {};
+            }
+            addthis_share.passthrough.twitter.via = handle;
+        } else if (handle === false &&
+            typeof addthis_share.passthrough !== 'undefined' &&
+            typeof addthis_share.passthrough.twitter !== 'undefined' &&
+            typeof addthis_share.passthrough.twitter.via !== 'undefined'
+        ) {
+            delete addthis_share.passthrough.twitter.via;
+        }
+    };
+
+    /*
+     * @private
+     * @description
+     * Takes a URL shortening name and a social service name, then enables URL
+     * shortening on that social service using the url shortening service.
+     * https://www.addthis.com/academy/url-shortening/
+     * for more information
+     *
+     * @param {string} urlShorteningService The URL shortening service to enable
+     * @param {string} socialService The social service to enable the URL shortening on
+     **/
+    var urlShortening = function(urlShorteningService, socialService) {
+        if (typeof addthis_share.url_transforms === 'undefined') {
+            addthis_share.url_transforms = {};
+        }
+        if (typeof addthis_share.url_transforms.shorten === 'undefined') {
+            addthis_share.url_transforms.shorten = {};
+        }
+        if (typeof addthis_share.shorteners === 'undefined') {
+            addthis_share.shorteners = {};
+        }
+
+        addthis_share.url_transforms.shorten[socialService] = urlShorteningService;
+        addthis_share.shorteners[urlShorteningService] = {};
+    };
+
     /**
      * @ngdoc service
      * @name addthis.$addthis
@@ -515,6 +569,55 @@ var addthisModule = (function(window, angular) {
                     queueSmartLayersRefresh($window, $interval);
                 }
                 return addthis_share.title;
+            },
+            /**
+             * @ngdoc method
+             * @name addthis.$addthis#twitter_via
+             * @methodOf addthis.$addthis
+             *
+             * @description
+             * Takes a twitter handle/username and uses it for twitter via. See
+             * https://www.addthis.com/academy/changes-to-how-twitter-works-with-addthis/
+             * for more information
+             *
+             * @example
+             * ```js
+             * app.controller('DoMagicCtrl', ['$scope', '$addthis', function($scope, $addthis) {
+             *     $addthis.twitter_via('addthis');
+             * }]);
+             * ```
+             *
+             * @param {string|false} the twitter handle in a string or false to remove
+             * twitter handle from config
+             **/
+            twitter_via: function(handle) {
+                twitterVia(handle);
+                queueSmartLayersRefresh($window, $interval);
+            },
+            /**
+             * @ngdoc method
+             * @name addthis.$addthis#url_shortening
+             * @methodOf addthis.$addthis
+             *
+             * @description
+             * Takes a URL shortening name and a social service name, then enables URL
+             * shortening on that social service using the url shortening service.
+             * https://www.addthis.com/academy/url-shortening/
+             * for more information
+             *
+             * @example
+             * ```js
+             * app.controller('DoMagicCtrl', ['$scope', '$addthis', function($scope, $addthis) {
+             *     $addthis.url_shortening('bitly', 'twitter');
+             * }]);
+             * ```
+             *
+             * @param {string} urlShorteningService The URL shortening service to enable
+             * @param {string} socialService The social service to enable the URL shortening on
+             **/
+            url_shortening: function(urlShorteningService,socialService) {
+                urlShortening(urlShorteningService,socialService);
+                queueSmartLayersRefresh($window, $interval);
             },
             /**
              * @ngdoc method
@@ -763,7 +866,53 @@ var addthisModule = (function(window, angular) {
             }
             return addthis_share.title;
         };
-
+        /**
+         * @ngdoc method
+         * @name addthis.$addthisProvider#twitter_via
+         * @methodOf addthis.$addthisProvider
+         *
+         * @description
+         * Takes a twitter handle/username and uses it for twitter via. See
+         * https://www.addthis.com/academy/changes-to-how-twitter-works-with-addthis/
+         * for more information
+         *
+         * @example
+         * ```js
+         * app.config(function($addthisProvider) {
+         *     $addthisProvider.twitter_via('addthis');
+         * });
+         * ```
+         *
+         * @param {string|false} the twitter handle in a string or false to remove
+         * twitter handle from config
+         **/
+        this.twitter_via = function(handle) {
+            twitterVia(handle);
+        };
+        /**
+         * @ngdoc method
+         * @name addthis.$addthisProvider#url_shortening
+         * @methodOf addthis.$addthisProvider
+         *
+         * @description
+         * Takes a URL shortening name and a social service name, then enables URL
+         * shortening on that social service using the url shortening service.
+         * https://www.addthis.com/academy/url-shortening/
+         * for more information
+         *
+         * @example
+         * ```js
+         * app.config(function($addthisProvider) {
+         *     $addthisProvider.url_shortening('bitly', 'twitter');
+         * });
+         * ```
+         *
+         * @param {string} urlShorteningService The URL shortening service to enable
+         * @param {string} socialService The social service to enable the URL shortening on
+         **/
+        this.url_shortening = function(urlShorteningService,socialService) {
+            urlShortening(urlShorteningService,socialService);
+        };
         /**
          * @ngdoc method
          * @name addthis.$addthisProvider#disable_auto_add
