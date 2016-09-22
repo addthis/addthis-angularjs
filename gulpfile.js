@@ -165,14 +165,14 @@ gulp.task('test', function(){
   );
 });
 
-gulp.task('build', ['test', 'docs'], function(){
+gulp.task('build', ['docs'], function(){
   return gulp.start(
     'build-distribution'
   );
 });
 
 gulp.task('watch', ['build'], function() {
-  gulp.watch(path.source, ['build']);
+  gulp.watch(path.source, ['test']);
   gulp.watch('examples/example1/**/*.js', ['test-example1']);
   gulp.watch('examples/example2/**/*.js', ['test-example2']);
   gulp.watch('examples/example3/**/*.js', ['test-example3']);
