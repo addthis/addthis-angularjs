@@ -95,4 +95,58 @@ describe('addthis_share', function() {
             expect(window.addthis_share).toEqual(shareConfig);
         });
     });
+
+    describe('configuring twitter via with $addthisProvider.twitter_via', function() {
+        var twitterHandle = 'addthis';
+        beforeEach(function() {
+            module(function($addthisProvider) {
+                // cleanup after last tests
+                var newProfileId, configCopy, shareCopy;
+                newProfileId = $addthisProvider.profile_id(false);
+                expect(newProfileId).toBe(false);
+                configCopy = $addthisProvider.config({});
+                expect(configCopy).toEqual({});
+                shareCopy = $addthisProvider.share({});
+                expect(shareCopy).toEqual({});
+
+                $addthisProvider.twitter_via(twitterHandle);
+            });
+        });
+
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
+        }));
+
+        it('should set addthis_share.passthrough.twitter.via', function() {
+            expect(window.addthis_share.passthrough.twitter.via).toBe(twitterHandle);
+        });
+    });
+
+    describe('configuring url shortening with $addthisProvider.url_shortening', function() {
+        var urlShorteningService = 'bitly';
+        var socialService = 'twitter';
+        beforeEach(function() {
+            module(function($addthisProvider) {
+                // cleanup after last tests
+                var newProfileId, configCopy, shareCopy;
+                newProfileId = $addthisProvider.profile_id(false);
+                expect(newProfileId).toBe(false);
+                configCopy = $addthisProvider.config({});
+                expect(configCopy).toEqual({});
+                shareCopy = $addthisProvider.share({});
+                expect(shareCopy).toEqual({});
+
+                $addthisProvider.url_shortening(urlShorteningService, socialService);
+            });
+        });
+
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
+        }));
+
+        it('should set addthis_share.url_transforms.shorten & addthis_share.shorteners', function() {
+            expect(window.addthis_share.url_transforms.shorten[socialService]).toBe(urlShorteningService);
+            expect(window.addthis_share.shorteners[urlShorteningService]).toEqual({});
+        });
+    });
 });
