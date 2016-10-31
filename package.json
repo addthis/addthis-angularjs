@@ -11,7 +11,7 @@
   },
   "main": "dist/official-addthis-angular.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "keywords": [
     "angular",
@@ -23,9 +23,11 @@
     "recommended content",
     "social"
   ],
+  "homepage": "https://addthis.com",
   "author": {
     "name": "AddThis",
-    "email": "help@addthis.com"
+    "email": "help@addthis.com",
+    "url": "http://addthis.com"
   },
   "contributors": [
     {
@@ -60,5 +62,9 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-safari-launcher": "^1.0.0",
     "uglify-save-license": "^0.4.1"
-  }
+  },
+  "peerDependencies": {
+    "angular": "^1"
+  },
+
 }
