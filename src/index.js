@@ -910,7 +910,7 @@ var addthisModule = (function(window, angular) {
          * @param {string} urlShorteningService The URL shortening service to enable
          * @param {string} socialService The social service to enable the URL shortening on
          **/
-        this.url_shortening = function(urlShorteningService,socialService) {
+        this.url_shortening = function(urlShorteningService, socialService) {
             urlShortening(urlShorteningService,socialService);
         };
         /**
