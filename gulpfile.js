@@ -58,7 +58,6 @@ gulp.task('minify-distribution', ['make-folders'], function() {
   );
 
   return gulp.src(files)
-    .pipe(sourcemaps.init())
     .pipe(concat(path.distribution.filename + '.min.js'))
     .pipe(uglify({
       mangle: false,
@@ -66,7 +65,6 @@ gulp.task('minify-distribution', ['make-folders'], function() {
         comments: saveLicense
       }
     }))
-    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(path.distribution.folder));
 });
 
