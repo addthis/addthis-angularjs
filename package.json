@@ -65,6 +65,5 @@
   },
   "peerDependencies": {
     "angular": "^1"
-  },
-
+  }
 }
