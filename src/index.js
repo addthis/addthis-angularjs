@@ -1322,6 +1322,24 @@ var addthisModule = (function(window, angular) {
          *   Open Graph tags it finds on the page when it crawls it. You can use
          *   the <a href="https://developers.facebook.com/tools/debug/">
          *   Facebook Sharing Debugger</a> to test your Open Graph tags.
+         * @param {string} shareDescription (optional) the description string
+         *   shared with the url when your visitor clicks on a share button in
+         *    this tool.
+         *
+         *   Note: Some services (such as Facebook) do not allow you to define
+         *   the share description for a URL this way. Facebook will always use
+         *   the Open Graph tags it finds on the page when it crawls it. You can
+         *   use the <a href="https://developers.facebook.com/tools/debug/">
+         *   Facebook Sharing Debugger</a> to test your Open Graph tags.
+         * @param {string} shareMedia (optional) the URL for an image to share
+         *   with the url when your visitor clicks on a share button in this
+         *   tool.
+         *
+         *   Note: Some services (such as Facebook) do not allow you to define
+         *   the share image for a URL this way. Facebook will always use the
+         *   Open Graph tags it finds on the page when it crawls it. You can use
+         *   the <a href="https://developers.facebook.com/tools/debug/">
+         *   Facebook Sharing Debugger</a> to test your Open Graph tags.
          **/
         var directive = {
             restrict: 'AECM',
