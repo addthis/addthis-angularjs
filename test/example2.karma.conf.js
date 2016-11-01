@@ -43,7 +43,7 @@ module.exports = function(config) {
 
 
     htmlReporter: {
-      outputFile: 'reports/example2/unit.html',
+      outputDir: 'test/reports/example2/unit',
 
       // Optional
       pageTitle: 'Unit Tests',
