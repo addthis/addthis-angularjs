@@ -257,6 +257,39 @@ var addthisModule = (function(window, angular) {
         addthis_share.title = title;
     };
 
+    /*
+     * @private
+     * @description
+     * Sets the description shared by tools that don't explicitly set one
+     * through the `data-description` attribute. This is a shortcut to adding
+     * the description into `addthis_share.description`. See
+     * https://www.addthis.com/academy/the-addthis_share-variable/ for
+     * more information on `addthis_share`.
+     *
+     * @param {string} description The description to share when a user
+     *   clicks on a share buttons that don't otherwise speicfy a share
+     *   description
+     **/
+    var setShareDescription = function(description) {
+        addthis_share.description = description;
+    };
+
+    /*
+     * @private
+     * @description
+     * Sets the image shared by tools that don't explicitly set one through the
+     * `data-media` attribute. This is a shortcut to adding the image into
+     * `addthis_share.media`. See
+     * https://www.addthis.com/academy/the-addthis_share-variable/ for
+     * more information on `addthis_share`.
+     *
+     * @param {string} media The image to share when a user clicks on a share
+     *   buttons that don't otherwise speicfy a share image
+     **/
+    var setShareMedia = function(media) {
+        addthis_share.media = media;
+    };
+
     // Variable for tracking script loading information.
     var load = {
         promise: false,
@@ -572,6 +605,86 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
+             * @name addthis.$addthis#share_description
+             * @methodOf addthis.$addthis
+             *
+             * @description
+             * This is a shortcut to setting the description through
+             * `$addthis.share({'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'})`\
+             * . Sets the description shared by tools that don't explicitly set
+             * one. With the `addthisTool` directive, you may set the
+             * description explicitly using the `share-description` attribute.
+             *
+             * To reset to default, set to `false`.
+             *
+             * Note: Some services (such as Facebook) do not allow you to define
+             * the share description for a URL this way. Facebook will always
+             * use the Open Graph tags it finds on the page when it crawls it.
+             * You can use the
+             * <a href="https://developers.facebook.com/tools/debug/">
+             * Facebook Sharing Debugger</a> to test your Open Graph tags.
+             *
+             * @example
+             * ```js
+             * app.controller('DoMagicCtrl', ['$scope', '$addthis', function($scope, $addthis) {
+             *     $addthis.share_description('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+             * }]);
+             * ```
+             *
+             * @param {string} description The description to share when a user
+             *   clicks on share buttons that don't otherwise speicfy a share
+             *   description
+             * @returns {mixed} a copy of the `addthis_share` description
+             * variable on the page, usually a string
+             **/
+            share_description: function(description) {
+                if (typeof description !== 'undefined') {
+                    setShareDescription(description);
+                    queueSmartLayersRefresh($window, $interval);
+                }
+                return addthis_share.description;
+            },
+            /**
+             * @ngdoc method
+             * @name addthis.$addthis#share_media
+             * @methodOf addthis.$addthis
+             *
+             * @description
+             * This is a shortcut to setting the image through
+             * `$addthis.share({'share_media': 'http://example.com/img.png'})`.
+             * Sets the image shared by tools that don't explicitly set one.
+             * With the `addthisTool` directive, you may set the image
+             * explicitly using the `share-media` attribute.
+             *
+             * To reset to default, set to `false`.
+             *
+             * Note: Some services (such as Facebook) do not allow you to define
+             * the share image for a URL this way. Facebook will always use the
+             * Open Graph tags it finds on the page when it crawls it. You can
+             * use the <a href="https://developers.facebook.com/tools/debug/">
+             * Facebook Sharing Debugger</a> to test your Open Graph tags.
+             *
+             * @example
+             * ```js
+             * app.controller('DoMagicCtrl', ['$scope', '$addthis', function($scope, $addthis) {
+             *     $addthis.share_media('http://example.com/img.png');
+             * }]);
+             * ```
+             *
+             * @param {string} media The image to share when a user clicks on share
+             *   buttons that don't otherwise speicfy a share image
+             * @returns {mixed} a copy of the `addthis_share` media variable on
+             * the page, usually a string
+             **/
+            share_media: function(media) {
+                if (typeof media !== 'undefined') {
+                    setShareMedia(media);
+                    queueSmartLayersRefresh($window, $interval);
+                }
+                return addthis_share.media;
+            },
+            /**
+             * @ngdoc method
              * @name addthis.$addthis#twitter_via
              * @methodOf addthis.$addthis
              *
@@ -688,6 +801,14 @@ var addthisModule = (function(window, angular) {
 
                 if (addthis_share.title) {
                     delete addthis_share.title;
+                }
+
+                if (addthis_share.description) {
+                    delete addthis_share.description;
+                }
+
+                if (addthis_share.media) {
+                    delete addthis_share.media;
                 }
             }
         }
@@ -865,6 +986,82 @@ var addthisModule = (function(window, angular) {
                 setShareTitle(title);
             }
             return addthis_share.title;
+        };
+        /**
+         * @ngdoc method
+         * @name addthis.$addthisProvider#share_description
+         * @methodOf addthis.$addthisProvider
+         *
+         * @description
+         * This is a shortcut to setting the description through
+         * `$addthis.share({'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'})`\
+         * . Sets the description shared by tools that don't explicitly set
+         * one. With the `addthisTool` directive, you may set the
+         * description explicitly using the `share-description` attribute.
+         *
+         * To reset to default, set to `false`.
+         *
+         * Note: Some services (such as Facebook) do not allow you to define
+         * the share description for a URL this way. Facebook will always
+         * use the Open Graph tags it finds on the page when it crawls it.
+         * You can use the
+         * <a href="https://developers.facebook.com/tools/debug/">
+         * Facebook Sharing Debugger</a> to test your Open Graph tags.
+         *
+         * ```js
+         * app.config(function($addthisProvider) {
+         *     $addthisProvider.share_title('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+         * });
+         * ```
+         *
+         * @param {string} description The description to share when a user
+         *   clicks on share buttons that don't otherwise speicfy a share
+         *   description
+         * @returns {mixed} a copy of the `addthis_share` description
+         * variable on the page, usually a string
+         **/
+        this.share_description = function(description) {
+            if (typeof description !== 'undefined') {
+                setShareDescription(description);
+            }
+            return addthis_share.description;
+        };
+        /**
+         * @ngdoc method
+         * @name addthis.$addthisProvider#share_media
+         * @methodOf addthis.$addthisProvider
+         *
+         * @description
+         * This is a shortcut to setting the image through
+         * `$addthis.share({'share_media': 'http://example.com/img.png'})`.
+         * Sets the image shared by tools that don't explicitly set one.
+         * With the `addthisTool` directive, you may set the image
+         * explicitly using the `share-media` attribute.
+         *
+         * To reset to default, set to `false`.
+         *
+         * Note: Some services (such as Facebook) do not allow you to define
+         * the share image for a URL this way. Facebook will always use the
+         * Open Graph tags it finds on the page when it crawls it. You can
+         * use the <a href="https://developers.facebook.com/tools/debug/">
+         * Facebook Sharing Debugger</a> to test your Open Graph tags.
+         *
+         * ```js
+         * app.config(function($addthisProvider) {
+         *     $addthisProvider.share_media('http://example.com/img.png');
+         * });
+         * ```
+         *
+         * @param {string} media The image to share when a user clicks on share
+         *   buttons that don't otherwise speicfy a share image
+         * @returns {mixed} a copy of the `addthis_share` media variable on
+         * the page, usually a string
+         **/
+        this.share_media = function(media) {
+            if (typeof media !== 'undefined') {
+                setShareMedia(media);
+            }
+            return addthis_share.media;
         };
         /**
          * @ngdoc method
@@ -1107,6 +1304,8 @@ var addthisModule = (function(window, angular) {
          *     tool-class="'addthis_sharing_toolbox'"
          *     share-url="'http://www.example.com'"
          *     share-title="'Check this out:'"
+         *     share-description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'"
+         *     share-media="'http://www.example.com/img.png'"
          * >
          * </example>
          *  ```
@@ -1129,20 +1328,25 @@ var addthisModule = (function(window, angular) {
             scope: {
                 toolClass: '=toolClass',
                 shareUrl: '=shareUrl',
-                shareTitle: '=shareTitle'
+                shareTitle: '=shareTitle',
+                shareDescription: '=shareDescription',
+                shareMedia: '=shareMedia'
             },
             link: function($scope, el) {
                 // attr documentation available at http://www.addthis.com/academy/setting-the-url-title-to-share/
                 var urlAttr = 'data-url';
                 var titleAttr = 'data-title';
+                var descriptionAttr = 'data-description';
+                var mediaAttr = 'data-media';
 
                 /**
                  * @private
                  * @description
                  * Removes the content inside the directive, and appends a new
-                 * DIV element with the tool's class, and (if defined) share-url
-                 * and share-title. Why? `addthis_widget.js` won't touch/refresh
-                 * elements for inline it thinks it has already rendered.
+                 * DIV element with the tool's class, and (if defined) share-url,
+                 * share-title, share-description and share-media. Why?
+                 * `addthis_widget.js` won't touch/refresh elements for inline
+                 * it thinks it has already rendered.
                  **/
                 var recreateToolDiv = function() {
                     // build new div
@@ -1157,6 +1361,16 @@ var addthisModule = (function(window, angular) {
                     // only include share title attr if provided
                     if (angular.isDefined($scope.shareTitle)) {
                         newToolDiv.setAttribute(titleAttr, $scope.shareTitle);
+                    }
+
+                    // only include share description attr if provided
+                    if (angular.isDefined($scope.shareDescription)) {
+                        newToolDiv.setAttribute(descriptionAttr, $scope.shareDescription);
+                    }
+
+                    // only include share media attr if provided
+                    if (angular.isDefined($scope.shareMedia)) {
+                        newToolDiv.setAttribute(mediaAttr, $scope.shareMedia);
                     }
 
                     // remove previous DIV, if present
@@ -1176,11 +1390,13 @@ var addthisModule = (function(window, angular) {
                 // watch for changes in attrs and rerender the tool DIV when
                 // they're meaningful
                 $scope.$watchGroup(
-                    ['toolClass', 'shareUrl', 'shareTitle'],
+                    ['toolClass', 'shareUrl', 'shareTitle', 'shareDescription', 'shareMedia'],
                     function(newVal, oldVal) {
                         if (newVal[0] !== oldVal[0] ||
                             newVal[1] !== oldVal[1] ||
-                            newVal[2] !== oldVal[2]
+                            newVal[2] !== oldVal[2] ||
+                            newVal[3] !== oldVal[3] ||
+                            newVal[4] !== oldVal[4]
                         ) {
                             recreateToolDiv();
                         }
