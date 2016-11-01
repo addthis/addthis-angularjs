@@ -6,6 +6,8 @@ describe('addthis_share', function() {
     var $addthis;
     var title = 'hello world';
     var url = 'https://www.addthis.com';
+    var description = 'this is a description';
+    var media = 'https://www.addthis.com/img/png';
 
     beforeEach(function() {
         module(function($addthisProvider) {
@@ -58,6 +60,30 @@ describe('addthis_share', function() {
             var shareCopy = $addthis.share(shareConfig);
             expect(shareCopy).toEqual(shareConfig);
             expect(window.addthis_share).toEqual(shareConfig);
+        });
+    });
+
+    describe('configuring description $addthis.share_description', function() {
+        it('should set addthis_share.description ', function() {
+            var descriptionResult = $addthis.share_description(description);
+            expect(descriptionResult).toBe(description);
+
+            descriptionResult = $addthis.share_description();
+            expect(descriptionResult).toBe(description);
+
+            expect(window.addthis_share.description).toBe(description);
+        });
+    });
+
+    describe('configuring media $addthis.share_media', function() {
+        it('should set addthis_share.media ', function() {
+            var mediaResult = $addthis.share_media(media);
+            expect(mediaResult).toBe(media);
+
+            mediaResult = $addthis.share_media();
+            expect(mediaResult).toBe(media);
+
+            expect(window.addthis_share.media).toBe(media);
         });
     });
 

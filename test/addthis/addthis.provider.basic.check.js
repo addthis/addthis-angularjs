@@ -57,4 +57,32 @@ describe('$addthis provider', function() {
             var $addthis = $injector.get('$addthis');
         });
     });
+
+    it('should delete internal addthis_share.description if set at start and window.addthis exists already', function() {
+        window.addthis_share = { 'description': 'baz' };
+        window.addthis = true;
+
+        module(function($addthisProvider) {
+            var configCopy = $addthisProvider.config();
+            expect(configCopy.description).toBeUndefined();
+        });
+
+        inject(function($injector) {
+            var $addthis = $injector.get('$addthis');
+        });
+    });
+
+    it('should delete internal addthis_share.media if set at start and window.addthis exists already', function() {
+        window.addthis_share = { 'media': 'image' };
+        window.addthis = true;
+
+        module(function($addthisProvider) {
+            var configCopy = $addthisProvider.config();
+            expect(configCopy.media).toBeUndefined();
+        });
+
+        inject(function($injector) {
+            var $addthis = $injector.get('$addthis');
+        });
+    });
 });

@@ -12,7 +12,9 @@ describe('outside configs', function() {
     };
     var testShare = {
         url: 'foo',
-        title: 'bar'
+        title: 'bar',
+        description: 'baz',
+        media: 'image'
     };
 
     describe('without profile ID', function() {
@@ -50,6 +52,8 @@ describe('outside configs', function() {
 
                 expect(testShare.title).toEqual($addthis.share_title());
                 expect(testShare.url).toEqual($addthis.share_url());
+                expect(testShare.description).toEqual($addthis.share_description());
+                expect(testShare.media).toEqual($addthis.share_media());
             });
         });
     });

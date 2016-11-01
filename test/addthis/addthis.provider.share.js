@@ -6,6 +6,8 @@ describe('addthis_share', function() {
     var $addthis;
     var title = 'hello world';
     var url = 'https://www.addthis.com';
+    var description = 'this is a description';
+    var media = 'https://www.addthis.com/img/png';
 
     describe('configuring title $addthisProvider.share_title', function() {
         beforeEach(function() {
@@ -93,6 +95,64 @@ describe('addthis_share', function() {
 
         it('should set addthis_share.config with url & title', function() {
             expect(window.addthis_share).toEqual(shareConfig);
+        });
+    });
+
+    describe('configuring description $addthisProvider.share_description', function() {
+        beforeEach(function() {
+            module(function($addthisProvider) {
+                // cleanup after last tests
+                var newProfileId, configCopy, shareCopy;
+                newProfileId = $addthisProvider.profile_id(false);
+                expect(newProfileId).toBe(false);
+                configCopy = $addthisProvider.config({});
+                expect(configCopy).toEqual({});
+                shareCopy = $addthisProvider.share({});
+                expect(shareCopy).toEqual({});
+
+                var descriptionResult;
+                descriptionResult = $addthisProvider.share_description(description);
+                expect(descriptionResult).toBe(description);
+                descriptionResult = $addthisProvider.share_description();
+                expect(descriptionResult).toBe(description);
+            });
+        });
+
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
+        }));
+
+        it('should set addthis_share.description ', function() {
+            expect(window.addthis_share.description).toBe(description);
+        });
+    });
+
+    describe('configuring media $addthisProvider.share_media', function() {
+        beforeEach(function() {
+            module(function($addthisProvider) {
+                // cleanup after last tests
+                var newProfileId, configCopy, shareCopy;
+                newProfileId = $addthisProvider.profile_id(false);
+                expect(newProfileId).toBe(false);
+                configCopy = $addthisProvider.config({});
+                expect(configCopy).toEqual({});
+                shareCopy = $addthisProvider.share({});
+                expect(shareCopy).toEqual({});
+
+                var mediaResult;
+                mediaResult = $addthisProvider.share_media(media);
+                expect(mediaResult).toBe(media);
+                mediaResult = $addthisProvider.share_media();
+                expect(mediaResult).toBe(media);
+            });
+        });
+
+        beforeEach(inject(function($injector) {
+            $addthis = $injector.get('$addthis');
+        }));
+
+        it('should set addthis_share.media ', function() {
+            expect(window.addthis_share.media).toBe(media);
         });
     });
 
