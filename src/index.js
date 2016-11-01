@@ -572,7 +572,7 @@ var addthisModule = (function(window, angular) {
              * This is a shortcut to setting the title through
              * `$addthis.share({'title': 'Check this out!'})`. Sets the title
              * shared by tools that don't explicitly set one. With the
-             * `addthisTool` directive, you may set the URL explicitly using
+             * `addthisTool` directive, you may set the title explicitly using
              * the `share-title` attribute. If not set otherwise, the
              * document's title will be used when sharing.
              *
@@ -591,8 +591,8 @@ var addthisModule = (function(window, angular) {
              * }]);
              * ```
              *
-             * @param {string} url The URL to share when a user clicks on share
-             *   buttons that don't otherwise speicfy a share URL
+             * @param {string} title The title to share when a user clicks on share
+             *   buttons that don't otherwise speicfy a share title
              * @returns {mixed} a copy of the `addthis_share` title variable on
              * the page, usually a string
              **/
