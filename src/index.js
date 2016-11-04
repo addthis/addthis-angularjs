@@ -684,7 +684,7 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name addthis.$addthis#twitter_via
+             * @name addthis.$addthis#twitterVia
              * @methodOf addthis.$addthis
              *
              * @description
@@ -695,14 +695,14 @@ var addthisModule = (function(window, angular) {
              * @example
              * ```js
              * app.controller('DoMagicCtrl', ['$scope', '$addthis', function($scope, $addthis) {
-             *     $addthis.twitter_via('addthis');
+             *     $addthis.twitterVia('addthis');
              * }]);
              * ```
              *
              * @param {string|false} the twitter handle in a string or false to remove
              * twitter handle from config
              **/
-            twitter_via: function(handle) {
+            twitterVia: function(handle) {
                 twitterVia(handle);
                 queueSmartLayersRefresh($window, $interval);
             },
@@ -1063,7 +1063,7 @@ var addthisModule = (function(window, angular) {
         };
         /**
          * @ngdoc method
-         * @name addthis.$addthisProvider#twitter_via
+         * @name addthis.$addthisProvider#twitterVia
          * @methodOf addthis.$addthisProvider
          *
          * @description
@@ -1074,14 +1074,14 @@ var addthisModule = (function(window, angular) {
          * @example
          * ```js
          * app.config(function($addthisProvider) {
-         *     $addthisProvider.twitter_via('addthis');
+         *     $addthisProvider.twitterVia('addthis');
          * });
          * ```
          *
          * @param {string|false} the twitter handle in a string or false to remove
          * twitter handle from config
          **/
-        this.twitter_via = function(handle) {
+        this.twitterVia = function(handle) {
             twitterVia(handle);
         };
         /**

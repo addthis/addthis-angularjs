@@ -156,7 +156,7 @@ describe('addthis_share', function() {
         });
     });
 
-    describe('configuring twitter via with $addthisProvider.twitter_via', function() {
+    describe('configuring twitter via with $addthisProvider.twitterVia', function() {
         var twitterHandle = 'addthis';
         beforeEach(function() {
             module(function($addthisProvider) {
@@ -169,7 +169,7 @@ describe('addthis_share', function() {
                 shareCopy = $addthisProvider.share({});
                 expect(shareCopy).toEqual({});
 
-                $addthisProvider.twitter_via(twitterHandle);
+                $addthisProvider.twitterVia(twitterHandle);
             });
         });
 

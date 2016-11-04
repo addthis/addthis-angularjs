@@ -87,17 +87,17 @@ describe('addthis_share', function() {
         });
     });
 
-    describe('configuring twitter via with $addthisProvider.twitter_via', function() {
+    describe('configuring twitter via with $addthisProvider.twitterVia', function() {
         var twitterHandle = 'addthis';
         it('should set addthis_share.passthrough.twitter.via', function() {
-            $addthis.twitter_via(twitterHandle);
+            $addthis.twitterVia(twitterHandle);
             expect(window.addthis_share.passthrough.twitter.via).toBe(twitterHandle);
         });
 
         it('should delete addthis_share.passthrough.twitter.via if defined and passed false', function() {
-            $addthis.twitter_via(twitterHandle);
+            $addthis.twitterVia(twitterHandle);
             expect(window.addthis_share.passthrough.twitter.via).toBeDefined();
-            $addthis.twitter_via(false);
+            $addthis.twitterVia(false);
             expect(window.addthis_share.passthrough.twitter.via).toBeUndefined();
         });
 
@@ -105,21 +105,21 @@ describe('addthis_share', function() {
             $addthis.share({'passthrough': {'twitter': {'foo': 'bar'}}});
             expect(window.addthis_share.passthrough.twitter.via).toBeUndefined();
             expect(window.addthis_share.passthrough.twitter.foo).toBe('bar');
-            $addthis.twitter_via(false);
+            $addthis.twitterVia(false);
             expect(window.addthis_share.passthrough.twitter.via).toBeUndefined();
             expect(window.addthis_share.passthrough.twitter.foo).toBe('bar');
         });
 
         it('should set addthis_share.passthrough.twitter.via without touching other items in addthis_share.passthrough', function() {
             $addthis.share({'passthrough': {'foo': 'bar'}});
-            $addthis.twitter_via(twitterHandle);
+            $addthis.twitterVia(twitterHandle);
             expect(window.addthis_share.passthrough.twitter.via).toBe(twitterHandle);
             expect(window.addthis_share.passthrough.foo).toBe('bar');
         });
 
         it('should set addthis_share.passthrough.twitter.via without touching other items in addthis_share.passthrough.twitter', function() {
             $addthis.share({'passthrough': {'twitter': {'foo': 'bar'}}});
-            $addthis.twitter_via(twitterHandle);
+            $addthis.twitterVia(twitterHandle);
             expect(window.addthis_share.passthrough.twitter.via).toBe(twitterHandle);
             expect(window.addthis_share.passthrough.twitter.foo).toBe('bar');
         });
