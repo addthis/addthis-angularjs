@@ -26,7 +26,7 @@ describe('appExample2 NavCtrl', function() {
 
         it('should change routes', function() {
             $scope.path(route1);
-            expect($addthis.layers_refresh).toBeDefined();
+            expect($addthis.layersRefresh).toBeDefined();
             expect($location.path()).toBe('/' + route1);
 
             $scope.path(route2);

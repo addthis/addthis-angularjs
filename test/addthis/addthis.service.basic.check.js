@@ -9,7 +9,7 @@ describe('addthis service', function() {
     var validateAddThisService = function($addthis) {
         expect($addthis).toBeDefined();
         expect($addthis.add).toBeDefined();
-        expect($addthis.layers_refresh).toBeDefined();
+        expect($addthis.layersRefresh).toBeDefined();
         expect($addthis.config).toBeDefined();
         expect($addthis.share).toBeDefined();
         expect($addthis.share_url).toBeDefined();

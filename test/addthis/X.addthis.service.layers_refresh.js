@@ -2,7 +2,7 @@
 
 'use strict';
 
-describe('$addthis.layers_refresh', function() {
+describe('$addthis.layersRefresh', function() {
     var $addthis;
     var $interval;
     var originalTimeout;
@@ -25,7 +25,7 @@ describe('$addthis.layers_refresh', function() {
 
     it('should not cancel $interval if window.addthis.layers.refresh is not yet defined', function() {
         spyOn($interval, 'cancel').and.callThrough();
-        $addthis.layers_refresh();
+        $addthis.layersRefresh();
         $interval.flush(100);
         expect($interval.cancel).not.toHaveBeenCalled();
     });
@@ -35,7 +35,7 @@ describe('$addthis.layers_refresh', function() {
         spyOn($interval, 'cancel').and.callThrough();
         spyOn(window.addthis.layers, 'refresh').and.callThrough();
 
-        $addthis.layers_refresh();
+        $addthis.layersRefresh();
         expect(window.addthis.layers.refresh).not.toHaveBeenCalled();
         setTimeout(function() {
             $interval.flush(100);
@@ -48,7 +48,7 @@ describe('$addthis.layers_refresh', function() {
         window.addthis = { layers: { refresh: function(url, title) {}, lastViewRegistered: 0 } };
         spyOn(window.addthis.layers, 'refresh').and.callThrough();
 
-        $addthis.layers_refresh();
+        $addthis.layersRefresh();
         expect(window.addthis.layers.refresh).not.toHaveBeenCalled();
         setTimeout(function() {
             $interval.flush(100);
@@ -63,12 +63,12 @@ describe('$addthis.layers_refresh', function() {
         window.addthis = { layers: { refresh: function(url, title) {}, lastViewRegistered: 0 } };
         spyOn(window.addthis.layers, 'refresh').and.callThrough();
 
-        $addthis.layers_refresh();
+        $addthis.layersRefresh();
         expect(window.addthis.layers.refresh).not.toHaveBeenCalled();
         setTimeout(function() {
             $interval.flush(100);
             expect(window.addthis.layers.refresh.calls.count()).toEqual(1);
-            $addthis.layers_refresh();
+            $addthis.layersRefresh();
             expect(window.addthis.layers.refresh.calls.count()).toEqual(1);
             setTimeout(function() {
                 $interval.flush(100);
@@ -84,7 +84,7 @@ describe('$addthis.layers_refresh', function() {
         spyOn(window.addthis.layers, 'refresh').and.callThrough();
         spyOn($interval, 'cancel').and.callThrough();
 
-        $addthis.layers_refresh();
+        $addthis.layersRefresh();
         expect(window.addthis.layers.refresh).not.toHaveBeenCalled();
         var msLeft = 500;
         var msInterval = 100;

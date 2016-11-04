@@ -427,7 +427,7 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name addthis.$addthis#layers_refresh
+             * @name addthis.$addthis#layersRefresh
              * @methodOf addthis.$addthis
              *
              * @description
@@ -448,11 +448,11 @@ var addthisModule = (function(window, angular) {
              * ```js
              * app.controller('AccountPageCtrl', ['$scope', '$addthis', '$window', function($scope, $addthis, $window) {
              *     $window.document.title = 'Account Page';
-             *     $addthis.layers_refresh();
+             *     $addthis.layersRefresh();
              * }]);
              * ```
              **/
-            layers_refresh: function() {
+            layersRefresh: function() {
                 queueSmartLayersRefresh($window, $interval);
             },
             /**
@@ -1273,7 +1273,7 @@ var addthisModule = (function(window, angular) {
             '$locationChangeSuccess',
             function(event, next, current) {
                 if (next !== current) {
-                    $addthis.layers_refresh();
+                    $addthis.layersRefresh();
                 }
             }
         );
@@ -1397,9 +1397,9 @@ var addthisModule = (function(window, angular) {
                     // add new DIV
                     el.append(newToolDiv);
 
-                    // call layers_refresh after Angular has finised rendering the DOM
+                    // call layersRefresh after Angular has finised rendering the DOM
                     $timeout(function() {
-                        $addthis.layers_refresh();
+                        $addthis.layersRefresh();
                     });
                 };
                 // bootstrap the directive

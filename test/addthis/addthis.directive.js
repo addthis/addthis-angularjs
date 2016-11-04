@@ -40,7 +40,7 @@ describe('addthis directive', function() {
         $compile = $injector.get('$compile');
         $timeout = $injector.get('$timeout');
         scope = $rootScope.$new();
-        spyOn($addthis, 'layers_refresh').and.callThrough();
+        spyOn($addthis, 'layersRefresh').and.callThrough();
     }));
 
     beforeEach(function(done) {
@@ -56,27 +56,27 @@ describe('addthis directive', function() {
 
             it('should have a defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
         });
 
@@ -88,27 +88,27 @@ describe('addthis directive', function() {
 
             it('should have a defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBe(url1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
         });
 
@@ -120,27 +120,27 @@ describe('addthis directive', function() {
 
             it('should have a defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBe(title1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
         });
 
@@ -152,27 +152,27 @@ describe('addthis directive', function() {
 
             it('should have a defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBe(description1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
         });
 
@@ -184,27 +184,27 @@ describe('addthis directive', function() {
 
             it('should have a defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBe(media1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
         });
 
@@ -216,27 +216,27 @@ describe('addthis directive', function() {
 
             it('should have a defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBe(url1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBe(title1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
         });
     });
@@ -251,34 +251,34 @@ describe('addthis directive', function() {
 
             it('should have the initially defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should change tool class when the relavant scope variable changes', function() {
                 scope.toolClass = toolClass2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
         });
 
@@ -292,41 +292,41 @@ describe('addthis directive', function() {
 
             it('should have a defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBe(url1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should change tool class when the relavant scope variable changes', function() {
                 scope.toolClass = toolClass2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
 
             it('should change share url when the relavant scope variable changes', function() {
                 scope.shareUrl = url2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.shareUrl).toBe(url2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
         });
 
@@ -340,41 +340,41 @@ describe('addthis directive', function() {
 
             it('should have a defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBe(title1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should change tool class when the relavant scope variable changes', function() {
                 scope.toolClass = toolClass2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
 
             it('should change share title when the relavant scope variable changes', function() {
                 scope.shareTitle = title2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.shareTitle).toBe(title2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
         });
 
@@ -388,41 +388,41 @@ describe('addthis directive', function() {
 
             it('should have a defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBe(description1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should change tool class when the relavant scope variable changes', function() {
                 scope.toolClass = toolClass2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
 
             it('should change share description when the relavant scope variable changes', function() {
                 scope.shareDescription = description2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.shareDescription).toBe(description2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
         });
 
@@ -436,41 +436,41 @@ describe('addthis directive', function() {
 
             it('should have a defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBe(media1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should change tool class when the relavant scope variable changes', function() {
                 scope.toolClass = toolClass2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
 
             it('should change share media when the relavant scope variable changes', function() {
                 scope.shareMedia = media2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.shareMedia).toBe(media2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
         });
 
@@ -485,48 +485,48 @@ describe('addthis directive', function() {
 
             it('should have a defined tool class', function() {
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share url', function() {
                 expect(directiveIsolatedScope.shareUrl).toBe(url1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have a defined share title', function() {
                 expect(directiveIsolatedScope.shareTitle).toBe(title1);
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share description', function() {
                 expect(directiveIsolatedScope.shareDescription).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should have an undefined share media', function() {
                 expect(directiveIsolatedScope.shareMedia).toBeUndefined();
-                expect($addthis.layers_refresh.calls.count()).toBe(1);
+                expect($addthis.layersRefresh.calls.count()).toBe(1);
             });
 
             it('should change tool class when the relavant scope variable changes', function() {
                 scope.toolClass = toolClass2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.toolClass).toBe(toolClass2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
 
             it('should change share url when the relavant scope variable changes', function() {
                 scope.shareUrl = url2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.shareUrl).toBe(url2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
 
             it('should change share title when the relavant scope variable changes', function() {
                 scope.shareTitle = title2;
                 applyChangesToScope();
                 expect(directiveIsolatedScope.shareTitle).toBe(title2);
-                expect($addthis.layers_refresh.calls.count()).toBe(2);
+                expect($addthis.layersRefresh.calls.count()).toBe(2);
             });
         });
     });
