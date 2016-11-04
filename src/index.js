@@ -507,7 +507,6 @@ var addthisModule = (function(window, angular) {
              * app.controller('AddThisInfoCtrl', ['$scope', '$addthis', function($scope, $addthis) {
              *     var share_info = {
              *         'url': 'https://www.addthis.com',
-             *         'link': 'AddThis tools rock!',
              *         'passthrough': {
              *             'twitter': {
              *                 'via': 'TWITTER USERNAME'
@@ -895,7 +894,6 @@ var addthisModule = (function(window, angular) {
          * app.config(function($addthisProvider) {
          *     var share_info = {
          *         'url': 'https://www.addthis.com',
-         *         'link': 'AddThis tools rock!',
          *         'passthrough': {
          *             'twitter': {
          *                 'via': 'TWITTER USERNAME'
