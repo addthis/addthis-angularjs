@@ -26,12 +26,12 @@ describe('addthis_share', function() {
         $addthis = $injector.get('$addthis');
     }));
 
-    describe('configuring title $addthis.share_title', function() {
+    describe('configuring title $addthis.shareTitle', function() {
         it('should set addthis_share.title ', function() {
-            var titleResult = $addthis.share_title(title);
+            var titleResult = $addthis.shareTitle(title);
             expect(titleResult).toBe(title);
 
-            titleResult = $addthis.share_title();
+            titleResult = $addthis.shareTitle();
             expect(titleResult).toBe(title);
 
             expect(window.addthis_share.title).toBe(title);

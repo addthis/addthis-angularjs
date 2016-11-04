@@ -564,7 +564,7 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name addthis.$addthis#share_title
+             * @name addthis.$addthis#shareTitle
              * @methodOf addthis.$addthis
              *
              * @description
@@ -586,7 +586,7 @@ var addthisModule = (function(window, angular) {
              * @example
              * ```js
              * app.controller('DoMagicCtrl', ['$scope', '$addthis', function($scope, $addthis) {
-             *     $addthis.share_title('Check this out!');
+             *     $addthis.shareTitle('Check this out!');
              * }]);
              * ```
              *
@@ -595,7 +595,7 @@ var addthisModule = (function(window, angular) {
              * @returns {mixed} a copy of the `addthis_share` title variable on
              * the page, usually a string
              **/
-            share_title: function(title) {
+            shareTitle: function(title) {
                 if (typeof title !== 'undefined') {
                     setShareTitle(title);
                     queueSmartLayersRefresh($window, $interval);
@@ -949,7 +949,7 @@ var addthisModule = (function(window, angular) {
 
         /**
          * @ngdoc method
-         * @name addthis.$addthisProvider#share_title
+         * @name addthis.$addthisProvider#shareTitle
          * @methodOf addthis.$addthisProvider
          *
          * @description
@@ -970,7 +970,7 @@ var addthisModule = (function(window, angular) {
          *
          * ```js
          * app.config(function($addthisProvider) {
-         *     $addthisProvider.share_title('Check this out!');
+         *     $addthisProvider.shareTitle('Check this out!');
          * });
          * ```
          *
@@ -979,7 +979,7 @@ var addthisModule = (function(window, angular) {
          * @returns {mixed} a copy of the `addthis_share` title variable on
          * the page
          **/
-        this.share_title = function(title) {
+        this.shareTitle = function(title) {
             if (typeof title !== 'undefined') {
                 setShareTitle(title);
             }
@@ -1008,7 +1008,7 @@ var addthisModule = (function(window, angular) {
          *
          * ```js
          * app.config(function($addthisProvider) {
-         *     $addthisProvider.share_title('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+         *     $addthisProvider.shareTitle('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
          * });
          * ```
          *

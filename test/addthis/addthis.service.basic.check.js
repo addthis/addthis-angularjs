@@ -13,7 +13,7 @@ describe('addthis service', function() {
         expect($addthis.config).toBeDefined();
         expect($addthis.share).toBeDefined();
         expect($addthis.share_url).toBeDefined();
-        expect($addthis.share_title).toBeDefined();
+        expect($addthis.shareTitle).toBeDefined();
         expect($addthis.loaded).toBeDefined();
     };
 

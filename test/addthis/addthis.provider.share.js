@@ -9,7 +9,7 @@ describe('addthis_share', function() {
     var description = 'this is a description';
     var media = 'https://www.addthis.com/img/png';
 
-    describe('configuring title $addthisProvider.share_title', function() {
+    describe('configuring title $addthisProvider.shareTitle', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
                 // cleanup after last tests
@@ -22,9 +22,9 @@ describe('addthis_share', function() {
                 expect(shareCopy).toEqual({});
 
                 var titleResult;
-                titleResult = $addthisProvider.share_title(title);
+                titleResult = $addthisProvider.shareTitle(title);
                 expect(titleResult).toBe(title);
-                titleResult = $addthisProvider.share_title();
+                titleResult = $addthisProvider.shareTitle();
                 expect(titleResult).toBe(title);
             });
         });

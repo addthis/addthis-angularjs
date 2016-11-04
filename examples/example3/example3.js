@@ -171,7 +171,7 @@ appExample3.controller(
             var alternateTitle = 'This is a good read:';
             // setting up initial title
             $scope.currentTitle = initialTitle;
-            $addthis.share_title($scope.currentTitle);
+            $addthis.shareTitle($scope.currentTitle);
 
             // function to use in the template on clicks so the user can change the
             // share title for the tool
@@ -182,7 +182,7 @@ appExample3.controller(
                     $scope.currentTitle = initialTitle;
                 }
 
-                $addthis.share_title($scope.currentTitle);
+                $addthis.shareTitle($scope.currentTitle);
             };
 
             // watching for location/route/state change
@@ -197,7 +197,7 @@ appExample3.controller(
                      // controller until somethines else changes it or the user
                      // reloads the page in the browser
                     $addthis.share_url(false);
-                    $addthis.share_title(false);
+                    $addthis.shareTitle(false);
                 }
             });
         }

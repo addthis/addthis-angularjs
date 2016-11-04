@@ -50,7 +50,7 @@ describe('outside configs', function() {
                 var ShareCopy = $addthis.share();
                 expect(testShare).toEqual(ShareCopy);
 
-                expect(testShare.title).toEqual($addthis.share_title());
+                expect(testShare.title).toEqual($addthis.shareTitle());
                 expect(testShare.url).toEqual($addthis.share_url());
                 expect(testShare.description).toEqual($addthis.share_description());
                 expect(testShare.media).toEqual($addthis.share_media());
