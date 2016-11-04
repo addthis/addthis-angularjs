@@ -17,10 +17,10 @@ describe('setup', function() {
         return matches;
     };
 
-    describe('after calling $addthisProvider.disable_auto_add()', function() {
+    describe('after calling $addthisProvider.disableAutoAdd()', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
-                $addthisProvider.disable_auto_add();
+                $addthisProvider.disableAutoAdd();
             });
         });
 

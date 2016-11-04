@@ -411,7 +411,7 @@ var addthisModule = (function(window, angular) {
              * Adds the `addthis_widget.js` script onto the page if not
              * already present. Note: `addthis_widget.js` will automatically be
              * added to your page unless turned off using
-             * `$addthisProvider.disable_auto_add`.
+             * `$addthisProvider.disableAutoAdd`.
              *
              * @example
              * ```js
@@ -1110,7 +1110,7 @@ var addthisModule = (function(window, angular) {
         };
         /**
          * @ngdoc method
-         * @name addthis.$addthisProvider#disable_auto_add
+         * @name addthis.$addthisProvider#disableAutoAdd
          * @methodOf addthis.$addthisProvider
          *
          * @description
@@ -1123,13 +1123,13 @@ var addthisModule = (function(window, angular) {
          *
          * ```js
          * app.config(function($addthisProvider) {
-         *     $addthisProvider.disable_auto_add();
+         *     $addthisProvider.disableAutoAdd();
          * });
          * ```
          *
          * @returns {addthisProvider object} Returns the $addthisProvider object
          **/
-        this.disable_auto_add = function() {
+        this.disableAutoAdd = function() {
             autoAddScript = false;
             return this;
         };
@@ -1142,12 +1142,12 @@ var addthisModule = (function(window, angular) {
          * @description
          * By default, this module automatically adds `addthis_widget.js` onto
          * the site (if not added manually). The
-         * `$addthisProvider.disable_auto_add` method disables this
+         * `$addthisProvider.disableAutoAdd` method disables this
          * functionality. This method re-enables it.
          *
          * ```js
          * app.config(function($addthisProvider, $envProvider) {
-         *     $addthisProvider.disable_auto_add();
+         *     $addthisProvider.disableAutoAdd();
          *     if ($envProvider.isProduction()) {
          *         $addthisProvider.enable_auto_add();
          *     }
@@ -1174,10 +1174,7 @@ var addthisModule = (function(window, angular) {
          *
          * ```js
          * app.config(function($addthisProvider, $envProvider) {
-         *     $addthisProvider.disable_auto_add();
-         *     if ($envProvider.isProduction()) {
-         *         $addthisProvider.enable_auto_add();
-         *     }
+         *     $addthisProvider.script_in_head();
          * });
          * ```
          *

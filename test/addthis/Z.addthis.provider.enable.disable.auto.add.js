@@ -52,13 +52,13 @@ describe('$addthis provider auto add', function() {
         });
     });
 
-    describe('$addthisProvider disable_auto_add()', function() {
+    describe('$addthisProvider disableAutoAdd()', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
                 removeAddThisScriptFromPage();
                 var matches = findAddThisScriptOnPage();
                 expect(matches.length).toBe(0);
-                $addthisProvider.disable_auto_add();
+                $addthisProvider.disableAutoAdd();
             });
         });
 
