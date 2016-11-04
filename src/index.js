@@ -1163,7 +1163,7 @@ var addthisModule = (function(window, angular) {
 
         /**
          * @ngdoc method
-         * @name addthis.$addthisProvider#script_in_head
+         * @name addthis.$addthisProvider#scriptInHead
          * @methodOf addthis.$addthisProvider
          *
          * @description
@@ -1174,13 +1174,13 @@ var addthisModule = (function(window, angular) {
          *
          * ```js
          * app.config(function($addthisProvider, $envProvider) {
-         *     $addthisProvider.script_in_head();
+         *     $addthisProvider.scriptInHead();
          * });
          * ```
          *
          * @returns {addthisProvider object} Returns the $addthisProvider object
          **/
-        this.script_in_head = function() {
+        this.scriptInHead = function() {
             scriptInFooter = false;
             return this;
         };

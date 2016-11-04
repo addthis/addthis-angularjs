@@ -44,7 +44,7 @@ describe('script placement configurations', function() {
             expect(shareCopy).toEqual({});
 
             removeAddThisScriptFromPage();
-            $addthisProvider.script_in_head();
+            $addthisProvider.scriptInHead();
             newProfileId = $addthisProvider.profile_id('foo');
             expect(newProfileId).toBe('foo');
         });
@@ -54,7 +54,7 @@ describe('script placement configurations', function() {
         $addthis = $injector.get('$addthis');
     }));
 
-    it('$addthisProvider.script_in_head() should add addthis_widget.js into the header', function() {
+    it('$addthisProvider.scriptInHead() should add addthis_widget.js into the header', function() {
         $addthis.add();
         var headerMatches = findAddThisScriptOnPage(true);
         expect(headerMatches.length).toBe(1);
