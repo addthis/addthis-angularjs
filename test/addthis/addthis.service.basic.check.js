@@ -15,6 +15,7 @@ describe('addthis service', function() {
         expect($addthis.shareUrl).toBeDefined();
         expect($addthis.shareTitle).toBeDefined();
         expect($addthis.shareDescription).toBeDefined();
+        expect($addthis.shareMedia).toBeDefined();
         expect($addthis.loaded).toBeDefined();
     };
 

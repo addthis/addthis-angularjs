@@ -53,7 +53,7 @@ describe('outside configs', function() {
                 expect(testShare.title).toEqual($addthis.shareTitle());
                 expect(testShare.url).toEqual($addthis.shareUrl());
                 expect(testShare.description).toEqual($addthis.shareDescription());
-                expect(testShare.media).toEqual($addthis.share_media());
+                expect(testShare.media).toEqual($addthis.shareMedia());
             });
         });
     });

@@ -13,6 +13,7 @@ describe('$addthis provider', function() {
         expect($addthisProvider.shareUrl).toBeDefined();
         expect($addthisProvider.shareTitle).toBeDefined();
         expect($addthisProvider.shareDescription).toBeDefined();
+        expect($addthisProvider.shareMedia).toBeDefined();
         expect($addthisProvider.disable_auto_add).toBeDefined();
         expect($addthisProvider.enable_auto_add).toBeDefined();
         expect($addthisProvider.script_in_head).toBeDefined();

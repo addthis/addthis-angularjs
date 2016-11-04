@@ -127,7 +127,7 @@ describe('addthis_share', function() {
         });
     });
 
-    describe('configuring media $addthisProvider.share_media', function() {
+    describe('configuring media $addthisProvider.shareMedia', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
                 // cleanup after last tests
@@ -140,9 +140,9 @@ describe('addthis_share', function() {
                 expect(shareCopy).toEqual({});
 
                 var mediaResult;
-                mediaResult = $addthisProvider.share_media(media);
+                mediaResult = $addthisProvider.shareMedia(media);
                 expect(mediaResult).toBe(media);
-                mediaResult = $addthisProvider.share_media();
+                mediaResult = $addthisProvider.shareMedia();
                 expect(mediaResult).toBe(media);
             });
         });

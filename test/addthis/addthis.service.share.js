@@ -75,12 +75,12 @@ describe('addthis_share', function() {
         });
     });
 
-    describe('configuring media $addthis.share_media', function() {
+    describe('configuring media $addthis.shareMedia', function() {
         it('should set addthis_share.media ', function() {
-            var mediaResult = $addthis.share_media(media);
+            var mediaResult = $addthis.shareMedia(media);
             expect(mediaResult).toBe(media);
 
-            mediaResult = $addthis.share_media();
+            mediaResult = $addthis.shareMedia();
             expect(mediaResult).toBe(media);
 
             expect(window.addthis_share.media).toBe(media);

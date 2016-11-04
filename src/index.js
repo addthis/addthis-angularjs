@@ -645,12 +645,12 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name addthis.$addthis#share_media
+             * @name addthis.$addthis#shareMedia
              * @methodOf addthis.$addthis
              *
              * @description
              * This is a shortcut to setting the image through
-             * `$addthis.share({'share_media': 'http://example.com/img.png'})`.
+             * `$addthis.share({'shareMedia': 'http://example.com/img.png'})`.
              * Sets the image shared by tools that don't explicitly set one.
              * With the `addthisTool` directive, you may set the image
              * explicitly using the `share-media` attribute.
@@ -666,7 +666,7 @@ var addthisModule = (function(window, angular) {
              * @example
              * ```js
              * app.controller('DoMagicCtrl', ['$scope', '$addthis', function($scope, $addthis) {
-             *     $addthis.share_media('http://example.com/img.png');
+             *     $addthis.shareMedia('http://example.com/img.png');
              * }]);
              * ```
              *
@@ -675,7 +675,7 @@ var addthisModule = (function(window, angular) {
              * @returns {mixed} a copy of the `addthis_share` media variable on
              * the page, usually a string
              **/
-            share_media: function(media) {
+            shareMedia: function(media) {
                 if (typeof media !== 'undefined') {
                     setShareMedia(media);
                     queueSmartLayersRefresh($window, $interval);
@@ -1026,12 +1026,12 @@ var addthisModule = (function(window, angular) {
         };
         /**
          * @ngdoc method
-         * @name addthis.$addthisProvider#share_media
+         * @name addthis.$addthisProvider#shareMedia
          * @methodOf addthis.$addthisProvider
          *
          * @description
          * This is a shortcut to setting the image through
-         * `$addthis.share({'share_media': 'http://example.com/img.png'})`.
+         * `$addthis.share({'shareMedia': 'http://example.com/img.png'})`.
          * Sets the image shared by tools that don't explicitly set one.
          * With the `addthisTool` directive, you may set the image
          * explicitly using the `share-media` attribute.
@@ -1046,7 +1046,7 @@ var addthisModule = (function(window, angular) {
          *
          * ```js
          * app.config(function($addthisProvider) {
-         *     $addthisProvider.share_media('http://example.com/img.png');
+         *     $addthisProvider.shareMedia('http://example.com/img.png');
          * });
          * ```
          *
@@ -1055,7 +1055,7 @@ var addthisModule = (function(window, angular) {
          * @returns {mixed} a copy of the `addthis_share` media variable on
          * the page, usually a string
          **/
-        this.share_media = function(media) {
+        this.shareMedia = function(media) {
             if (typeof media !== 'undefined') {
                 setShareMedia(media);
             }
