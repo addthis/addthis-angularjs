@@ -125,18 +125,18 @@ describe('addthis_share', function() {
         });
     });
 
-    describe('configuring url shortening with $addthisProvider.url_shortening', function() {
+    describe('configuring url shortening with $addthisProvider.urlShortening', function() {
         var urlShorteningService = 'bitly';
         var socialService = 'twitter';
         it('should set addthis_share.url_transforms.shorten & addthis_share.shorteners', function() {
-            $addthis.url_shortening(urlShorteningService, socialService);
+            $addthis.urlShortening(urlShorteningService, socialService);
             expect(window.addthis_share.url_transforms.shorten[socialService]).toBe(urlShorteningService);
             expect(window.addthis_share.shorteners[urlShorteningService]).toEqual({});
         });
 
         it('should set addthis_share.url_transforms.shorten & addthis_share.shorteners without touching other items in addthis_share.url_transforms', function() {
             $addthis.share({'url_transforms': {'foo': 'bar'}});
-            $addthis.url_shortening(urlShorteningService, socialService);
+            $addthis.urlShortening(urlShorteningService, socialService);
             expect(window.addthis_share.url_transforms.shorten[socialService]).toBe(urlShorteningService);
             expect(window.addthis_share.shorteners[urlShorteningService]).toEqual({});
             expect(window.addthis_share.url_transforms.foo).toBe('bar');
@@ -144,7 +144,7 @@ describe('addthis_share', function() {
 
         it('should set addthis_share.url_transforms.shorten & addthis_share.shorteners without touching other items in addthis_share.url_transforms.shorten', function() {
             $addthis.share({'url_transforms': {'shorten': {'foo': 'bar'}}});
-            $addthis.url_shortening(urlShorteningService, socialService);
+            $addthis.urlShortening(urlShorteningService, socialService);
             expect(window.addthis_share.url_transforms.shorten[socialService]).toBe(urlShorteningService);
             expect(window.addthis_share.shorteners[urlShorteningService]).toEqual({});
             expect(window.addthis_share.url_transforms.shorten.foo).toBe('bar');
@@ -152,7 +152,7 @@ describe('addthis_share', function() {
 
         it('should set addthis_share.url_transforms.shorten & addthis_share.shorteners without touching other items in addthis_share.shorteners', function() {
             $addthis.share({'shorteners': {'foo': 'bar'}});
-            $addthis.url_shortening(urlShorteningService, socialService);
+            $addthis.urlShortening(urlShorteningService, socialService);
             expect(window.addthis_share.url_transforms.shorten[socialService]).toBe(urlShorteningService);
             expect(window.addthis_share.shorteners[urlShorteningService]).toEqual({});
             expect(window.addthis_share.shorteners.foo).toBe('bar');

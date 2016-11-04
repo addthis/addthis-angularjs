@@ -182,7 +182,7 @@ describe('addthis_share', function() {
         });
     });
 
-    describe('configuring url shortening with $addthisProvider.url_shortening', function() {
+    describe('configuring url shortening with $addthisProvider.urlShortening', function() {
         var urlShorteningService = 'bitly';
         var socialService = 'twitter';
         beforeEach(function() {
@@ -196,7 +196,7 @@ describe('addthis_share', function() {
                 shareCopy = $addthisProvider.share({});
                 expect(shareCopy).toEqual({});
 
-                $addthisProvider.url_shortening(urlShorteningService, socialService);
+                $addthisProvider.urlShortening(urlShorteningService, socialService);
             });
         });
 

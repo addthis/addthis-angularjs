@@ -708,7 +708,7 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name addthis.$addthis#url_shortening
+             * @name addthis.$addthis#urlShortening
              * @methodOf addthis.$addthis
              *
              * @description
@@ -720,14 +720,14 @@ var addthisModule = (function(window, angular) {
              * @example
              * ```js
              * app.controller('DoMagicCtrl', ['$scope', '$addthis', function($scope, $addthis) {
-             *     $addthis.url_shortening('bitly', 'twitter');
+             *     $addthis.urlShortening('bitly', 'twitter');
              * }]);
              * ```
              *
              * @param {string} urlShorteningService The URL shortening service to enable
              * @param {string} socialService The social service to enable the URL shortening on
              **/
-            url_shortening: function(urlShorteningService,socialService) {
+            urlShortening: function(urlShorteningService,socialService) {
                 urlShortening(urlShorteningService,socialService);
                 queueSmartLayersRefresh($window, $interval);
             },
@@ -1086,7 +1086,7 @@ var addthisModule = (function(window, angular) {
         };
         /**
          * @ngdoc method
-         * @name addthis.$addthisProvider#url_shortening
+         * @name addthis.$addthisProvider#urlShortening
          * @methodOf addthis.$addthisProvider
          *
          * @description
@@ -1098,14 +1098,14 @@ var addthisModule = (function(window, angular) {
          * @example
          * ```js
          * app.config(function($addthisProvider) {
-         *     $addthisProvider.url_shortening('bitly', 'twitter');
+         *     $addthisProvider.urlShortening('bitly', 'twitter');
          * });
          * ```
          *
          * @param {string} urlShorteningService The URL shortening service to enable
          * @param {string} socialService The social service to enable the URL shortening on
          **/
-        this.url_shortening = function(urlShorteningService, socialService) {
+        this.urlShortening = function(urlShorteningService, socialService) {
             urlShortening(urlShorteningService,socialService);
         };
         /**
