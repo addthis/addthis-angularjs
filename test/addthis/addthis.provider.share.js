@@ -98,7 +98,7 @@ describe('addthis_share', function() {
         });
     });
 
-    describe('configuring description $addthisProvider.share_description', function() {
+    describe('configuring description $addthisProvider.shareDescription', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
                 // cleanup after last tests
@@ -111,9 +111,9 @@ describe('addthis_share', function() {
                 expect(shareCopy).toEqual({});
 
                 var descriptionResult;
-                descriptionResult = $addthisProvider.share_description(description);
+                descriptionResult = $addthisProvider.shareDescription(description);
                 expect(descriptionResult).toBe(description);
-                descriptionResult = $addthisProvider.share_description();
+                descriptionResult = $addthisProvider.shareDescription();
                 expect(descriptionResult).toBe(description);
             });
         });

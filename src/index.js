@@ -604,7 +604,7 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name addthis.$addthis#share_description
+             * @name addthis.$addthis#shareDescription
              * @methodOf addthis.$addthis
              *
              * @description
@@ -626,7 +626,7 @@ var addthisModule = (function(window, angular) {
              * @example
              * ```js
              * app.controller('DoMagicCtrl', ['$scope', '$addthis', function($scope, $addthis) {
-             *     $addthis.share_description('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+             *     $addthis.shareDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
              * }]);
              * ```
              *
@@ -636,7 +636,7 @@ var addthisModule = (function(window, angular) {
              * @returns {mixed} a copy of the `addthis_share` description
              * variable on the page, usually a string
              **/
-            share_description: function(description) {
+            shareDescription: function(description) {
                 if (typeof description !== 'undefined') {
                     setShareDescription(description);
                     queueSmartLayersRefresh($window, $interval);
@@ -987,7 +987,7 @@ var addthisModule = (function(window, angular) {
         };
         /**
          * @ngdoc method
-         * @name addthis.$addthisProvider#share_description
+         * @name addthis.$addthisProvider#shareDescription
          * @methodOf addthis.$addthisProvider
          *
          * @description
@@ -1008,7 +1008,7 @@ var addthisModule = (function(window, angular) {
          *
          * ```js
          * app.config(function($addthisProvider) {
-         *     $addthisProvider.shareTitle('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+         *     $addthisProvider.shareDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
          * });
          * ```
          *
@@ -1018,7 +1018,7 @@ var addthisModule = (function(window, angular) {
          * @returns {mixed} a copy of the `addthis_share` description
          * variable on the page, usually a string
          **/
-        this.share_description = function(description) {
+        this.shareDescription = function(description) {
             if (typeof description !== 'undefined') {
                 setShareDescription(description);
             }

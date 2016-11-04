@@ -63,12 +63,12 @@ describe('addthis_share', function() {
         });
     });
 
-    describe('configuring description $addthis.share_description', function() {
+    describe('configuring description $addthis.shareDescription', function() {
         it('should set addthis_share.description ', function() {
-            var descriptionResult = $addthis.share_description(description);
+            var descriptionResult = $addthis.shareDescription(description);
             expect(descriptionResult).toBe(description);
 
-            descriptionResult = $addthis.share_description();
+            descriptionResult = $addthis.shareDescription();
             expect(descriptionResult).toBe(description);
 
             expect(window.addthis_share.description).toBe(description);
