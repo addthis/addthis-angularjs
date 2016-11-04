@@ -1136,7 +1136,7 @@ var addthisModule = (function(window, angular) {
 
         /**
          * @ngdoc method
-         * @name addthis.$addthisProvider#enable_auto_add
+         * @name addthis.$addthisProvider#enableAutoAdd
          * @methodOf addthis.$addthisProvider
          *
          * @description
@@ -1149,14 +1149,14 @@ var addthisModule = (function(window, angular) {
          * app.config(function($addthisProvider, $envProvider) {
          *     $addthisProvider.disableAutoAdd();
          *     if ($envProvider.isProduction()) {
-         *         $addthisProvider.enable_auto_add();
+         *         $addthisProvider.enableAutoAdd();
          *     }
          * });
          * ```
          *
          * @returns {addthisProvider object} Returns the $addthisProvider object
          **/
-        this.enable_auto_add = function() {
+        this.enableAutoAdd = function() {
             autoAddScript = true;
             return this;
         };

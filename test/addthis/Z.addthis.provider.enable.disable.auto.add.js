@@ -31,14 +31,14 @@ describe('$addthis provider auto add', function() {
         expect(headerMatches.length).toBe(0);
     };
 
-    describe('$addthisProvider enable_auto_add()', function() {
+    describe('$addthisProvider enableAutoAdd()', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
                 removeAddThisScriptFromPage();
                 var matches = findAddThisScriptOnPage();
                 expect(matches.length).toBe(0);
                 $addthisProvider.environment('unittest');
-                $addthisProvider.enable_auto_add();
+                $addthisProvider.enableAutoAdd();
             });
         });
 

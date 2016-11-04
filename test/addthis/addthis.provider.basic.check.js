@@ -15,7 +15,7 @@ describe('$addthis provider', function() {
         expect($addthisProvider.shareDescription).toBeDefined();
         expect($addthisProvider.shareMedia).toBeDefined();
         expect($addthisProvider.disableAutoAdd).toBeDefined();
-        expect($addthisProvider.enable_auto_add).toBeDefined();
+        expect($addthisProvider.enableAutoAdd).toBeDefined();
         expect($addthisProvider.script_in_head).toBeDefined();
         expect($addthisProvider.$get).toBeDefined();
     };
