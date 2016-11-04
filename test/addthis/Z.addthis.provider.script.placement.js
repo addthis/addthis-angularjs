@@ -36,7 +36,7 @@ describe('script placement configurations', function() {
         module(function($addthisProvider) {
             // cleanup after last tests
             var newProfileId, configCopy, shareCopy;
-            newProfileId = $addthisProvider.profile_id(false);
+            newProfileId = $addthisProvider.profileId(false);
             expect(newProfileId).toBe(false);
             configCopy = $addthisProvider.config({});
             expect(configCopy).toEqual({});
@@ -45,7 +45,7 @@ describe('script placement configurations', function() {
 
             removeAddThisScriptFromPage();
             $addthisProvider.scriptInHead();
-            newProfileId = $addthisProvider.profile_id('foo');
+            newProfileId = $addthisProvider.profileId('foo');
             expect(newProfileId).toBe('foo');
         });
     });

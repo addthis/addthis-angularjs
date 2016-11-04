@@ -61,7 +61,7 @@ appExample3.config(function($stateProvider, $urlRouterProvider) {
 
 appExample3.config(function($addthisProvider) {
     // setting a profile ID for this site
-    $addthisProvider.profile_id('ra-57b71bceb3ebb9df');
+    $addthisProvider.profileId('ra-57b71bceb3ebb9df');
 });
 
 appExample3.controller('ToolSwitcherACtrl', ['$scope', function($scope) {

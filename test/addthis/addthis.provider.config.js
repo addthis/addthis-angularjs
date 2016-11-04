@@ -14,7 +14,7 @@ describe('addthis_config', function() {
             module(function($addthisProvider) {
             // cleanup after last tests
                 var newProfileId, configCopy, shareCopy;
-                newProfileId = $addthisProvider.profile_id(false);
+                newProfileId = $addthisProvider.profileId(false);
                 expect(newProfileId).toBe(false);
                 configCopy = $addthisProvider.config({});
                 expect(configCopy).toEqual({});
@@ -40,16 +40,16 @@ describe('addthis_config', function() {
             module(function($addthisProvider) {
                 // cleanup after last tests
                 var newProfileId, configCopy, shareCopy;
-                newProfileId = $addthisProvider.profile_id(false);
+                newProfileId = $addthisProvider.profileId(false);
                 expect(newProfileId).toBe(false);
                 configCopy = $addthisProvider.config({});
                 expect(configCopy).toEqual({});
                 shareCopy = $addthisProvider.share({});
                 expect(shareCopy).toEqual({});
 
-                newProfileId = $addthisProvider.profile_id(profileId);
+                newProfileId = $addthisProvider.profileId(profileId);
                 expect(newProfileId).toBe(profileId);
-                newProfileId = $addthisProvider.profile_id();
+                newProfileId = $addthisProvider.profileId();
                 expect(newProfileId).toBe(profileId);
                 configCopy = $addthisProvider.config({});
                 expect(configCopy).toEqual({'pubid': profileId});
@@ -75,20 +75,20 @@ describe('addthis_config', function() {
             module(function($addthisProvider) {
                 // cleanup after last tests
                 var newProfileId, configCopy, shareCopy;
-                newProfileId = $addthisProvider.profile_id(false);
+                newProfileId = $addthisProvider.profileId(false);
                 expect(newProfileId).toBe(false);
                 configCopy = $addthisProvider.config({});
                 expect(configCopy).toEqual({});
                 shareCopy = $addthisProvider.share({});
                 expect(shareCopy).toEqual({});
 
-                newProfileId = $addthisProvider.profile_id('foo');
+                newProfileId = $addthisProvider.profileId('foo');
                 expect(newProfileId).toBe('foo');
 
                 configCopy = $addthisProvider.config({});
                 expect(configCopy).toEqual({'pubid': 'foo'});
 
-                newProfileId = $addthisProvider.profile_id(profileId);
+                newProfileId = $addthisProvider.profileId(profileId);
                 expect(newProfileId).toBe(profileId);
 
                 configCopy = $addthisProvider.config({});
@@ -116,7 +116,7 @@ describe('addthis_config', function() {
     describe('set via $addthis.config with ignore_server_config true', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
-                var newProfileId = $addthisProvider.profile_id(false);
+                var newProfileId = $addthisProvider.profileId(false);
                 expect(newProfileId).toBe(false);
                 var configCopy = $addthisProvider.config({ignore_server_config: true});
                 expect(configCopy).toEqual({ignore_server_config: true});
@@ -141,7 +141,7 @@ describe('addthis_config', function() {
     describe('set via $addthis.config with ignore_server_config false', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
-                var newProfileId = $addthisProvider.profile_id(false);
+                var newProfileId = $addthisProvider.profileId(false);
                 expect(newProfileId).toBe(false);
                 var configCopy = $addthisProvider.config({ignore_server_config: false});
                 expect(configCopy).toEqual({ignore_server_config: false});

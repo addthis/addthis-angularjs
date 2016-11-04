@@ -2,7 +2,7 @@ var appExample1 = angular.module('appExample1', ['addthis']);
 
 appExample1.config(function($addthisProvider) {
     // setting a profile ID for this site
-    $addthisProvider.profile_id('ra-57b71bceb3ebb9df');
+    $addthisProvider.profileId('ra-57b71bceb3ebb9df');
 });
 
 appExample1.controller('AddAnotherIpsumCtrl', ['$scope', function($scope) {

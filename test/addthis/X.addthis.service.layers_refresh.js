@@ -9,7 +9,7 @@ describe('$addthis.layersRefresh', function() {
 
     beforeEach(function() {
         module(function($addthisProvider) {
-            var newProfileId = $addthisProvider.profile_id(false);
+            var newProfileId = $addthisProvider.profileId(false);
             expect(newProfileId).toBe(false);
             var configCopy = $addthisProvider.config({});
             expect(configCopy).toEqual({});

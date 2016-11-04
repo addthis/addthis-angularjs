@@ -23,7 +23,7 @@ describe('outside configs', function() {
             window.addthis_share = angular.copy(testShare);
 
             module(function($addthisProvider) {
-                var newProfileId = $addthisProvider.profile_id(false);
+                var newProfileId = $addthisProvider.profileId(false);
                 expect(newProfileId).toBe(false);
                 var configCopy = $addthisProvider.config({});
                 expect(configCopy).toEqual({});
@@ -63,7 +63,7 @@ describe('outside configs', function() {
             window.addthis_config = angular.copy(testConfigs2);
 
             module(function($addthisProvider) {
-                var newProfileId = $addthisProvider.profile_id(false);
+                var newProfileId = $addthisProvider.profileId(false);
                 expect(newProfileId).toBe(false);
                 var configCopy = $addthisProvider.config({});
                 expect(configCopy).toEqual({});
@@ -82,7 +82,7 @@ describe('outside configs', function() {
                 var configCopy = $addthis.config();
                 expect(testConfigs2).toEqual(configCopy);
 
-                expect(testConfigs2.pubid).toEqual($addthis.profile_id());
+                expect(testConfigs2.pubid).toEqual($addthis.profileId());
             });
         });
     });

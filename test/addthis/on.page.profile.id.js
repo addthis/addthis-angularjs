@@ -10,7 +10,7 @@ describe('profile id', function() {
         window.addthis_config = { 'pubid': profileId };
 
         module(function($addthisProvider) {
-            var newProfileId = $addthisProvider.profile_id(false);
+            var newProfileId = $addthisProvider.profileId(false);
             expect(newProfileId).toBe(false);
             var configCopy = $addthisProvider.config({});
             expect(configCopy).toEqual({});
@@ -24,12 +24,12 @@ describe('profile id', function() {
            $addthis = $injector.get('$addthis');
         }));
 
-        it('should be returned by $addthis.profile_id', function() {
+        it('should be returned by $addthis.profileId', function() {
             /** if we picked up the pubid, we always populated it into
              * addthis_config when you set it (unless you passed a new one with
              * your new configs, in which case we start using that)
              */
-            var newProfileId = $addthis.profile_id();
+            var newProfileId = $addthis.profileId();
             expect(newProfileId).toBe(profileId);
         });
 

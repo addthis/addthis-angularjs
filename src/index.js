@@ -757,7 +757,7 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name addthis.$addthis#profile_id
+             * @name addthis.$addthis#profileId
              * @methodOf addthis.$addthis
              *
              * @description
@@ -765,7 +765,7 @@ var addthisModule = (function(window, angular) {
              *
              * @returns {string|boolen} false if no profile id set
              **/
-            profile_id: function() {
+            profileId: function() {
                 return profileId;
             }
         };
@@ -814,7 +814,7 @@ var addthisModule = (function(window, angular) {
 
         /**
          * @ngdoc method
-         * @name addthis.$addthisProvider#profile_id
+         * @name addthis.$addthisProvider#profileId
          * @methodOf addthis.$addthisProvider
          *
          * @description
@@ -827,7 +827,7 @@ var addthisModule = (function(window, angular) {
          * @example
          * ```js
          * app.config(function($addthisProvider) {
-         *     $addthisProvider.profile_id('your_profile_id_here');
+         *     $addthisProvider.profileId('your_profile_id_here');
          * });
          * ```
          *
@@ -835,7 +835,7 @@ var addthisModule = (function(window, angular) {
          *   site.
          * @returns {boolean|string} Returns the profile id or false if not set
          **/
-        this.profile_id = function(input) {
+        this.profileId = function(input) {
             if (typeof input !== 'undefined') {
                 profileId = input;
                 addthis_config.pubid = input;

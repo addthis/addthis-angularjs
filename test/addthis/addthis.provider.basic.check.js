@@ -7,7 +7,7 @@ describe('$addthis provider', function() {
 
     var validateAddThisProvider = function($addthisProvider) {
         expect($addthisProvider).toBeDefined();
-        expect($addthisProvider.profile_id).toBeDefined();
+        expect($addthisProvider.profileId).toBeDefined();
         expect($addthisProvider.config).toBeDefined();
         expect($addthisProvider.share).toBeDefined();
         expect($addthisProvider.shareUrl).toBeDefined();

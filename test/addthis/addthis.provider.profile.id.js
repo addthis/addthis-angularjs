@@ -6,19 +6,19 @@ describe('$addthisProvider configure profile id', function() {
     var $addthis;
     var profileId = 'ra-57b71bceb3ebb9df';
 
-    describe('using $addthisProvider.profile_id', function() {
+    describe('using $addthisProvider.profileId', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
                 // cleanup after last tests
                 var newProfileId, configCopy, shareCopy;
-                newProfileId = $addthisProvider.profile_id(false);
+                newProfileId = $addthisProvider.profileId(false);
                 expect(newProfileId).toBe(false);
                 configCopy = $addthisProvider.config({});
                 expect(configCopy).toEqual({});
                 shareCopy = $addthisProvider.share({});
                 expect(shareCopy).toEqual({});
 
-                newProfileId = $addthisProvider.profile_id(profileId);
+                newProfileId = $addthisProvider.profileId(profileId);
                 expect(newProfileId).toBe(profileId);
             });
         });

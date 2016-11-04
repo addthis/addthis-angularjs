@@ -11,7 +11,7 @@ describe('$addthis.loaded()', function() {
         module(function($addthisProvider) {
             // cleanup after last tests
             var newProfileId, configCopy, shareCopy;
-            newProfileId = $addthisProvider.profile_id(false);
+            newProfileId = $addthisProvider.profileId(false);
             expect(newProfileId).toBe(false);
             configCopy = $addthisProvider.config({});
             expect(configCopy).toEqual({});

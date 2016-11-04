@@ -16,7 +16,7 @@ appExample2.config(function($routeProvider) {
 
 appExample2.config(function($addthisProvider) {
     // setting a profile ID for this site
-    $addthisProvider.profile_id('ra-57b71bceb3ebb9df');
+    $addthisProvider.profileId('ra-57b71bceb3ebb9df');
 });
 
 // A nav controller so we can change the path on clicks in the NavBar
