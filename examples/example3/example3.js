@@ -152,7 +152,7 @@ appExample3.controller(
             var alternateUrl = 'https://www.google.com';
             // setting up initial URL
             $scope.currentUrl = initialUrl;
-            $addthis.share_url($scope.currentUrl);
+            $addthis.shareUrl($scope.currentUrl);
 
             // function to use in the template on clicks so the user can change the
             // share url for the tool
@@ -163,7 +163,7 @@ appExample3.controller(
                     $scope.currentUrl = initialUrl;
                 }
 
-                $addthis.share_url($scope.currentUrl);
+                $addthis.shareUrl($scope.currentUrl);
             };
 
             // setting up 2 titles to use in example
@@ -196,7 +196,7 @@ appExample3.controller(
                      // this value will stay as what it was set in this
                      // controller until somethines else changes it or the user
                      // reloads the page in the browser
-                    $addthis.share_url(false);
+                    $addthis.shareUrl(false);
                     $addthis.shareTitle(false);
                 }
             });

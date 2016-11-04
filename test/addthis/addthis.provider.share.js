@@ -38,7 +38,7 @@ describe('addthis_share', function() {
         });
     });
 
-    describe('configuring url with $addthisProvider.share_url', function() {
+    describe('configuring url with $addthisProvider.shareUrl', function() {
         beforeEach(function() {
             module(function($addthisProvider) {
                 // cleanup after last tests
@@ -51,9 +51,9 @@ describe('addthis_share', function() {
                 expect(shareCopy).toEqual({});
 
                 var urlResult;
-                urlResult = $addthisProvider.share_url(url);
+                urlResult = $addthisProvider.shareUrl(url);
                 expect(urlResult).toBe(url);
-                urlResult = $addthisProvider.share_url();
+                urlResult = $addthisProvider.shareUrl();
                 expect(urlResult).toBe(url);
             });
         });

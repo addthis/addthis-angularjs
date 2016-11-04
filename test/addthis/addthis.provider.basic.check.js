@@ -10,7 +10,7 @@ describe('$addthis provider', function() {
         expect($addthisProvider.profile_id).toBeDefined();
         expect($addthisProvider.config).toBeDefined();
         expect($addthisProvider.share).toBeDefined();
-        expect($addthisProvider.share_url).toBeDefined();
+        expect($addthisProvider.shareUrl).toBeDefined();
         expect($addthisProvider.shareTitle).toBeDefined();
         expect($addthisProvider.disable_auto_add).toBeDefined();
         expect($addthisProvider.enable_auto_add).toBeDefined();

@@ -12,7 +12,7 @@ describe('addthis service', function() {
         expect($addthis.layersRefresh).toBeDefined();
         expect($addthis.config).toBeDefined();
         expect($addthis.share).toBeDefined();
-        expect($addthis.share_url).toBeDefined();
+        expect($addthis.shareUrl).toBeDefined();
         expect($addthis.shareTitle).toBeDefined();
         expect($addthis.loaded).toBeDefined();
     };

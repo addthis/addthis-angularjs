@@ -38,12 +38,12 @@ describe('addthis_share', function() {
         });
     });
 
-    describe('configuring url with $addthis.share_url', function() {
+    describe('configuring url with $addthis.shareUrl', function() {
         it('should set addthis_share.url ', function() {
-            var urlResult = $addthis.share_url(url);
+            var urlResult = $addthis.shareUrl(url);
             expect(urlResult).toBe(url);
 
-            urlResult = $addthis.share_url();
+            urlResult = $addthis.shareUrl();
             expect(urlResult).toBe(url);
 
             expect(window.addthis_share.url).toBe(url);

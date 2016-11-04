@@ -530,7 +530,7 @@ var addthisModule = (function(window, angular) {
             },
             /**
              * @ngdoc method
-             * @name addthis.$addthis#share_url
+             * @name addthis.$addthis#shareUrl
              * @methodOf addthis.$addthis
              *
              * @description
@@ -546,7 +546,7 @@ var addthisModule = (function(window, angular) {
              * @example
              * ```js
              * app.controller('AddThisInfoCtrl', ['$scope', '$addthis', function($scope, $addthis) {
-             *     $addthis.share_url('https://www.addthis.com');
+             *     $addthis.shareUrl('https://www.addthis.com');
              * }]);
              * ```
              *
@@ -555,7 +555,7 @@ var addthisModule = (function(window, angular) {
              * @returns {mixed} a copy of the `addthis_share` url variable on
              * the page, usually a string
              **/
-            share_url: function(url) {
+            shareUrl: function(url) {
                 if (typeof url !== 'undefined') {
                     setShareUrl(url);
                     queueSmartLayersRefresh($window, $interval);
@@ -916,7 +916,7 @@ var addthisModule = (function(window, angular) {
 
        /**
          * @ngdoc method
-         * @name addthis.$addthisProvider#share_url
+         * @name addthis.$addthisProvider#shareUrl
          * @methodOf addthis.$addthisProvider
          *
          * @description
@@ -931,7 +931,7 @@ var addthisModule = (function(window, angular) {
          *
          * ```js
          * app.config(function($addthisProvider) {
-         *     $addthisProvider.share_url('https://www.addthis.com');
+         *     $addthisProvider.shareUrl('https://www.addthis.com');
          * });
          * ```
          *
@@ -940,7 +940,7 @@ var addthisModule = (function(window, angular) {
          * @returns {mixed} a copy of the `addthis_share` url variable on
          * the page, usually a string
          **/
-        this.share_url = function(url) {
+        this.shareUrl = function(url) {
             if (typeof url !== 'undefined') {
                 setShareUrl(url);
             }
