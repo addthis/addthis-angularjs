@@ -25,7 +25,7 @@ var addthisModule = (function(window, angular) {
     var addthis_share = {};
 
     // Variable for tracking module usage to help guide AddThis in deciding how
-    // many resources to devote to maintaining this integtration and what
+    // many resources to devote to maintaining this integration and what
     // versions of Angular to focus on or test with.
     var addthis_plugin_info = {
         info_status    : 'enabled',
@@ -208,11 +208,12 @@ var addthisModule = (function(window, angular) {
      * @private
      * @description
      * Sets the `addthis_share` variable on the page. See
-     * https://www.addthis.com/academy/the-addthis_share-variable/ for options.
+     * <a href="https://www.addthis.com/academy/the-addthis_share-variable/" target="_blank">
+     *   the addthis_share variable documentation</a> for options.
      *
      * @param {object} input AddThis sharing options. See
-     *   https://www.addthis.com/academy/the-addthis_share-variable/ for
-     *   options.
+     *   <a href="https://www.addthis.com/academy/the-addthis_share-variable/" target="_blank">
+     *   the addthis_share variable documentation</a> for options.
      * @returns {object} a copy of the `addthis_share` variable on the page
      **/
     var setAddThisShare = function(input) {
@@ -229,7 +230,8 @@ var addthisModule = (function(window, angular) {
      * Sets the URL shared by tools that don't explicitly set one through the
      * `data-url` attribute. This is a shortcut to adding the URL into
      * `addthis_share.url`. See
-     * https://www.addthis.com/academy/the-addthis_share-variable/ for
+     * <a href="https://www.addthis.com/academy/the-addthis_share-variable/" target="_blank">
+     * the addthis_share variable documentation</a> for
      * more information on `addthis_share`. If not set here or in the `data-url`
      * attribute, the browsers URL will be used when sharing.
      *
@@ -246,7 +248,8 @@ var addthisModule = (function(window, angular) {
      * Sets the title shared by tools that don't explicitly set one through the
      * `data-title` attribute. This is a shortcut to adding the title into
      * `addthis_share.title`. See
-     * https://www.addthis.com/academy/the-addthis_share-variable/ for
+     * <a href="https://www.addthis.com/academy/the-addthis_share-variable/" target="_blank">
+     * the addthis_share variable documentation</a> for
      * more information on `addthis_share`. If not set here or in the
      * `data-title` attribute, the document title will be used when sharing.
      *
@@ -263,7 +266,8 @@ var addthisModule = (function(window, angular) {
      * Sets the description shared by tools that don't explicitly set one
      * through the `data-description` attribute. This is a shortcut to adding
      * the description into `addthis_share.description`. See
-     * https://www.addthis.com/academy/the-addthis_share-variable/ for
+     * <a href="https://www.addthis.com/academy/the-addthis_share-variable/" target="_blank">
+     * the addthis_share variable documentation</a> for
      * more information on `addthis_share`.
      *
      * @param {string} description The description to share when a user
@@ -280,7 +284,8 @@ var addthisModule = (function(window, angular) {
      * Sets the image shared by tools that don't explicitly set one through the
      * `data-media` attribute. This is a shortcut to adding the image into
      * `addthis_share.media`. See
-     * https://www.addthis.com/academy/the-addthis_share-variable/ for
+     * <a href="https://www.addthis.com/academy/the-addthis_share-variable/" target="_blank">
+     * the addthis_share variable documentation</a> for
      * more information on `addthis_share`.
      *
      * @param {string} media The image to share when a user clicks on a share
@@ -790,7 +795,7 @@ var addthisModule = (function(window, angular) {
             addthis_share = angular.copy(window.addthis_share);
 
             if (window.addthis) {
-                /* If client has already set up the global addthis variable
+                /* If addthis_widget has already set up the global addthis variable
                  * by now, then the url and title properties may have been set
                  * by it and not on page. Let's not hold on to it.
                  **/
