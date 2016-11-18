@@ -24,15 +24,17 @@ var path = {
 };
 
 gulp.task('make-folders', function () {
+  var folders = [path.distribution.folder, path.documentation];
+  folders.forEach(function(folder) {
     try {
-        fs.mkdirSync(path.distribution.folder);
-        fs.mkdirSync(path.documentation);
+        fs.mkdirSync(folder);
     }
     catch(err) {
         if (err.code !== 'EEXIST') {
             console.warn(err);
         }
     }
+  });
 });
 
 gulp.task('clean-distribution', function() {
