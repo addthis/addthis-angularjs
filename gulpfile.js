@@ -107,7 +107,7 @@ gulp.task('docs', function () {
     scripts: ['https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57c460aaf72cda39'],
     html5Mode: false,
     startPage: '/api/addthis.addthisTool',
-    title: "official-addthis-angularjs docs",
+    title: "documentation",
     image: "logo.png",
     imageLink: "https://www.addthis.com",
     titleLink: "/docs/",
