@@ -17,7 +17,7 @@ Use npm to install the following:
 ## Installation
 Get the source code by cloning to git repository via:
 ```
-git clone https://github.com/addthis/official-addthis-angular
+git clone https://github.com/addthis/official-addthis-angularjs
 ```
 
 Navigate into the git repository and in stall all the needed dependencies via npm:
@@ -43,7 +43,7 @@ Builds just the documentaiton
 ### <code>node server.js</code>
 Serves all the code, documentation and examples sites locally at `http://localhost:3002`
 
-Built Code: http://localhost:3002/dist/official-addthis-angular.js
+Built Code: http://localhost:3002/dist/official-addthis-angularjs.js
 Documentation: http://localhost:3002/docs/
 Example Site 1: http://localhost:3002/test/example1/
 Example Site 2: http://localhost:3002/test/example2/

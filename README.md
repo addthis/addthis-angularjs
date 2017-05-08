@@ -1,4 +1,4 @@
-# [![official-addthis-angular](http://cache.addthiscdn.com/www/160830bfaefda/style/images/wrapper/addthis-logo.svg)](https://www.addthis.com) official-addthis-angular
+# [![official-addthis-angularjs](http://cache.addthiscdn.com/www/160830bfaefda/style/images/wrapper/addthis-logo.svg)](https://www.addthis.com) official-addthis-angularjs
 > Add free and Pro AddThis tools to an AngularJS app. This AngularJS module includes a directive, service and provider. It is smart about route/location changes and the AngularJS digest cycles and how they affect AddThis tools. Requires a free [AddThis account](https://www.addthis.com/register).
 
 
@@ -9,7 +9,7 @@
 Add it to the project
 
 ```
-npm install --save official-addthis-angular
+npm install --save official-addthis-angularjs
 ```
 
 ### Bower
@@ -17,7 +17,7 @@ npm install --save official-addthis-angular
 Add it to the project
 
 ```
-bower install --save official-addthis-angular
+bower install --save official-addthis-angularjs
 ```
 
 ### Setup
@@ -25,7 +25,7 @@ bower install --save official-addthis-angular
 Include the file in HTML
 
 ```html
-<script src="path/to/official-addthis-angular/dist/official-addthis-angular.js"></script>
+<script src="path/to/official-addthis-angularjs/dist/official-addthis-angularjs.js"></script>
 ```
 
 Add `addthis` to the module's dependencies
@@ -119,16 +119,16 @@ This will not override the share URL or title for tools using the `share-url` an
 
 Example Site 1
  - [demo](http://www.addthis.com/angular/test/example1/)
- - [code](http://www.github.com/addthis/official-addthis-angular/test/example1)
+ - [code](http://www.github.com/addthis/official-addthis-angularjs/test/example1)
 
 Example Site 2 using [ngAngular](https://docs.angularjs.org/api/ngRoute)
  - [demo](http://www.addthis.com/angular/test/example2/)
- - [code](http://www.github.com/addthis/official-addthis-angular/test/example2)
+ - [code](http://www.github.com/addthis/official-addthis-angularjs/test/example2)
 
 Example Site 3 using [AngularUI Router](https://github.com/angular-ui/ui-router)
 This site has the most examples, and none of them are specific to [AngularUI Router](https://github.com/angular-ui/ui-router)
  - [demo](http://www.addthis.com/angular/test/example3/)
- - [code](http://www.github.com/addthis/official-addthis-angular/test/example3)
+ - [code](http://www.github.com/addthis/official-addthis-angularjs/test/example3)
 
 ## Other Useful Links
  - [register for an AddThis account](https://www.addthis.com/register)

@@ -14,7 +14,7 @@ var Server = require('karma').Server;
 var path = {
   distribution: {
     folder: 'dist',
-    filename: 'official-addthis-angular'
+    filename: 'official-addthis-angularjs'
   },
   copyright: 'src/copyright.js',
   source: 'src/**/*.js',
@@ -107,7 +107,7 @@ gulp.task('docs', function () {
     scripts: ['https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57c460aaf72cda39'],
     html5Mode: false,
     startPage: '/api/addthis.addthisTool',
-    title: "official-addthis-angular docs",
+    title: "official-addthis-angularjs docs",
     image: "addthis_icon.png",
     imageLink: "https://www.addthis.com",
     titleLink: "/docs/",
@@ -121,7 +121,7 @@ gulp.task('docs', function () {
     api: {
       glob:[path.source],
       api: true,
-      title: 'official-addthis-angular'
+      title: 'official-addthis-angularjs'
     }
   })
   .pipe(gulpDocs.process(options))

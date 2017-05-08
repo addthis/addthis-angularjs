@@ -30,7 +30,7 @@ var addthisModule = (function(window, angular) {
     var addthis_plugin_info = {
         info_status    : 'enabled',
         cms_name       : 'Angular',
-        plugin_name    : 'official-addthis-angular',
+        plugin_name    : 'official-addthis-angularjs',
         plugin_version : '0.0.2',
         plugin_mode    : 'AddThis'
     };

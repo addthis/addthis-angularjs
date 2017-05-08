@@ -47,7 +47,7 @@ describe('appExample2 configuration', function() {
         it('should have default values', function() {
             expect(window.addthis_plugin_info.info_status).toBe('enabled');
             expect(window.addthis_plugin_info.cms_name).toBe('Angular');
-            expect(window.addthis_plugin_info.plugin_name).toBe('official-addthis-angular');
+            expect(window.addthis_plugin_info.plugin_name).toBe('official-addthis-angularjs');
             expect(window.addthis_plugin_info.plugin_mode).toBe('AddThis');
             expect(typeof window.addthis_plugin_info.plugin_version).toBe('string');
         });
