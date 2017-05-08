@@ -108,7 +108,7 @@ gulp.task('docs', function () {
     html5Mode: false,
     startPage: '/api/addthis.addthisTool',
     title: "official-addthis-angularjs docs",
-    image: "addthis_icon.png",
+    image: "logo.png",
     imageLink: "https://www.addthis.com",
     titleLink: "/docs/",
     styles: ['doc.css'],
