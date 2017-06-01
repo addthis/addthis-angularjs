@@ -31,7 +31,7 @@ var addthisModule = (function(window, angular) {
         info_status    : 'enabled',
         cms_name       : 'Angular',
         plugin_name    : 'official-addthis-angularjs',
-        plugin_version : '0.0.2',
+        plugin_version : '1.0.0',
         plugin_mode    : 'AddThis'
     };
 
