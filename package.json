@@ -35,7 +35,7 @@
       "email": "git@jgrodel.com"
     }
   ],
-  "license": "MIT",
+  "license": "UPL",
   "devDependencies": {
     "angular": "^1.5.8",
     "angular-mocks": "^1.5.8",
