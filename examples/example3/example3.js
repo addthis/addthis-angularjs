@@ -288,15 +288,17 @@ appExample3.controller(
                         size: 'med'
                     }
                 }).then(function(response) {
-                    // hacky regex stuff to grab URLS out of the XML output
-                    var regex1 = /<url>\s*([^\s<]+)\s*<\/url>/gi;
-                    var regex2 = /<url>\s*([^\s<]+)\s*<\/url>/i;
-                    var matches = response.data.match(regex1);
-
-                    matches.forEach(function(element) {
-                        var url = element.match(regex2)[1];
-                        // queues up the image
-                        $scope.imageQueue.push(url);
+                    var oParser = new DOMParser();
+                    // parse the XML -- won't work in older mobile Safari browsers
+                    var data = oParser.parseFromString(response.data, 'text/xml');
+                    // grab the url elements out of the XML document
+                    var images = data.documentElement.getElementsByTagName('url');
+                    // images is a psudo-array, not a real array. using slide to make it a real array.
+                    images = Array.prototype.slice.call(images);
+                    // loop through all the url elements
+                    images.forEach(function(image) {
+                        // grab the url string and put it in imageQueue
+                        $scope.imageQueue.push(image.innerHTML);
                     });
                     return response;
                 });
