@@ -50,7 +50,8 @@ module.exports = function(config) {
       subPageTitle: 'addthis-angular module',
       groupSuites: true,
       useCompactStyle: true,
-      useLegacyStyle: true
+      useLegacyStyle: true,
+      urlFriendlyName: true
     },
 
     // test results reporter to use
