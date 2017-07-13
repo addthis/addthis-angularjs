@@ -17,7 +17,7 @@ Use npm to install the following:
 ## Installation
 Get the source code by cloning to git repository via:
 ```
-git clone https://github.com/addthis/official-addthis-angularjs
+git clone https://github.com/oracle/official-addthis-angularjs
 ```
 
 Navigate into the git repository and in stall all the needed dependencies via npm:
@@ -34,6 +34,9 @@ Rebuilds things as files change
 ### <code>gulp build</code>
 Builds everything, including documentation
 
+### <code>gulp test</code>
+Runs tests
+
 ### <code>gulp jslint</code>
 Lints the JavaScript
 
@@ -45,6 +48,7 @@ Serves all the code, documentation and examples sites locally at `http://localho
 
 Built Code: http://localhost:3002/dist/official-addthis-angularjs.js
 Documentation: http://localhost:3002/docs/
-Example Site 1: http://localhost:3002/test/example1/
-Example Site 2: http://localhost:3002/test/example2/
-Example Site 3: http://localhost:3002/test/example3/
+Test Reports: http://localhost:3002/test/reports/
+Example Site 1: http://localhost:3002/examples/example1/
+Example Site 2: http://localhost:3002/examples/example2/
+Example Site 3: http://localhost:3002/examples/example3/
