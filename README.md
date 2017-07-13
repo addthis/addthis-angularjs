@@ -113,24 +113,11 @@ Replace `Check this out:` with the title to share when a visitor clicks on one o
 
 This will not override the share URL or title for tools using the `share-url` and `share-title` directive attributes.
 
-## [More documention](http://www.addthis.com/angular/docs/)
 
-## Demo Sites & More Example Code
+## More Resources
 
-Example Site 1
- - [demo](http://www.addthis.com/angular/test/example1/)
- - [code](http://www.github.com/addthis/official-addthis-angularjs/test/example1)
-
-Example Site 2 using [ngAngular](https://docs.angularjs.org/api/ngRoute)
- - [demo](http://www.addthis.com/angular/test/example2/)
- - [code](http://www.github.com/addthis/official-addthis-angularjs/test/example2)
-
-Example Site 3 using [AngularUI Router](https://github.com/angular-ui/ui-router)
-This site has the most examples, and none of them are specific to [AngularUI Router](https://github.com/angular-ui/ui-router)
- - [demo](http://www.addthis.com/angular/test/example3/)
- - [code](http://www.github.com/addthis/official-addthis-angularjs/test/example3)
-
-## Other Useful Links
+ - [More documention](http://s7.addthis.com/icons/official-addthis-angularjs/current/docs)
+ - [Example site code](http://www.github.com/oracle/official-addthis-angularjs/examples/). Example 1 is plaing AngularJS, example 2 uses [ngRoute](https://docs.angularjs.org/api/ngRoute) and example 3 uses [AngularUI Router](https://github.com/angular-ui/ui-router)
  - [register for an AddThis account](https://www.addthis.com/register)
  - [addthis_config documentation](https://www.addthis.com/academy/the-addthis_config-variable/)
  - [addthis_share documentation](https://www.addthis.com/academy/the-addthis_share-variable/)
