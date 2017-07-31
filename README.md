@@ -1,5 +1,5 @@
 # [![official-addthis-angularjs logo](https://github.com/oracle/addthis-angularjs/raw/master/logo_full.png)](https://www.addthis.com)
-> Add free and Pro AddThis tools to an AngularJS app. This AngularJS module includes a directive, service and provider. It is smart about route/location changes and the AngularJS digest cycles and how they affect AddThis tools. Requires a free [AddThis account](https://www.addthis.com/register).
+> Grow your website with tools trusted by over 15 million sites. The AddThis AngularJS module includes a directive, service, and provider. It is smart about route/location changes and the AngularJS digest cycles and how they affect AddThis tools. This module requires a free [AddThis account](https://www.addthis.com/register) and is compatible with free and paid plans.
 
 
 ## Installation
