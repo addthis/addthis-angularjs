@@ -4,6 +4,9 @@
 ## Reporting Bugs
 Having issues or want to report a bug? Email help@addthis.com.
 
+## Oracle Contributor Agreement
+Oracle requires that contributors to all of its open-source projects sign the <a href="http://www.oracle.com/technetwork/community/oca-486395.html">Oracle Contributor Agreement</a> and email or fax back the completed agreement.
+
 ## Dependencies
 Make sure you have the following installed:
  - Node.js
