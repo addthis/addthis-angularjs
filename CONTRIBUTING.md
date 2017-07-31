@@ -2,7 +2,7 @@
 # Contribution Guide
 
 ## Reporting Bugs
-Having issues or want to report a bug? Email (help@addthis.com)[mailto:help@addthis.com].
+Having issues or want to report a bug? Email help@addthis.com.
 
 ## Dependencies
 Make sure you have the following installed:
