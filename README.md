@@ -9,7 +9,7 @@
 Add it to the project
 
 ```
-npm install --save official-addthis-angularjs
+npm install --save addthis-angularjs
 ```
 
 ### Bower
@@ -17,7 +17,7 @@ npm install --save official-addthis-angularjs
 Add it to the project
 
 ```
-bower install --save official-addthis-angularjs
+bower install --save addthis-angularjs
 ```
 
 ### Setup
@@ -25,7 +25,7 @@ bower install --save official-addthis-angularjs
 Include the file in HTML
 
 ```html
-<script src="path/to/official-addthis-angularjs/dist/official-addthis-angularjs.js"></script>
+<script src="path/to/addthis-angularjs/dist/official-addthis-angularjs.js"></script>
 ```
 
 Add `addthis` to the module's dependencies
@@ -117,7 +117,7 @@ This will not override the share URL or title for tools using the `share-url` an
 ## More Resources
 
  - [More documention](http://s7.addthis.com/icons/official-addthis-angularjs/current/docs)
- - [Example site code](http://www.github.com/oracle/official-addthis-angularjs/examples/). Example 1 is plaing AngularJS, example 2 uses [ngRoute](https://docs.angularjs.org/api/ngRoute) and example 3 uses [AngularUI Router](https://github.com/angular-ui/ui-router)
+ - [Example site code](http://www.github.com/oracle/addthis-angularjs/examples/). Example 1 is plaing AngularJS, example 2 uses [ngRoute](https://docs.angularjs.org/api/ngRoute) and example 3 uses [AngularUI Router](https://github.com/angular-ui/ui-router)
  - [register for an AddThis account](https://www.addthis.com/register)
  - [addthis_config documentation](https://www.addthis.com/academy/the-addthis_config-variable/)
  - [addthis_share documentation](https://www.addthis.com/academy/the-addthis_share-variable/)
