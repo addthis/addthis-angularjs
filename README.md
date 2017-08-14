@@ -25,7 +25,7 @@ bower install --save addthis-angularjs
 Include the file in HTML
 
 ```html
-<script src="path/to/addthis-angularjs/dist/official-addthis-angularjs.js"></script>
+<script src="path/to/@oracle/addthis-angularjs/dist/official-addthis-angularjs.js"></script>
 ```
 
 Add `addthis` to the module's dependencies
