@@ -1,5 +1,5 @@
 /**
- * @license official-addthis-angularjs 1.0.0
+ * @license official-addthis-angularjs 1.0.1
  * Copyright (c) 2017 Oracle and/or its affiliates.
  * License: UPL
  */
@@ -36,7 +36,7 @@ var addthisModule = (function(window, angular) {
         info_status    : 'enabled',
         cms_name       : 'Angular',
         plugin_name    : 'official-addthis-angularjs',
-        plugin_version : '1.0.0',
+        plugin_version : '1.0.1',
         plugin_mode    : 'AddThis'
     };
 
