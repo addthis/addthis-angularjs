@@ -9,7 +9,7 @@
 Add it to the project
 
 ```
-npm install --save addthis-angularjs
+npm install --save @oracle/addthis-angularjs
 ```
 
 ### Bower
