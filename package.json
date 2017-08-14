@@ -1,6 +1,6 @@
 {
   "name": "@oracle/addthis-angularjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Free and Pro AddThis tools to your AngularJS app. This AngularJS module includes a directive, service and provider. It is smart about route changes and the AngularJS digest cycles and how they affect AddThis tools. Requires a free AddThis account.",
   "repository": {
     "type": "git",
