@@ -12,6 +12,14 @@ Add it to the project
 npm install --save @oracle/addthis-angularjs
 ```
 
+### Yarn
+
+Add it to the project
+
+```
+yarn add @oracle/addthis-angularjs
+```
+
 ### Bower
 
 Add it to the project
