@@ -28,7 +28,7 @@
   "contributors": [
     "Julka Grodel <git@jgrodel.com>"
   ],
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "UPL-1.0",
   "devDependencies": {
     "angular": "^1.5.8",
     "angular-mocks": "^1.5.8",
