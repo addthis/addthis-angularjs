@@ -1,5 +1,5 @@
 # [![official-addthis-angularjs logo](https://github.com/oracle/addthis-angularjs/raw/master/logo_full.png)](https://www.addthis.com)
-> Grow your website with tools trusted by over 15 million sites. The AddThis AngularJS module includes a directive, service, and provider. It is smart about route/location changes and the AngularJS digest cycles and how they affect AddThis tools. This module requires a free [AddThis account](https://www.addthis.com/register) and is compatible with free and paid plans.
+> Grow your website with tools trusted by over 15 million sites. The AddThis AngularJS module includes a directive, service, and provider. It is smart about route/location changes and the AngularJS digest cycles and how they affect AddThis tools. This module requires a free [AddThis account](https://www.addthis.com/register) and is compatible with free and paid plans. If you're struggling with instructions, we keep the AngularJS install instructions on the [AddThis Academy](http://www.addthis.com/academy/install-addthis-angularjs/) up to date.
 
 
 ## Installation
