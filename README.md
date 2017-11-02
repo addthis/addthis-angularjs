@@ -4,7 +4,10 @@
 
 ## Installation
 
-Visit addthis.com to sign in or sign up before proceeding to the next steps.
+Visit addthis.com to sign in or sign up before proceeding to the next steps. 
+
+You can install AddThis for AngularJS from addthis.com, NPM, Bower, or Yarn, among other places. Follow the instructions below for your
+preferred method.
 
 ### NPM
 
@@ -43,6 +46,10 @@ Add `addthis` to the module's dependencies
 ```js
 var app = angular.module('MyApp', ['addthis']);
 ```
+
+When you create an account on addthis.com, we assign you a profile ID to provide analytics, configure settings, etc. To find your profile
+ID, log in to your addthis.com account, select the three dots in the top navigation, select "More," and identify your profile ID in the 
+"General" section. Select an option below to set up your profile ID for the module.
 
 #### Set a Profile ID: Option 1: HTML
 
@@ -100,7 +107,7 @@ Replace `addthis_sharing_toolbox` with the name for the AddThis inline tool desi
 >
 ```
 
-Replace `addthis_sharing_toolbox` with the name for the AddThis inline share tool desired.
+Replace `addthis_sharing_toolbox` with the name for the AddThis inline share tool desired. If you’re adding inline buttons or Tip Jar buttons, replace `addthis_inline_share_toolbox` with the class for the desired tool. To get the class name, visit your addthis.com dashboard, add a tool, navigate to the Get The Code page, and identify the class name in Step 3 on the Get The Code page.
 
 Replace `http://example.com` with the URL to share when a visitor clicks on one of the sharing buttons, or, alternately, leave the `share-url` attribute out completely. You can use a variable here, ex: `share-url="shareUrlFromMyScope"`.
 
