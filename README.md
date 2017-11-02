@@ -4,6 +4,8 @@
 
 ## Installation
 
+Visit addthis.com to sign in or sign up before proceeding to the next steps.
+
 ### NPM
 
 Add it to the project
