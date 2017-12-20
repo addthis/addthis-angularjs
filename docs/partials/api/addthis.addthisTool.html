@@ -1,0 +1,71 @@
+<h1><code ng:non-bindable="">addthisTool</code>
+<div><span class="hint">service in module <code ng:non-bindable="">addthis</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="addthis-addthistool-page"><p>Use this directive to add an inline AddThis tool onto your page</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;addthis-tool
+       tool-class="{string}"
+       share-url="{string}"
+       share-title="{string}"
+       share-description="{string}"
+       share-media="{string}"&gt;
+&lt;/addthis-tool&gt;</pre>
+as attribute<pre class="prettyprint linenums">&lt;ANY addthis-tool
+     tool-class="{string}"
+     share-url="{string}"
+     share-title="{string}"
+     share-description="{string}"
+     share-media="{string}"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+as class<pre class="prettyprint linenums">&lt;ANY class="addthis-tool tool-class: {string}; share-url: {string}; share-title: {string}; share-description: {string}; share-media: {string};"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>toolClass</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthistool-page"><p>the tool class/id for the AddThis inline
+tool you want to add onto the page.</p>
+</div></td></tr><tr><td>shareUrl</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthistool-page"><p>(optional) the url to share when your
+visitor clicks on a share button in this tool.</p>
+</div></td></tr><tr><td>shareTitle</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthistool-page"><p>(optional) the string shared with the url
+when your visitor clicks on a share button in this tool.</p>
+<p>Note: Some services (such as Facebook) do not allow you to define
+the share title for a URL this way. Facebook will always use the
+Open Graph tags it finds on the page when it crawls it. You can use
+the <a href="https://developers.facebook.com/tools/debug/">
+Facebook Sharing Debugger</a> to test your Open Graph tags.</p>
+</div></td></tr><tr><td>shareDescription</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthistool-page"><p>(optional) the description string
+shared with the url when your visitor clicks on a share button in
+ this tool.</p>
+<p>Note: Some services (such as Facebook) do not allow you to define
+the share description for a URL this way. Facebook will always use
+the Open Graph tags it finds on the page when it crawls it. You can
+use the <a href="https://developers.facebook.com/tools/debug/">
+Facebook Sharing Debugger</a> to test your Open Graph tags.</p>
+</div></td></tr><tr><td>shareMedia</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthistool-page"><p>(optional) the URL for an image to share
+with the url when your visitor clicks on a share button in this
+tool.</p>
+<p>Note: Some services (such as Facebook) do not allow you to define
+the share image for a URL this way. Facebook will always use the
+Open Graph tags it finds on the page when it crawls it. You can use
+the <a href="https://developers.facebook.com/tools/debug/">
+Facebook Sharing Debugger</a> to test your Open Graph tags.</p>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="addthis-addthistool-page"><p>This example shows how you would add <code>addthis_sharing_toolbox</code> on
+your page and share url <a href="http://www.example.com">http://www.example.com</a> with the text
+&quot;Check this out:&quot;</p>
+<pre><code class="lang-html"> &lt;example
+    addthis-tool
+    tool-class=&quot;&#39;addthis_sharing_toolbox&#39;&quot;
+    share-url=&quot;&#39;http://www.example.com&#39;&quot;
+    share-title=&quot;&#39;Check this out:&#39;&quot;
+    share-description=&quot;&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#39;&quot;
+    share-media=&quot;&#39;http://www.example.com/img.png&#39;&quot;
+&gt;
+&lt;/example&gt;
+</code></pre>
+</div></div>
+</div>

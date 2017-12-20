@@ -1,0 +1,243 @@
+<h1><code ng:non-bindable="">$addthis</code>
+<div><span class="hint">service in module <code ng:non-bindable="">addthis</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="addthis-addthis-page"><p>A service for handling AddThis actions once your app is running.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_add">add()</h3>
+<div class="add"><div class="addthis-addthis-add-page"><p>Adds the <code>addthis_widget.js</code> script onto the page if not
+already present. Note: <code>addthis_widget.js</code> will automatically be
+added to your page unless turned off using
+<code>$addthisProvider.disableAutoAdd</code>.</p>
+</div><h4 id="methods_add_example">Example</h4>
+<div class="example"><div class="addthis-addthis-add-page"><pre><code class="lang-js">app.controller(&#39;AcceptCookiesCtrl&#39;, [&#39;$scope&#39;, &#39;$addthis&#39;, function($scope, $addthis) {
+    $scope.userAccepts = function() {
+        $service.add();
+    };
+}]);
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_config">config(input)</h3>
+<div class="config"><div class="addthis-addthis-config-page"><p>Sets the <code>addthis_config</code> variable on the page. If the pubid is set it
+take it an use it elsewhere. Otherwise, it will add in the previously set
+profile ID (if set) to <code>addthis_config.pubid</code>. See
+<a href="https://www.addthis.com/academy/the-addthis_config-variable/" target="_blank">
+the addthis_config variable documentation</a> for options.</p>
+</div><h5 id="methods_config_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>input</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="addthis-addthis-config-page"><p>AddThis configuration object. See
+<a href="https://www.addthis.com/academy/the-addthis_config-variable/" target="_blank">
+the addthis_config variable documentation</a> for options.</p>
+</div></td></tr></tbody></table><h5 id="methods_config_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="addthis-addthis-config-page"><p>a copy of the <code>addthis_config</code> variable on the
+page with an added pubid property if it wasn&#39;t set in the input
+and a profile ID was set elsewhere</p>
+</div></td></tr></table><h4 id="methods_config_example">Example</h4>
+<div class="example"><div class="addthis-addthis-config-page"><pre><code class="lang-js">app.controller(&#39;DoNotPrintOrEmailMeCtrl&#39;, [&#39;$scope&#39;, &#39;$addthis&#39;, function($scope, $addthis) {
+    var cfg = {
+        &#39;services_exclude&#39;: &#39;print,mailto&#39;,
+        &#39;ui_language&#39;: &#39;pl&#39;,
+        &#39;data_track_clickback&#39;: false,
+        &#39;ui_508_compliant&#39;: true
+    };
+    $addthis.config(cfg);
+}]);
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_layersrefresh">layersRefresh()</h3>
+<div class="layersrefresh"><div class="addthis-addthis-layersrefresh-page"><p>Applys new values from <code>addthis_config</code> and <code>addthis_share</code>,
+updates the share url and title where not explicitly set and
+reloads AddThis floating tools.</p>
+<p>This module will catch most of the situations where AddThis&#39;
+SmartLayers API needs to be refreshed. However, there may be
+some times siutations where the devleoper must call this
+directly, such as:
+ <ul>
+  <li>changing the document title without a location/route/state changes (where the share title on floating should reflect thge document title)</li>
+  <li>adding inline tools onto pages without using the addthisTool directive</li>
+</ul></p>
+</div><h4 id="methods_layersrefresh_example">Example</h4>
+<div class="example"><div class="addthis-addthis-layersrefresh-page"><pre><code class="lang-js">app.controller(&#39;AccountPageCtrl&#39;, [&#39;$scope&#39;, &#39;$addthis&#39;, &#39;$window&#39;, function($scope, $addthis, $window) {
+    $window.document.title = &#39;Account Page&#39;;
+    $addthis.layersRefresh();
+}]);
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_loaded">loaded()</h3>
+<div class="loaded"><div class="addthis-addthis-loaded-page"><p>Returns a promise that resolves once AddThis&#39; <code>addthis_widget.js</code>
+loaded and is ready to use.</p>
+</div><h5 id="methods_loaded_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-promise">promise</a></td><td><div class="addthis-addthis-loaded-page"><p>A promise that resolves once <code>addthis_widget.js</code>
+loaded</p>
+</div></td></tr></table><h4 id="methods_loaded_example">Example</h4>
+<div class="example"><div class="addthis-addthis-loaded-page"><pre><code class="lang-js">app.controller(&#39;LoadMoreCatsCtrl&#39;, [&#39;$scope&#39;, &#39;$addthis&#39;, function($scope, $addthis) {
+    $addthis.loaded().then(function() {
+        // addthis_widget.js has loaded
+    });
+}]);
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_profileid">profileId()</h3>
+<div class="profileid"><div class="addthis-addthis-profileid-page"><p>Returns the profile id used on this site</p>
+</div><h5 id="methods_profileid_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string|boolen</a></td><td><div class="addthis-addthis-profileid-page"><p>false if no profile id set</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_share">share(input)</h3>
+<div class="share"><div class="addthis-addthis-share-page"><p>Sets the <code>addthis_share</code> variable on the page. See
+<a href="https://www.addthis.com/academy/the-addthis_share-variable/" target="_blank">
+the addthis_share variable documentation</a> for options.</p>
+</div><h5 id="methods_share_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>input</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="addthis-addthis-share-page"><p>AddThis configuration object. See
+<a href="https://www.addthis.com/academy/the-addthis_share-variable/" target="_blank">
+the addthis_share variable documentation</a> for options.</p>
+</div></td></tr></tbody></table><h5 id="methods_share_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="addthis-addthis-share-page"><p>a copy of the <code>addthis_share</code> variable on the
+page</p>
+</div></td></tr></table><h4 id="methods_share_example">Example</h4>
+<div class="example"><div class="addthis-addthis-share-page"><pre><code class="lang-js">app.controller(&#39;AddThisInfoCtrl&#39;, [&#39;$scope&#39;, &#39;$addthis&#39;, function($scope, $addthis) {
+    var share_info = {
+        &#39;url&#39;: &#39;https://www.addthis.com&#39;,
+        &#39;passthrough&#39;: {
+            &#39;twitter&#39;: {
+                &#39;via&#39;: &#39;TWITTER USERNAME&#39;
+            }
+        }
+    };
+    $addthis.share(share_info);
+}]);
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_sharedescription">shareDescription(description)</h3>
+<div class="sharedescription"><div class="addthis-addthis-sharedescription-page"><p>This is a shortcut to setting the description through
+<code>$addthis.share({&#39;description&#39;: &#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#39;})</code>\
+. Sets the description shared by tools that don&#39;t explicitly set
+one. With the <code>addthisTool</code> directive, you may set the
+description explicitly using the <code>share-description</code> attribute.</p>
+<p>To reset to default, set to <code>false</code>.</p>
+<p>Note: Some services (such as Facebook) do not allow you to define
+the share description for a URL this way. Facebook will always
+use the Open Graph tags it finds on the page when it crawls it.
+You can use the
+<a href="https://developers.facebook.com/tools/debug/">
+Facebook Sharing Debugger</a> to test your Open Graph tags.</p>
+</div><h5 id="methods_sharedescription_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>description</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthis-sharedescription-page"><p>The description to share when a user
+clicks on share buttons that don&#39;t otherwise speicfy a share
+description</p>
+</div></td></tr></tbody></table><h5 id="methods_sharedescription_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-mixed">mixed</a></td><td><div class="addthis-addthis-sharedescription-page"><p>a copy of the <code>addthis_share</code> description
+variable on the page, usually a string</p>
+</div></td></tr></table><h4 id="methods_sharedescription_example">Example</h4>
+<div class="example"><div class="addthis-addthis-sharedescription-page"><pre><code class="lang-js">app.controller(&#39;DoMagicCtrl&#39;, [&#39;$scope&#39;, &#39;$addthis&#39;, function($scope, $addthis) {
+    $addthis.shareDescription(&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#39;);
+}]);
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_sharemedia">shareMedia(media)</h3>
+<div class="sharemedia"><div class="addthis-addthis-sharemedia-page"><p>This is a shortcut to setting the image through
+<code>$addthis.share({&#39;shareMedia&#39;: &#39;http://example.com/img.png&#39;})</code>.
+Sets the image shared by tools that don&#39;t explicitly set one.
+With the <code>addthisTool</code> directive, you may set the image
+explicitly using the <code>share-media</code> attribute.</p>
+<p>To reset to default, set to <code>false</code>.</p>
+<p>Note: Some services (such as Facebook) do not allow you to define
+the share image for a URL this way. Facebook will always use the
+Open Graph tags it finds on the page when it crawls it. You can
+use the <a href="https://developers.facebook.com/tools/debug/">
+Facebook Sharing Debugger</a> to test your Open Graph tags.</p>
+</div><h5 id="methods_sharemedia_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>media</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthis-sharemedia-page"><p>The image to share when a user clicks on share
+buttons that don&#39;t otherwise speicfy a share image</p>
+</div></td></tr></tbody></table><h5 id="methods_sharemedia_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-mixed">mixed</a></td><td><div class="addthis-addthis-sharemedia-page"><p>a copy of the <code>addthis_share</code> media variable on
+the page, usually a string</p>
+</div></td></tr></table><h4 id="methods_sharemedia_example">Example</h4>
+<div class="example"><div class="addthis-addthis-sharemedia-page"><pre><code class="lang-js">app.controller(&#39;DoMagicCtrl&#39;, [&#39;$scope&#39;, &#39;$addthis&#39;, function($scope, $addthis) {
+    $addthis.shareMedia(&#39;http://example.com/img.png&#39;);
+}]);
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_sharetitle">shareTitle(title)</h3>
+<div class="sharetitle"><div class="addthis-addthis-sharetitle-page"><p>This is a shortcut to setting the title through
+<code>$addthis.share({&#39;title&#39;: &#39;Check this out!&#39;})</code>. Sets the title
+shared by tools that don&#39;t explicitly set one. With the
+<code>addthisTool</code> directive, you may set the title explicitly using
+the <code>share-title</code> attribute. If not set otherwise, the
+document&#39;s title will be used when sharing.</p>
+<p>To reset to default, set to <code>false</code>.</p>
+<p>Note: Some services (such as Facebook) do not allow you to define
+the share title for a URL this way. Facebook will always use the
+Open Graph tags it finds on the page when it crawls it. You can
+use the <a href="https://developers.facebook.com/tools/debug/">
+Facebook Sharing Debugger</a> to test your Open Graph tags.</p>
+</div><h5 id="methods_sharetitle_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>title</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthis-sharetitle-page"><p>The title to share when a user clicks on share
+buttons that don&#39;t otherwise speicfy a share title</p>
+</div></td></tr></tbody></table><h5 id="methods_sharetitle_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-mixed">mixed</a></td><td><div class="addthis-addthis-sharetitle-page"><p>a copy of the <code>addthis_share</code> title variable on
+the page, usually a string</p>
+</div></td></tr></table><h4 id="methods_sharetitle_example">Example</h4>
+<div class="example"><div class="addthis-addthis-sharetitle-page"><pre><code class="lang-js">app.controller(&#39;DoMagicCtrl&#39;, [&#39;$scope&#39;, &#39;$addthis&#39;, function($scope, $addthis) {
+    $addthis.shareTitle(&#39;Check this out!&#39;);
+}]);
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_shareurl">shareUrl(url)</h3>
+<div class="shareurl"><div class="addthis-addthis-shareurl-page"><p>This is a shortcut to setting the URL through
+<code>$addthis.share({&#39;url&#39;: &#39;http://example.com&#39;})</code>. Sets the URL
+shared by tools that don&#39;t explicitly set one. With the
+<code>addthisTool</code> directive, you may set the URL explicitly using
+the <code>share-url</code> attribute. If not set otherwise, the browsers URL
+will be used when sharing.</p>
+<p>To reset to default, set to <code>false</code>.</p>
+</div><h5 id="methods_shareurl_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>url</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthis-shareurl-page"><p>The URL to share when a user clicks on share
+buttons that don&#39;t otherwise speicfy a share URL</p>
+</div></td></tr></tbody></table><h5 id="methods_shareurl_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-mixed">mixed</a></td><td><div class="addthis-addthis-shareurl-page"><p>a copy of the <code>addthis_share</code> url variable on
+the page, usually a string</p>
+</div></td></tr></table><h4 id="methods_shareurl_example">Example</h4>
+<div class="example"><div class="addthis-addthis-shareurl-page"><pre><code class="lang-js">app.controller(&#39;AddThisInfoCtrl&#39;, [&#39;$scope&#39;, &#39;$addthis&#39;, function($scope, $addthis) {
+    $addthis.shareUrl(&#39;https://www.addthis.com&#39;);
+}]);
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_twittervia">twitterVia(the)</h3>
+<div class="twittervia"><div class="addthis-addthis-twittervia-page"><p>Takes a twitter handle/username and uses it for twitter via. See
+<a href="https://www.addthis.com/academy/changes-to-how-twitter-works-with-addthis/">https://www.addthis.com/academy/changes-to-how-twitter-works-with-addthis/</a>
+for more information</p>
+</div><h5 id="methods_twittervia_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>the</td><td><a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-false">false</a></td><td><div class="addthis-addthis-twittervia-page"><p>twitter handle in a string or false to remove
+twitter handle from config</p>
+</div></td></tr></tbody></table><h4 id="methods_twittervia_example">Example</h4>
+<div class="example"><div class="addthis-addthis-twittervia-page"><pre><code class="lang-js">app.controller(&#39;DoMagicCtrl&#39;, [&#39;$scope&#39;, &#39;$addthis&#39;, function($scope, $addthis) {
+    $addthis.twitterVia(&#39;addthis&#39;);
+}]);
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_urlshortening">urlShortening(urlShorteningService, socialService)</h3>
+<div class="urlshortening"><div class="addthis-addthis-urlshortening-page"><p>Takes a URL shortening name and a social service name, then enables URL
+shortening on that social service using the url shortening service.
+<a href="https://www.addthis.com/academy/url-shortening/">https://www.addthis.com/academy/url-shortening/</a>
+for more information</p>
+</div><h5 id="methods_urlshortening_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>urlShorteningService</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthis-urlshortening-page"><p>The URL shortening service to enable</p>
+</div></td></tr><tr><td>socialService</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthis-urlshortening-page"><p>The social service to enable the URL shortening on</p>
+</div></td></tr></tbody></table><h4 id="methods_urlshortening_example">Example</h4>
+<div class="example"><div class="addthis-addthis-urlshortening-page"><pre><code class="lang-js">app.controller(&#39;DoMagicCtrl&#39;, [&#39;$scope&#39;, &#39;$addthis&#39;, function($scope, $addthis) {
+    $addthis.urlShortening(&#39;bitly&#39;, &#39;twitter&#39;);
+}]);
+</code></pre>
+</div></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

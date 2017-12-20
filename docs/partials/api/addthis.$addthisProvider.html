@@ -1,0 +1,228 @@
+<h1><code ng:non-bindable="">$addthisProvider</code>
+<div><span class="hint">service in module <code ng:non-bindable="">addthis</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="addthis-addthisprovider-page"><p>A provider for handling AddThis actions before you app has started
+running.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_config">config(input)</h3>
+<div class="config"><div class="addthis-addthisprovider-config-page"><p>Sets the <code>addthis_config</code> variable on the page. If the pubid is set
+it take it an use it elsewhere. Otherwise, it will add in the
+previously set profile ID (if set) to <code>addthis_config.pubid</code>. See
+<a href="https://www.addthis.com/academy/the-addthis_config-variable/" target="_blank">
+the addthis_config variable documentation</a> for options.</p>
+<p>If the site&#39;s profile ID is set somehow through the <code>addthisProvider</code>
+(such as here), then adding addthis_widget.js manually onto your
+page is optional.</p>
+</div><h5 id="methods_config_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>input</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="addthis-addthisprovider-config-page"><p>AddThis configuration object. See
+<a href="https://www.addthis.com/academy/the-addthis_config-variable/" target="_blank">
+the addthis_config variable documentation</a> for options.</p>
+</div></td></tr></tbody></table><h5 id="methods_config_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="addthis-addthisprovider-config-page"><p>Returns addthis general configuration object</p>
+</div></td></tr></table><h4 id="methods_config_example">Example</h4>
+<div class="example"><div class="addthis-addthisprovider-config-page"><pre><code class="lang-js">app.config(function($addthisProvider) {
+    var cfg = {
+        &#39;services_exclude&#39;: &#39;print,mailto&#39;,
+        &#39;ui_language&#39;: &#39;pl&#39;,
+        &#39;data_track_clickback&#39;: false,
+        &#39;ui_508_compliant&#39;: true,
+        &#39;pubid&#39;: &#39;your_profile_id_here&#39;
+    };
+    $addthisProvider.config(cfg);
+});
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_disableautoadd">disableAutoAdd()</h3>
+<div class="disableautoadd"><div class="addthis-addthisprovider-disableautoadd-page"><p>If not added onto the page manually, this module automatically adds
+<code>addthis_widget.js</code> onto the site (if not added manually). Calling
+this function will disable this functionality. The
+<code>addthis_widget.js</code> script can be added later by calling
+<code>$addthis.add</code>. AddThis tools will not function until
+<code>addthis_widget.js</code> is added onto the page.</p>
+<pre><code class="lang-js">app.config(function($addthisProvider) {
+    $addthisProvider.disableAutoAdd();
+});
+</code></pre>
+</div><h5 id="methods_disableautoadd_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-addthisprovider">addthisProvider object</a></td><td><div class="addthis-addthisprovider-disableautoadd-page"><p>Returns the $addthisProvider object</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_enableautoadd">enableAutoAdd()</h3>
+<div class="enableautoadd"><div class="addthis-addthisprovider-enableautoadd-page"><p>By default, this module automatically adds <code>addthis_widget.js</code> onto
+the site (if not added manually). The
+<code>$addthisProvider.disableAutoAdd</code> method disables this
+functionality. This method re-enables it.</p>
+<pre><code class="lang-js">app.config(function($addthisProvider, $envProvider) {
+    $addthisProvider.disableAutoAdd();
+    if ($envProvider.isProduction()) {
+        $addthisProvider.enableAutoAdd();
+    }
+});
+</code></pre>
+</div><h5 id="methods_enableautoadd_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-addthisprovider">addthisProvider object</a></td><td><div class="addthis-addthisprovider-enableautoadd-page"><p>Returns the $addthisProvider object</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_environment">environment(env)</h3>
+<div class="environment"><div class="addthis-addthisprovider-environment-page"><p>Changes the environment out of which the addthis_widget.js script is
+included. Defaults to AddThis&#39;s production environment. Environments
+test, dev and local are only available inside AddThis firewalls for
+use by AddThis developers. The unittest environment is used during
+unit testing. Any other value will set things up for production.</p>
+<pre><code class="lang-js">app.config(function($addthisProvider, $envProvider) {
+    $addthisProvider.environment(&#39;unittest&#39;);
+});
+</code></pre>
+</div><h5 id="methods_environment_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>env</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthisprovider-environment-page"><p>The environment to use. Defaults to production.</p>
+</div></td></tr></tbody></table><h5 id="methods_environment_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthisprovider-environment-page"><p>Returns the url for addthis_widget.js</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_profileid">profileId(input)</h3>
+<div class="profileid"><div class="addthis-addthisprovider-profileid-page"><p>Setter function for the site&#39;s AddThis profile ID.</p>
+<p>If the site&#39;s profile ID is set somehow through the <code>addthisProvider</code>
+(such as here), then adding addthis_widget.js manually onto your
+page is optional.</p>
+</div><h5 id="methods_profileid_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>input</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthisprovider-profileid-page"><p>The AddThis profile ID to use on this
+site.</p>
+</div></td></tr></tbody></table><h5 id="methods_profileid_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">boolean|string</a></td><td><div class="addthis-addthisprovider-profileid-page"><p>Returns the profile id or false if not set</p>
+</div></td></tr></table><h4 id="methods_profileid_example">Example</h4>
+<div class="example"><div class="addthis-addthisprovider-profileid-page"><pre><code class="lang-js">app.config(function($addthisProvider) {
+    $addthisProvider.profileId(&#39;your_profile_id_here&#39;);
+});
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_scriptinhead">scriptInHead()</h3>
+<div class="scriptinhead"><div class="addthis-addthisprovider-scriptinhead-page"><p>By default, this module automatically adds <code>addthis_widget.js</code> onto
+the site towards the bottom of the DOM (if not added manually). This
+function will change that and append <code>addthis_widget.js</code> onto the
+DOM&#39;s <code>&lt;HEAD&gt;</code> element</p>
+<pre><code class="lang-js">app.config(function($addthisProvider, $envProvider) {
+    $addthisProvider.scriptInHead();
+});
+</code></pre>
+</div><h5 id="methods_scriptinhead_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-addthisprovider">addthisProvider object</a></td><td><div class="addthis-addthisprovider-scriptinhead-page"><p>Returns the $addthisProvider object</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_sharedescription">shareDescription(description)</h3>
+<div class="sharedescription"><div class="addthis-addthisprovider-sharedescription-page"><p>This is a shortcut to setting the description through
+<code>$addthis.share({&#39;description&#39;: &#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#39;})</code>\
+. Sets the description shared by tools that don&#39;t explicitly set
+one. With the <code>addthisTool</code> directive, you may set the
+description explicitly using the <code>share-description</code> attribute.</p>
+<p>To reset to default, set to <code>false</code>.</p>
+<p>Note: Some services (such as Facebook) do not allow you to define
+the share description for a URL this way. Facebook will always
+use the Open Graph tags it finds on the page when it crawls it.
+You can use the
+<a href="https://developers.facebook.com/tools/debug/">
+Facebook Sharing Debugger</a> to test your Open Graph tags.</p>
+<pre><code class="lang-js">app.config(function($addthisProvider) {
+    $addthisProvider.shareDescription(&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#39;);
+});
+</code></pre>
+</div><h5 id="methods_sharedescription_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>description</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthisprovider-sharedescription-page"><p>The description to share when a user
+clicks on share buttons that don&#39;t otherwise speicfy a share
+description</p>
+</div></td></tr></tbody></table><h5 id="methods_sharedescription_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-mixed">mixed</a></td><td><div class="addthis-addthisprovider-sharedescription-page"><p>a copy of the <code>addthis_share</code> description
+variable on the page, usually a string</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_sharemedia">shareMedia(media)</h3>
+<div class="sharemedia"><div class="addthis-addthisprovider-sharemedia-page"><p>This is a shortcut to setting the image through
+<code>$addthis.share({&#39;shareMedia&#39;: &#39;http://example.com/img.png&#39;})</code>.
+Sets the image shared by tools that don&#39;t explicitly set one.
+With the <code>addthisTool</code> directive, you may set the image
+explicitly using the <code>share-media</code> attribute.</p>
+<p>To reset to default, set to <code>false</code>.</p>
+<p>Note: Some services (such as Facebook) do not allow you to define
+the share image for a URL this way. Facebook will always use the
+Open Graph tags it finds on the page when it crawls it. You can
+use the <a href="https://developers.facebook.com/tools/debug/">
+Facebook Sharing Debugger</a> to test your Open Graph tags.</p>
+<pre><code class="lang-js">app.config(function($addthisProvider) {
+    $addthisProvider.shareMedia(&#39;http://example.com/img.png&#39;);
+});
+</code></pre>
+</div><h5 id="methods_sharemedia_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>media</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthisprovider-sharemedia-page"><p>The image to share when a user clicks on share
+buttons that don&#39;t otherwise speicfy a share image</p>
+</div></td></tr></tbody></table><h5 id="methods_sharemedia_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-mixed">mixed</a></td><td><div class="addthis-addthisprovider-sharemedia-page"><p>a copy of the <code>addthis_share</code> media variable on
+the page, usually a string</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_sharetitle">shareTitle(url)</h3>
+<div class="sharetitle"><div class="addthis-addthisprovider-sharetitle-page"><p>This is a shortcut to setting the title through
+<code>$addthisProvider.share({&#39;title&#39;: &#39;Check this out!&#39;})</code>. Sets the
+title shared by tools that don&#39;t explicitly set one. With the
+<code>addthisTool</code> directive, you may set the URL explicitly using
+the <code>share-title</code> attribute. If not set otherwise, the
+document&#39;s title will be used when sharing.</p>
+<p>To reset to default, set to <code>false</code>.</p>
+<p>Note: Some services (such as Facebook) do not allow you to define
+the share title for a URL this way. Facebook will always use the
+Open Graph tags it finds on the page when it crawls it. You can
+use the <a href="https://developers.facebook.com/tools/debug/">
+Facebook Sharing Debugger</a> to test your Open Graph tags.</p>
+<pre><code class="lang-js">app.config(function($addthisProvider) {
+    $addthisProvider.shareTitle(&#39;Check this out!&#39;);
+});
+</code></pre>
+</div><h5 id="methods_sharetitle_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>url</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthisprovider-sharetitle-page"><p>The URL to share when a user clicks on share
+buttons that don&#39;t otherwise speicfy a share URL</p>
+</div></td></tr></tbody></table><h5 id="methods_sharetitle_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-mixed">mixed</a></td><td><div class="addthis-addthisprovider-sharetitle-page"><p>a copy of the <code>addthis_share</code> title variable on
+the page</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_shareurl">shareUrl(url)</h3>
+<div class="shareurl"><div class="addthis-addthisprovider-shareurl-page"><p>This is a shortcut to setting the URL through
+<code>$addthisProvider.share({&#39;url&#39;: &#39;http://example.com&#39;})</code>. Sets the URL
+shared by tools that don&#39;t explicitly set one. With the
+<code>addthisTool</code> directive, you may set the URL explicitly using
+the <code>share-url</code> attribute. If not set otherwise, the browsers URL
+will be used when sharing.</p>
+<p>To reset to default, set to <code>false</code>.</p>
+<pre><code class="lang-js">app.config(function($addthisProvider) {
+    $addthisProvider.shareUrl(&#39;https://www.addthis.com&#39;);
+});
+</code></pre>
+</div><h5 id="methods_shareurl_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>url</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthisprovider-shareurl-page"><p>The URL to share when a user clicks on share
+buttons that don&#39;t otherwise speicfy a share URL</p>
+</div></td></tr></tbody></table><h5 id="methods_shareurl_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-mixed">mixed</a></td><td><div class="addthis-addthisprovider-shareurl-page"><p>a copy of the <code>addthis_share</code> url variable on
+the page, usually a string</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_twittervia">twitterVia(the)</h3>
+<div class="twittervia"><div class="addthis-addthisprovider-twittervia-page"><p>Takes a twitter handle/username and uses it for twitter via. See
+<a href="https://www.addthis.com/academy/changes-to-how-twitter-works-with-addthis/">https://www.addthis.com/academy/changes-to-how-twitter-works-with-addthis/</a>
+for more information</p>
+</div><h5 id="methods_twittervia_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>the</td><td><a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-false">false</a></td><td><div class="addthis-addthisprovider-twittervia-page"><p>twitter handle in a string or false to remove
+twitter handle from config</p>
+</div></td></tr></tbody></table><h4 id="methods_twittervia_example">Example</h4>
+<div class="example"><div class="addthis-addthisprovider-twittervia-page"><pre><code class="lang-js">app.config(function($addthisProvider) {
+    $addthisProvider.twitterVia(&#39;addthis&#39;);
+});
+</code></pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_urlshortening">urlShortening(urlShorteningService, socialService)</h3>
+<div class="urlshortening"><div class="addthis-addthisprovider-urlshortening-page"><p>Takes a URL shortening name and a social service name, then enables URL
+shortening on that social service using the url shortening service.
+<a href="https://www.addthis.com/academy/url-shortening/">https://www.addthis.com/academy/url-shortening/</a>
+for more information</p>
+</div><h5 id="methods_urlshortening_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>urlShorteningService</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthisprovider-urlshortening-page"><p>The URL shortening service to enable</p>
+</div></td></tr><tr><td>socialService</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addthis-addthisprovider-urlshortening-page"><p>The social service to enable the URL shortening on</p>
+</div></td></tr></tbody></table><h4 id="methods_urlshortening_example">Example</h4>
+<div class="example"><div class="addthis-addthisprovider-urlshortening-page"><pre><code class="lang-js">app.config(function($addthisProvider) {
+    $addthisProvider.urlShortening(&#39;bitly&#39;, &#39;twitter&#39;);
+});
+</code></pre>
+</div></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
