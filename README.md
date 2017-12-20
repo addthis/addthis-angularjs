@@ -133,8 +133,8 @@ This will not override the share URL or title for tools using the `share-url` an
 
 ## More Resources
 
- - [More documention](http://s7.addthis.com/icons/official-addthis-angularjs/current/docs)
- - [Example site code](https://github.com/oracle/addthis-angularjs/tree/master/examples). Example 1 is plaing AngularJS, example 2 uses [ngRoute](https://docs.angularjs.org/api/ngRoute) and example 3 uses [AngularUI Router](https://github.com/angular-ui/ui-router)
+ - [More documention](https://addthis.github.io/addthis-angularjs/)
+ - [Example site code](https://github.com/addthis/addthis-angularjs/tree/master/examples). Example 1 is plaing AngularJS, example 2 uses [ngRoute](https://docs.angularjs.org/api/ngRoute) and example 3 uses [AngularUI Router](https://github.com/angular-ui/ui-router)
  - [register for an AddThis account](https://www.addthis.com/register)
  - [addthis_config documentation](https://www.addthis.com/academy/the-addthis_config-variable/)
  - [addthis_share documentation](https://www.addthis.com/academy/the-addthis_share-variable/)
