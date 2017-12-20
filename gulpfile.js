@@ -110,7 +110,7 @@ gulp.task('docs', function () {
     title: "documentation",
     image: "logo.png",
     imageLink: "https://www.addthis.com",
-    titleLink: "/#/api/addthis",
+    titleLink: "/addthis-angularjs/#/api/addthis",
     styles: ['doc.css'],
     analytics: {
       account: 'UA-1170033-28'
