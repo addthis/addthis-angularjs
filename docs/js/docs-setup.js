@@ -63,7 +63,7 @@ NG_DOCS={
     "navTemplateData": {},
     "image": "img/logo.png",
     "imageLink": "https://www.addthis.com",
-    "titleLink": "/#/api/addthis",
+    "titleLink": "/addthis-angularjs/#/api/addthis",
     "analytics": {
       "account": "UA-1170033-28"
     },
