@@ -400,7 +400,7 @@ var addthisModule = (function(window, angular) {
      * @description
      * A service for handling AddThis actions once your app is running.
      **/
-    var addthisService = function($window, $q, $interval) {
+    var addthisService =  ["$window", "$q", "$interval", function($window, $q, $interval) {
         // resetting when bootstrapping the serivce... for unit tests
         load.promise = false;
         smartLayersRefreshRequest.pending = false;
@@ -776,7 +776,7 @@ var addthisModule = (function(window, angular) {
         };
 
         return service;
-    };
+    }];
 
     /**
      * @ngdoc service
