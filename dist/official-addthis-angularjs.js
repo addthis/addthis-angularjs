@@ -1228,7 +1228,7 @@ var addthisModule = (function(window, angular) {
             return baseUrl;
         };
 
-        this.$get = addthisService;
+        this.$get = ['$window', '$q', '$interval', addthisService];
 
         return this;
     };
