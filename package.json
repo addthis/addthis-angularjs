@@ -11,7 +11,7 @@
   },
   "main": "dist/official-addthis-angularjs.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "./node_modules/.bin/gulp test"
   },
   "keywords": [
     "angular",
