@@ -295,10 +295,10 @@ appExample3.controller(
                     var images = data.documentElement.getElementsByTagName('url');
                     // images is a psudo-array, not a real array. using slide to make it a real array.
                     images = Array.prototype.slice.call(images);
-                    // loop through all the url elements
-                    images.forEach(function(image) {
-                        // grab the url string and put it in imageQueue
-                        $scope.imageQueue.push(image.innerHTML);
+                    images.forEach(function (image) {
+                        if (image && image.childNodes[0] && image.childNodes[0].nodeValue) {
+                          $scope.imageQueue.push(image.childNodes[0].nodeValue);
+                        }
                     });
                     return response;
                 });
@@ -306,15 +306,17 @@ appExample3.controller(
 
             // move an image from the imageQueue to $scope.shownImages
             var moveAnImageUrl = function() {
-                $scope.currentImageUrl = $scope.imageQueue.pop();
-                $scope.shownImages.push($scope.currentImageUrl);
+                if (!!$scope.imageQueue && $scope.imageQueue.length > 0) {
+                    $scope.currentImageUrl = $scope.imageQueue.pop();
+                  $scope.shownImages.push($scope.currentImageUrl);
+                }
             };
 
             // checks if there's images in imageQueue, repopulates the queue if
             // needed, then calls moveAnImageUrl to move an image from the
             // imageQueue to $scope.shownImages
             $scope.addAnother = function() {
-                if ($scope.imageQueue.length === 0) {
+                if (!$scope.imageQueue || $scope.imageQueue.length === 0) {
                     getMoreImages().then(moveAnImageUrl);
                 } else {
                     moveAnImageUrl();
