@@ -67,7 +67,7 @@ Set the profile ID and just the profile ID.
 
 ```js
 app.config(function($addthisProvider) {
-    $addthisProvider.profile_id('YOUR_PROFILE_ID');
+    $addthisProvider.profileId('YOUR_PROFILE_ID');
 });
 ```
 
