@@ -62,7 +62,7 @@ Include `addthis_widget.js` in HTML with an AddThis profile ID. Replace `YOUR_PR
 
 Get a profile ID with a free [AddThis account](https://www.addthis.com/register).
 
-#### Set a Profile ID: Option 2: `$addthisProvider.profile_id`
+#### Set a Profile ID: Option 2: `$addthisProvider.profileId`
 Set the profile ID and just the profile ID.
 
 ```js
